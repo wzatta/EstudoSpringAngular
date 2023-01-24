@@ -31,19 +31,19 @@ public class User000 implements Serializable {
 	@EqualsAndHashCode.Include
 	private Long id;
 	
-	@Column(name="userName", length = 30)
+	@Column(name="userName", length = 30, unique = true, nullable = false)
 	private String userName;
 	
-	@Column(name="password")
+	@Column(name="password", nullable = false)
 	private String password;
 	
-	@Column(name = "cpf", length = 11)
+	@Column(name = "cpf", length = 11, nullable = false)
 	private String cpf;
 	
-	@Column(name = "name", length = 50)
+	@Column(name = "name", length = 50, nullable = false)
 	private String name;
 	
-	@Column(name="status")
+	@Column(name="status", nullable = false)
 	private Boolean userAtivo;
 
 	public User000(Long id, String userName, String password, String cpf, String name, Boolean userAtivo) {

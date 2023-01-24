@@ -17,7 +17,8 @@ public class Instantiation implements CommandLineRunner {
 	
 	@Override
 	public void run(String... args) throws Exception {
-     /*
+    
+	/*	
 		userRepo.deleteAll();
 		
 		User000 wal = new User000(null,"zatta","1234","00000000153","Waldyr Zatta Junior",true);
