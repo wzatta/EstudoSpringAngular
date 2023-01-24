@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -24,5 +25,11 @@ public class User000Resource {
 		return ResponseEntity.ok().body(users);
 	}
 
+	@GetMapping(value = "/{id}")
+	public ResponseEntity<User000DTO> findById(@PathVariable Long id){
+		User000DTO userdto = userServ.findById(id);
+		return ResponseEntity.ok().body(userdto);
+	}
+	
 	
 }
