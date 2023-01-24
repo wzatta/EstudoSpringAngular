@@ -1,0 +1,32 @@
+package com.cilazatta.EstudoSpringAngular.services;
+
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.cilazatta.EstudoSpringAngular.dto.User000DTO;
+import com.cilazatta.EstudoSpringAngular.entities.User000;
+import com.cilazatta.EstudoSpringAngular.repositories.User000Repository;
+
+@Service
+public class User000Service {
+
+	@Autowired
+	private User000Repository userRepo;
+	
+	public List<User000DTO> findAll() {
+		List<User000> users = userRepo.findAll();
+		List<User000DTO> usersDto = users.stream()
+				.map(w -> new User000DTO(w)).collect(Collectors.toList());
+		return usersDto;
+	}
+	
+	private Boolean findByUserName(String username) {
+		Optional<List<User000>> user = userRepo.findByUserName(username);
+		return user.isPresent();
+	}
+	
+}
