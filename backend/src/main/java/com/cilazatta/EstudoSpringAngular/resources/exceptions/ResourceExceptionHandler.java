@@ -5,7 +5,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
+import com.cilazatta.EstudoSpringAngular.services.exception.FieldNotNullException;
 import com.cilazatta.EstudoSpringAngular.services.exception.ObjectNotFoundException;
+
 import jakarta.servlet.http.HttpServletRequest;
 
 @ControllerAdvice
@@ -18,6 +20,19 @@ public class ResourceExceptionHandler {
 				System.currentTimeMillis(),
 				status.value(),
 				"Registro não Encontrado",
+				e.getMessage(),
+				request.getRequestURI()
+				);
+		return ResponseEntity.status(status).body(err);
+	}
+
+	@ExceptionHandler(FieldNotNullException.class)
+	public ResponseEntity<StandardError> fieldNotNull(FieldNotNullException e, HttpServletRequest request){
+		HttpStatus status = HttpStatus.BAD_REQUEST;
+		StandardError err = new StandardError(
+				System.currentTimeMillis(),
+				status.value(),
+				"Campo Não Pode ser Nulo",
 				e.getMessage(),
 				request.getRequestURI()
 				);

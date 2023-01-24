@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import com.cilazatta.EstudoSpringAngular.dto.User000DTO;
 import com.cilazatta.EstudoSpringAngular.entities.User000;
 import com.cilazatta.EstudoSpringAngular.repositories.User000Repository;
+import com.cilazatta.EstudoSpringAngular.services.exception.FieldNotNullException;
 import com.cilazatta.EstudoSpringAngular.services.exception.ObjectNotFoundException;
 
 @Service
@@ -17,6 +18,17 @@ public class User000Service {
 
 	@Autowired
 	private User000Repository userRepo;
+	
+	public User000DTO insertUser(User000DTO userDto) {
+		User000 user = new User000(userDto);
+		try {
+		user = userRepo.save(user);
+		return new User000DTO(user);
+		}
+		catch (Exception e) {
+			throw new FieldNotNullException(e.getMessage());
+		}
+	}
 	
 	public List<User000DTO> findAll() {
 		List<User000> users = userRepo.findAll();
