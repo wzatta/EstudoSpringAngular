@@ -12,7 +12,6 @@ public class User000DTO {
 	private Boolean userAtivo;
 
 	public User000DTO(Long id, String userName, String passWord, String cpf, String name, Boolean userAtivo) {
-		super();
 		this.id = id;
 		this.userName = userName;
 		this.password = passWord;

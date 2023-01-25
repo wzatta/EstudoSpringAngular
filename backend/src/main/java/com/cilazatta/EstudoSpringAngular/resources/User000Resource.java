@@ -2,7 +2,6 @@ package com.cilazatta.EstudoSpringAngular.resources;
 
 import java.util.List;
 
-import org.hibernate.PropertyValueException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
