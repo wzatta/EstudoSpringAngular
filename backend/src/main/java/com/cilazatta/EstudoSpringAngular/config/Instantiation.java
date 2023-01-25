@@ -9,10 +9,9 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
 
 import com.cilazatta.EstudoSpringAngular.dto.User000DTO;
-import com.cilazatta.EstudoSpringAngular.entities.User000;
 import com.cilazatta.EstudoSpringAngular.repositories.User000Repository;
 import com.cilazatta.EstudoSpringAngular.services.User000Service;
-
+/*
 @Configuration
 public class Instantiation implements CommandLineRunner {
 
@@ -24,7 +23,8 @@ public class Instantiation implements CommandLineRunner {
 	
 	@Override
 	public void run(String... args) throws Exception {
-    /*
+		
+	
 		List<User000DTO> listDTO = new ArrayList<>();
 		userRepo.deleteAll();
 		
@@ -37,10 +37,9 @@ public class Instantiation implements CommandLineRunner {
 		listUser.stream()
 			.forEach(w-> {listDTO.add(userServ.insertUser(w));});
 		
-		*/
+		
 	
 	}
 
-	
-	
 }
+*/
