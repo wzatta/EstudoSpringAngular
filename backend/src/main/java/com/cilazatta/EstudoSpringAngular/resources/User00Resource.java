@@ -12,32 +12,34 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cilazatta.EstudoSpringAngular.dto.User000DTO;
-import com.cilazatta.EstudoSpringAngular.services.User000Service;
+import com.cilazatta.EstudoSpringAngular.dto.User00DTO;
+import com.cilazatta.EstudoSpringAngular.services.User00Service;
 
 @RestController
-@RequestMapping(value="/api/v1/users")
-public class User000Resource {
+@RequestMapping(value="api/v1/user00")
+public class User00Resource {
 	
 	@Autowired
-	private User000Service userServ;
+	private User00Service userServ;
 	
 	@PostMapping
-	public ResponseEntity<User000DTO> insertUser(@RequestBody User000DTO user){
-		User000DTO userDto = userServ.insertUser(user);
+	public ResponseEntity<User00DTO> insertUser(@RequestBody User00DTO user){
+		User00DTO userDto = userServ.insertUser(user);
 		return ResponseEntity.created(null).body(userDto);
 	}
 	
 	@GetMapping
-	public ResponseEntity<List<User000DTO>> findAll(){
-		List<User000DTO> users = userServ.findAll();
+	public ResponseEntity<List<User00DTO>> findAll(){
+		List<User00DTO> users = userServ.findAll();
 		return ResponseEntity.ok().body(users);
 	}
 
 	@GetMapping(value = "/{id}")
-	public ResponseEntity<User000DTO> findById(@PathVariable Long id){
-		User000DTO userdto = userServ.findById(id);
+	public ResponseEntity<User00DTO> findById(@PathVariable Long id){
+		User00DTO userdto = userServ.findById(id);
 		return ResponseEntity.ok().body(userdto);
 	}
+	
 	
 	
 }

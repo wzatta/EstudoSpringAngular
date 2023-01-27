@@ -1,9 +1,6 @@
 package com.cilazatta.EstudoSpringAngular.entities;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
-
 import com.cilazatta.EstudoSpringAngular.dto.User000DTO;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonProperty.Access;
@@ -13,7 +10,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -62,9 +58,6 @@ public class User000 implements Serializable {
 	
 	@Column(name="status", nullable = false)
 	private Boolean userAtivo;
-	
-	@OneToMany(mappedBy = "user000")
-	private List<Task> tasks = new ArrayList<>();
 	
 	//=========================================================
 	

@@ -46,7 +46,7 @@ public class Colaborador implements Serializable {
 	
 	@Column(name = "datedem")
 	private LocalDate dateDem;
-
+	
 	public Colaborador(Long id, String matricula, String cpf, String name, String funcao, LocalDate dateAdm,
 			LocalDate dateDem) {
 		super();
