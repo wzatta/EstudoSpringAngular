@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Usuario } from '../model/Usuario';
+import { Usuariointerface } from '../model/usuariointerface';
+import { UsuariosService } from '../services/usuarios.service';
+
 
 @Component({
   selector: 'app-usuarios',
@@ -8,11 +10,16 @@ import { Usuario } from '../model/Usuario';
 })
 export class UsuariosComponent implements OnInit {
 
-  usuariosdb: Usuario[] = ["1234","Waldyr","zatta","a","12345","12345"];
-  displayedColumns = ['id' , 'name', 'username','status','cpf' ,'password'];
+  usuariosdb: Usuariointerface[] = [];
+  displayedColumns = ['id' , 'name', 'cpf','username','userativo','usernaobloq'];
 
-  constructor(){
+  //usuariosService: UsuariosService;
+
+  constructor(usuariosService: UsuariosService){
    // this.usuariosdb = [];
+   //this.usuariosService = new UsuariosService;
+   this.usuariosdb = usuariosService.list();
+
   }
  ngOnInit():void{
 

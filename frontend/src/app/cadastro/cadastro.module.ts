@@ -1,9 +1,11 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { MatTableModule } from '@angular/material/table';
+
 
 import { CadastroRoutingModule } from './cadastro-routing.module';
 import { UsuariosComponent } from './usuarios/usuarios.component';
+import { AppMaterialModule } from '../shared/app-material/app-material.module';
+
 
 @NgModule({
   declarations: [
@@ -12,7 +14,8 @@ import { UsuariosComponent } from './usuarios/usuarios.component';
   imports: [
     CommonModule,
     CadastroRoutingModule,
-    MatTableModule
+    AppMaterialModule
+
   ]
 })
 export class CadastroModule { }

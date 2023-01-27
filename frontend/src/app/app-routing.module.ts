@@ -2,9 +2,9 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
-  { path: '', pathMatch: 'full' , redirectTo: 'cadastro'},
+  { path: '', pathMatch: 'full' , redirectTo: 'usuarios'},
   {
-    path: 'cadastro',
+    path: 'usuarios',
     loadChildren: () => import('./cadastro/cadastro.module').then(m => m.CadastroModule)
   }
 ];
