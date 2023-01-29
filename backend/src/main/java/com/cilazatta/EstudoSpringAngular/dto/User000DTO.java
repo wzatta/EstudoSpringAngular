@@ -1,7 +1,14 @@
 package com.cilazatta.EstudoSpringAngular.dto;
 
 import com.cilazatta.EstudoSpringAngular.entities.User000;
+import com.cilazatta.EstudoSpringAngular.enums.Role;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+@Getter
+@Setter
+@NoArgsConstructor
 public class User000DTO {
 
 	private Long id;
@@ -28,57 +35,6 @@ public class User000DTO {
 		userAtivo = user.getUserAtivo();
 	}
 
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public String getUserName() {
-		return userName;
-	}
-
-	public void setUserName(String userName) {
-		this.userName = userName;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
-	public void setPassWord(String passWord) {
-		this.password = passWord;
-	}
-
-	public String getCpf() {
-		return cpf;
-	}
-
-	public void setCpf(String cpf) {
-		this.cpf = cpf;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public Boolean getUserAtivo() {
-		return userAtivo;
-	}
-
-	public void setUserAtivo(Boolean userAtivo) {
-		this.userAtivo = userAtivo;
-	}
 	
 	
 }

@@ -1,3 +1,4 @@
+/*
 package com.cilazatta.EstudoSpringAngular.auth;
 
 import org.springframework.security.authentication.AuthenticationManager;
@@ -19,22 +20,7 @@ public class AuthenticationService {
 	private final User00Service service;
 	private final JwtService jwtService;
 	private final AuthenticationManager authenticationManager;
-	
-/*	public AuthenticationResponse register(RegisterRequest request) {
-		var user = User00.builder()
-				.name(request.getName())
-				.cpf(request.getCpf())
-				.userName(request.getUserName())
-				.password(request.getPassword())
-				.userAtivo(request.getUserAtivo())
-				.userNaoBloqueado(request.getUserNaoBloqueado())
-				.role(request.getRole())
-				.build();
-		service.save(user);
-		var jwtToken = jwtService.generateToken(user);
-		return AuthenticationResponse.builder().token(jwtToken).build();
-	}
-*/
+
 	public AuthenticationResponse authenticate(AuthenticationRequest request) {
 
 		authenticationManager
@@ -46,3 +32,4 @@ public class AuthenticationService {
 	}
 
 }
+*/

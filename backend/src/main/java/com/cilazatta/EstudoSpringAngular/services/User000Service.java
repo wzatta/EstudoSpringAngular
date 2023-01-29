@@ -12,7 +12,7 @@ import com.cilazatta.EstudoSpringAngular.entities.User000;
 import com.cilazatta.EstudoSpringAngular.repositories.User000Repository;
 import com.cilazatta.EstudoSpringAngular.services.exception.FieldNotNullException;
 import com.cilazatta.EstudoSpringAngular.services.exception.ObjectNotFoundException;
-import com.cilazatta.EstudoSpringAngular.util.Encoder;
+//import com.cilazatta.EstudoSpringAngular.util.Encoder;
 
 @Service
 public class User000Service {
@@ -20,13 +20,13 @@ public class User000Service {
 	@Autowired
 	private User000Repository userRepo;
 	
-	@Autowired
-	private Encoder encoder;
+//	@Autowired
+//	private Encoder encoder;
 	
 	public User000DTO insertUser(User000DTO userDto) {
 		User000 user = new User000(userDto);
 		try {
-			user.setPassword(encoder.getPasswordEncoder().encode(user.getPassword()));
+//			user.setPassword(encoder.getPasswordEncoder().encode(user.getPassword()));
 		user = userRepo.save(user);
 		return new User000DTO(user);
 		}

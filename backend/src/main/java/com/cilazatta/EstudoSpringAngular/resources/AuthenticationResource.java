@@ -1,3 +1,4 @@
+/*
 package com.cilazatta.EstudoSpringAngular.resources;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,14 +20,7 @@ public class AuthenticationResource {
 	
 	@Autowired
 	private final AuthenticationService service;
-/*
-	@PostMapping(value="/register")
-	public ResponseEntity<AuthenticationResponse> register(
-			@RequestBody RegisterRequest request
-			){
-		return ResponseEntity.ok(service.register(request));
-	}
-*/
+
 	@PostMapping(value="/authenticate")
 	public ResponseEntity<AuthenticationResponse> authenticate(
 			@RequestBody AuthenticationRequest request
@@ -35,3 +29,4 @@ public class AuthenticationResource {
 	}
 	
 }
+*/

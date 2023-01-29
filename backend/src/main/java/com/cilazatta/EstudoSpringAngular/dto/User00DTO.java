@@ -37,7 +37,7 @@ public class User00DTO {
 		id = user.getId();
 		name = user.getName();
 		cpf = user.getCpf();
-		userName = user.getUsername();
+		userName = user.getUserName();
 		password = "********";
 		userAtivo = user.getUserAtivo();
 		userNaoBloqueado = user.getUserNaoBloqueado();

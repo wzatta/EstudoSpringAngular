@@ -1,14 +1,13 @@
+/*
 package com.cilazatta.EstudoSpringAngular.entities;
 
 import java.io.Serializable;
-/*
 import java.util.Collection;
 import java.util.List;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-*/
 
 import com.cilazatta.EstudoSpringAngular.dto.User00DTO;
 import com.cilazatta.EstudoSpringAngular.enums.Role;
@@ -39,11 +38,8 @@ import lombok.Setter;
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Entity
 @Table(name = "user00")
-public class User00 implements Serializable {
+public class User00BKP implements UserDetails, Serializable {
 
-	/**
-	 * Definição do usuário de Implantação
-	 */
 	
 	   public interface CreateUser {
 	    }
@@ -89,7 +85,7 @@ public class User00 implements Serializable {
 	
 	//=========================================================
 	
-	public User00(Long id, String name, String cpf,
+	public User00BKP(Long id, String name, String cpf,
 			@NotNull(groups = CreateUser.class) @NotEmpty(groups = CreateUser.class) @Size(groups = CreateUser.class, min = 2, max = 30) String userName,
 			@NotNull(groups = { CreateUser.class, UpdateUser.class }) @NotEmpty(groups = { CreateUser.class,
 					UpdateUser.class }) @Size(groups = { CreateUser.class,
@@ -106,7 +102,7 @@ public class User00 implements Serializable {
 		this.role = role;
 	}
 
-	public User00(User00DTO userDto) {
+	public User00BKP(User00DTO userDto) {
 		this.id = userDto.getId();
 		this.name = userDto.getName();
 		this.cpf = userDto.getCpf();
@@ -118,7 +114,7 @@ public class User00 implements Serializable {
 	}
 
 	//Implementação USERDETAILS =====================================
-/*	
+	
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		return List.of(new SimpleGrantedAuthority(role.name()));
@@ -153,7 +149,7 @@ public class User00 implements Serializable {
 	public boolean isEnabled() {
 		return this.userAtivo;
 	}
-*/
+
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
@@ -181,3 +177,4 @@ public class User00 implements Serializable {
 
 
 }
+*/
