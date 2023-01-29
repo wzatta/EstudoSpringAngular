@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Usuariointerface } from '../model/usuariointerface';
 import { HttpClient } from '@angular/common/http';
+import { delay, first, tap } from 'rxjs';
 
 
 @Injectable({
@@ -8,13 +9,17 @@ import { HttpClient } from '@angular/common/http';
 })
 export class UsuariosService {
 
+  private readonly API = '/assets/usuariojason.json';
+
   constructor(private httpClient: HttpClient) { }
 
-  list(): Usuariointerface[] {
-    return [
-    {id:"1", name:"Waldyr Zatta",username:"zatta",cpf:"123",password:"1234", userativo:"true",usernaobloq:"falso",role:"ADMIN"},
-    {id:"1", name:"Waldyr Zatta",username:"zatta",cpf:"123",password:"1234", userativo:"true",usernaobloq:"falso",role:"USER"}
-  ];
+  list()  {
+    return this.httpClient.get<Usuariointerface[]>(this.API)
+    .pipe(
+          first(),
+          delay(10000),
+          tap(usuarios=>console.log(usuarios))
+    );
   }
 
 }
