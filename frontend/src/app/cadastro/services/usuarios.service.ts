@@ -9,7 +9,7 @@ import { delay, first, tap } from 'rxjs';
 })
 export class UsuariosService {
 
-  private readonly API = '/assets/usuariojason.json';
+  private readonly API = 'api/v1/user00';
 
   constructor(private httpClient: HttpClient) { }
 
@@ -17,9 +17,13 @@ export class UsuariosService {
     return this.httpClient.get<Usuariointerface[]>(this.API)
     .pipe(
           first(),
-          delay(10000),
           tap(usuarios=>console.log(usuarios))
     );
+  }
+
+  save(record: Partial<Usuariointerface>){
+   console.log(record);
+   return this.httpClient.post<Usuariointerface>(this.API, record);
   }
 
 }

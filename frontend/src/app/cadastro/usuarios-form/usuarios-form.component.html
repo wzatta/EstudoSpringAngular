@@ -1,0 +1,54 @@
+<mat-card>
+  <mat-card-header>
+    <mat-toolbar color="primary">
+      Cadastro de Usuarios - Holding
+    </mat-toolbar>
+  </mat-card-header>
+
+  <mat-card-content>
+    <form [formGroup]="form">
+
+      <mat-form-field class="full-width" appearance="fill">
+        <input matInput placeholder="Nome Completo" formControlName="name">
+      </mat-form-field>
+
+      <mat-form-field class="full-width" appearance="fill">
+        <input matInput placeholder="Cpf" formControlName="cpf">
+      </mat-form-field>
+
+      <mat-form-field class="full-width" appearance="fill">
+        <input matInput placeholder="UserName" formControlName="userName">
+      </mat-form-field>
+
+      <mat-form-field class="full-width" appearance="fill">
+        <input matInput type="password" placeholder="PassWord" formControlName="password">
+      </mat-form-field>
+
+      <mat-form-field class="full-width" appearance="fill">
+        <input matInput placeholder="Usuario Ativo ?" formControlName="userAtivo">
+      </mat-form-field>
+
+      <mat-form-field class="full-width" appearance="fill">
+        <input matInput placeholder="Usuario Bloqueado ?" formControlName="userNaoBloqueado">
+      </mat-form-field>
+
+      <mat-form-field class="full-width" appearance="fill">
+        <input matInput placeholder="Tipo de Autoridade" formControlName="role">
+      </mat-form-field>
+
+    </form>
+  </mat-card-content>
+  <mat-card-actions class="bt-container">
+    <button mat-raised-button (click)="onSubmit()" color="primary" style="margin: 1px">
+      <mat-icon>save</mat-icon>
+      Salvar
+    </button>
+
+    <button mat-raised-button (click)="onCancel()" style="margin: 1px; background-color: #00E5FF;">
+      <mat-icon>cancell</mat-icon>
+      Cancelar
+    </button>
+  </mat-card-actions>
+
+
+</mat-card>

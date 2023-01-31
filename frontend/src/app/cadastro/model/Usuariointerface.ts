@@ -2,10 +2,10 @@ export interface Usuariointerface {
   id: string;
   name: string;
   cpf: string;
-  username: string;
+  userName: string;
   password: string;
-  userativo: string;
-  usernaobloq: string;
+  userAtivo: string;
+  userNaoBloqueado: string;
   role:string;
 
 

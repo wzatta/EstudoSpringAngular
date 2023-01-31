@@ -1,6 +1,12 @@
 <mat-card>
 
-  <mat-toolbar color="secoundary"> Cadastro de Usuarios </mat-toolbar>
+  <mat-toolbar color="secoundary">
+    <span>Cadastro de Usuarios</span>
+    <span class="example-spacer"></span>
+    <button mat-mini-fab color="primary" aria-label="Inclusão de Usurios" (click)="onAdd()">
+      <mat-icon >add</mat-icon>
+    </button>
+  </mat-toolbar>
 
   <div *ngIf="usuariosdb$ | async as usuariosdb; else loading">
     <table mat-table [dataSource]="usuariosdb" class="mat-elevation-z8">
@@ -25,17 +31,37 @@
 
       <ng-container matColumnDef="username">
         <th mat-header-cell *matHeaderCellDef> USERNAME </th>
-        <td mat-cell *matCellDef="let wzj"> {{wzj.username}} </td>
+        <td mat-cell *matCellDef="let wzj"> {{wzj.userName}} </td>
       </ng-container>
 
       <ng-container matColumnDef="userativo">
         <th mat-header-cell *matHeaderCellDef> ATIVO </th>
-        <td mat-cell *matCellDef="let wzj"> {{wzj.userativo}} </td>
+        <td mat-cell *matCellDef="let wzj"> {{wzj.userAtivo}} </td>
       </ng-container>
 
       <ng-container matColumnDef="usernaobloq">
         <th mat-header-cell *matHeaderCellDef> BLOQUEADO </th>
-        <td mat-cell *matCellDef="let wzj"> {{wzj.usernaobloq}} </td>
+        <td mat-cell *matCellDef="let wzj"> {{wzj.userNaoBloqueado}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="role">
+        <th mat-header-cell *matHeaderCellDef> ROLE </th>
+        <td mat-cell *matCellDef="let wzj"> {{wzj.role}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef> AÇÕES </th>
+        <td mat-cell *matCellDef="let wzj">
+        <button mat-mini-fab color="primary" aria-label="Editar" (click)="onEdit()">
+          <mat-icon>edit</mat-icon>
+        </button>
+
+
+          <button mat-mini-fab color="warn" aria-label="Deletar" (click)="onDelete()">
+            <mat-icon>delete</mat-icon>
+          </button>
+
+        </td>
       </ng-container>
 
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { ActivatedRoute, Router } from '@angular/router';
 import { catchError, Observable, of } from 'rxjs';
 
 import { ErrorDialogComponent } from '../../shared/components/error-dialog/error-dialog.component';
@@ -15,13 +16,15 @@ import { UsuariosService } from '../services/usuarios.service';
 export class UsuariosComponent implements OnInit {
 
   usuariosdb$: Observable<Usuariointerface[]>;
-  displayedColumns = ['id' , 'name', 'cpf','username','userativo','usernaobloq'];
+  displayedColumns = ['id' , 'name', 'cpf','username','userativo','usernaobloq','role','actions'];
 
   //usuariosService: UsuariosService;
 
   constructor(
     private usuariosService: UsuariosService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private router: Router,
+    private route: ActivatedRoute
     ){
    // this.usuariosdb = [];
    //this.usuariosService = new UsuariosService;
@@ -46,5 +49,20 @@ export class UsuariosComponent implements OnInit {
  ngOnInit():void{
 
  }
+
+ onAdd(){
+    this.router.navigate(['new'],{relativeTo: this.route});
+ }
+
+ onEdit(){
+    console.log('onEdit');
+
+  }
+ onDelete(){
+    console.log('onDelete');
+ }
+
+
+
 
 }
