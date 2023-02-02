@@ -54,4 +54,17 @@ public class User000Service {
 		return user.isPresent();
 	}
 	
+	
+	public Boolean delete(Long id) {
+		
+		return userRepo.findById(id)
+				.map(recordFound ->{
+					userRepo.deleteById(id);
+					return true;
+				})
+				.orElse(false);
+	}
+	
+	
+	
 }

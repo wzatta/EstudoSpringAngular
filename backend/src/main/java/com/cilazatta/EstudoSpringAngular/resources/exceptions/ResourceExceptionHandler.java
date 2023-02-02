@@ -5,6 +5,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
+import com.cilazatta.EstudoSpringAngular.services.exception.FieldDataIntegrityViolationException;
 import com.cilazatta.EstudoSpringAngular.services.exception.FieldNotNullException;
 import com.cilazatta.EstudoSpringAngular.services.exception.ObjectNotFoundException;
 
@@ -33,6 +34,19 @@ public class ResourceExceptionHandler {
 				System.currentTimeMillis(),
 				status.value(),
 				"Campo Não Pode ser Nulo",
+				e.getMessage(),
+				request.getRequestURI()
+				);
+		return ResponseEntity.status(status).body(err);
+	}
+	
+	@ExceptionHandler(FieldDataIntegrityViolationException.class)
+	public ResponseEntity<StandardError> fieldNotNull(FieldDataIntegrityViolationException e, HttpServletRequest request){
+		HttpStatus status = HttpStatus.BAD_REQUEST;
+		StandardError err = new StandardError(
+				System.currentTimeMillis(),
+				status.value(),
+				"Campo UserName Duplicado",
 				e.getMessage(),
 				request.getRequestURI()
 				);
