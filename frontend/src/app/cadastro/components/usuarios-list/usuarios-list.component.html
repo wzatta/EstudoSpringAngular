@@ -1,0 +1,58 @@
+ <mat-table   [dataSource]="usuariosdb" >
+
+      <!-- Position Column -->
+      <ng-container matColumnDef="id">
+        <mat-header-cell   *matHeaderCellDef> ID </mat-header-cell>
+        <mat-cell   *matCellDef="let wzj"> {{wzj.id}} </mat-cell>
+      </ng-container>
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="name">
+        <mat-header-cell   *matHeaderCellDef> NAME</mat-header-cell>
+        <mat-cell   *matCellDef="let wzj"> {{wzj.name}} </mat-cell>
+      </ng-container>
+
+      <!-- Weight Column -->
+      <ng-container matColumnDef="cpf">
+        <mat-header-cell   *matHeaderCellDef> CPF </mat-header-cell>
+        <mat-cell  *matCellDef="let wzj"> {{wzj.cpf}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="username">
+        <mat-header-cell  *matHeaderCellDef> USERNAME </mat-header-cell>
+        <mat-cell  *matCellDef="let wzj"> {{wzj.userName}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="userativo">
+        <mat-header-cell  *matHeaderCellDef> ATIVO </mat-header-cell>
+        <mat-cell  *matCellDef="let wzj"> {{wzj.userAtivo==true?'SIM':'NÃO'}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="usernaobloq">
+        <mat-header-cell  *matHeaderCellDef> BLOQUEADO </mat-header-cell>
+        <mat-cell  *matCellDef="let wzj">{{wzj.userNaoBloqueado==true?'SIM':'NÃO'}}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="role">
+        <mat-header-cell  *matHeaderCellDef> ROLE </mat-header-cell>
+        <mat-cell  *matCellDef="let wzj"> {{wzj.role}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="actions">
+        <mat-header-cell  *matHeaderCellDef> AÇÕES </mat-header-cell>
+        <mat-cell  *matCellDef="let wzj" >
+        <button mat-mini-fab color="primary" aria-label="Editar" (click)="onEdit(wzj)">
+          <mat-icon>edit</mat-icon>
+        </button>
+
+
+          <button mat-mini-fab color="warn" aria-label="Deletar" (click)="onDelete(wzj)">
+            <mat-icon>delete</mat-icon>
+          </button>
+
+        </mat-cell>
+      </ng-container>
+
+      <mat-header-row  *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row  *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
