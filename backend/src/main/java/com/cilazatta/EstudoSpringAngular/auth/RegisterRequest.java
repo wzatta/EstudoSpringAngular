@@ -1,4 +1,4 @@
-/*package com.cilazatta.EstudoSpringAngular.auth;
+package com.cilazatta.EstudoSpringAngular.auth;
 
 import com.cilazatta.EstudoSpringAngular.enums.Role;
 
@@ -18,10 +18,9 @@ public class RegisterRequest {
 	private String userName;
 	private String password;
 	private Boolean userAtivo;
-	private Boolean userNaoBloqueado;
+	private Boolean userBloqueado;
 	
 	private Role role;
 
 	
 }
-*/

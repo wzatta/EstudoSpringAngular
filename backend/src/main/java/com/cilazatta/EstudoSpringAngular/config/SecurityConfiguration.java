@@ -1,4 +1,4 @@
-/*
+
 package com.cilazatta.EstudoSpringAngular.config;
 
 import org.springframework.context.annotation.Bean;
@@ -27,7 +27,7 @@ public class SecurityConfiguration {
 		.csrf()
 		.disable()
 		.authorizeHttpRequests()
-		.requestMatchers("/api/v1/auth/**")
+		.requestMatchers("/api/v1/auth/**", "/api/v1/user00/**")
 		.permitAll()
 		.anyRequest()
 		.authenticated()
@@ -43,4 +43,3 @@ public class SecurityConfiguration {
 		
 	}
 }
-*/

@@ -46,7 +46,7 @@ public class ResourceExceptionHandler {
 		StandardError err = new StandardError(
 				System.currentTimeMillis(),
 				status.value(),
-				"Campo UserName Duplicado",
+				"Violação de Integridade - Dados Duplicado",
 				e.getMessage(),
 				request.getRequestURI()
 				);

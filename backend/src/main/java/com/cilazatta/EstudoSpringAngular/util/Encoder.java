@@ -1,4 +1,4 @@
-/*
+
 package com.cilazatta.EstudoSpringAngular.util;
 
 import org.springframework.context.annotation.Bean;
@@ -14,5 +14,3 @@ public class Encoder {
 		return encode;
 	}
 }
-
-*/

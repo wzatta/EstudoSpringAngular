@@ -1,14 +1,14 @@
 package com.cilazatta.EstudoSpringAngular.entities;
 
 import java.io.Serializable;
-/*
+
 import java.util.Collection;
 import java.util.List;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-*/
+
 
 import com.cilazatta.EstudoSpringAngular.dto.User00DTO;
 import com.cilazatta.EstudoSpringAngular.enums.Role;
@@ -39,7 +39,7 @@ import lombok.Setter;
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Entity
 @Table(name = "user00")
-public class User00 implements Serializable {
+public class User00 implements UserDetails, Serializable {
 
 	/**
 	 * Definição do usuário de Implantação
@@ -82,7 +82,7 @@ public class User00 implements Serializable {
 	private Boolean userAtivo;
 	
 	@Column(name="bloq", nullable = false)
-	private Boolean userNaoBloqueado;
+	private Boolean userBloqueado;
 	
 	@Enumerated(EnumType.STRING)
 	private Role role;
@@ -94,7 +94,7 @@ public class User00 implements Serializable {
 			@NotNull(groups = { CreateUser.class, UpdateUser.class }) @NotEmpty(groups = { CreateUser.class,
 					UpdateUser.class }) @Size(groups = { CreateUser.class,
 							UpdateUser.class }, min = 8, max = 200) String password,
-			Boolean userAtivo, Boolean userNaoBloqueado, Role role) {
+			Boolean userAtivo, Boolean userBloqueado, Role role) {
 	
 		this.id = id;
 		this.name = name;
@@ -102,7 +102,7 @@ public class User00 implements Serializable {
 		this.userName = userName;
 		this.password = password;
 		this.userAtivo = userAtivo;
-		this.userNaoBloqueado = userNaoBloqueado;
+		this.userBloqueado = userBloqueado;
 		this.role = role;
 	}
 
@@ -113,12 +113,12 @@ public class User00 implements Serializable {
 		this.userName = userDto.getUserName();
 		this.password = userDto.getPassword();
 		this.userAtivo = userDto.getUserAtivo();
-		this.userNaoBloqueado = userDto.getUserNaoBloqueado();
+		this.userBloqueado = userDto.getUserBloqueado();
 		this.role = userDto.getRole();
 	}
 
 	//Implementação USERDETAILS =====================================
-/*	
+
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		return List.of(new SimpleGrantedAuthority(role.name()));
@@ -141,7 +141,7 @@ public class User00 implements Serializable {
 
 	@Override
 	public boolean isAccountNonLocked() {
-		return this.userNaoBloqueado;
+		return this.userBloqueado;
 	}
 
 	@Override
@@ -153,7 +153,7 @@ public class User00 implements Serializable {
 	public boolean isEnabled() {
 		return this.userAtivo;
 	}
-*/
+
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
@@ -169,8 +169,8 @@ public class User00 implements Serializable {
 		builder.append(password);
 		builder.append(", userAtivo=");
 		builder.append(userAtivo);
-		builder.append(", userNaoBloqueado=");
-		builder.append(userNaoBloqueado);
+		builder.append(", userBloqueado=");
+		builder.append(userBloqueado);
 		builder.append(", role=");
 		builder.append(role);
 		builder.append("]");

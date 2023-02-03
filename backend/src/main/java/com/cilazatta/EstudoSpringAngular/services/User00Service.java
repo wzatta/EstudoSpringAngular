@@ -14,7 +14,7 @@ import com.cilazatta.EstudoSpringAngular.repositories.User00Repository;
 import com.cilazatta.EstudoSpringAngular.services.exception.FieldDataIntegrityViolationException;
 import com.cilazatta.EstudoSpringAngular.services.exception.FieldNotNullException;
 import com.cilazatta.EstudoSpringAngular.services.exception.ObjectNotFoundException;
-//import com.cilazatta.EstudoSpringAngular.util.Encoder;
+import com.cilazatta.EstudoSpringAngular.util.Encoder;
 
 @Service
 public class User00Service {
@@ -22,23 +22,21 @@ public class User00Service {
 	@Autowired
 	private User00Repository userRepo;
 
-	// @Autowired
-	// private Encoder encoder;
+	@Autowired
+	private Encoder encoder;
 
 	public void save(User00 user) {
-		// user.setPassword(encoder.getPasswordEncoder().encode(user.getPassword()));
+		user.setPassword(encoder.getPasswordEncoder().encode(user.getPassword()));
 		userRepo.save(user);
 	}
 
 	public User00DTO insertUser(User00DTO userDto) {
 		User00 user = new User00(userDto);
+		this.findByUsername(user.getUsername()).map(w->{ throw new FieldDataIntegrityViolationException("UserName ja Existente");});
 		try {
-			// user.setPassword(encoder.getPasswordEncoder().encode(user.getPassword()));
+			user.setPassword(encoder.getPasswordEncoder().encode(user.getPassword()));
 			user = userRepo.save(user);
 			return new User00DTO(user);
-		}
-		catch (DataIntegrityViolationException e) {
-			throw new FieldDataIntegrityViolationException(e.getMessage());
 		}
 		catch (Exception e) {
 			throw new FieldNotNullException(e.getMessage());
@@ -71,7 +69,7 @@ public class User00Service {
 	private void updateData(User00 entity, User00DTO obj) {
 		entity.setName(obj.getName());
 		entity.setUserAtivo(obj.getUserAtivo());
-		entity.setUserNaoBloqueado(obj.getUserNaoBloqueado());
+		entity.setUserBloqueado(obj.getUserBloqueado());
 		entity.setRole(obj.getRole());
 
 	}

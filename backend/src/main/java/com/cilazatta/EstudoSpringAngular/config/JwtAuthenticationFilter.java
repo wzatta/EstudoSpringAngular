@@ -1,4 +1,3 @@
-/*
 package com.cilazatta.EstudoSpringAngular.config;
 
 import java.io.IOException;
@@ -65,4 +64,3 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 	}
 
 }
-*/
