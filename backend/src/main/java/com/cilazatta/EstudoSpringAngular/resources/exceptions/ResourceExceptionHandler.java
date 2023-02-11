@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import com.cilazatta.EstudoSpringAngular.services.exception.FieldDataIntegrityViolationException;
 import com.cilazatta.EstudoSpringAngular.services.exception.FieldNotNullException;
 import com.cilazatta.EstudoSpringAngular.services.exception.ObjectNotFoundException;
+import com.cilazatta.EstudoSpringAngular.services.exception.UserNameNotFoundException;
 
 import jakarta.servlet.http.HttpServletRequest;
 
@@ -52,5 +53,23 @@ public class ResourceExceptionHandler {
 				);
 		return ResponseEntity.status(status).body(err);
 	}
+	
+	
+	@ExceptionHandler(UserNameNotFoundException.class)
+	public ResponseEntity<StandardError> fieldNotNull(UserNameNotFoundException e, HttpServletRequest request){
+		HttpStatus status = HttpStatus.BAD_REQUEST;
+		StandardError err = new StandardError(
+				System.currentTimeMillis(),
+				status.value(),
+				"Waldyr Zatta Junior",
+				e.getMessage(),
+				request.getRequestURI()
+				);
+		return ResponseEntity.status(status).body(err);
+	}
+	
+	
+	
+	
 	
 }

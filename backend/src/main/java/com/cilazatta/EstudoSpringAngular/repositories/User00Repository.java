@@ -10,6 +10,6 @@ import com.cilazatta.EstudoSpringAngular.entities.User00;
 @Repository
 public interface User00Repository extends JpaRepository<User00, Long> {
 
-	Optional<User00> findByUserName(String username);
+	Optional<User00> findByUser00Name(String username);
 	
 }

@@ -56,7 +56,7 @@ public class User00Service {
 	}
 
 	public Optional<User00> findByUsername(String username) {
-		return userRepo.findByUserName(username);
+		return userRepo.findByUser00Name(username);
 	}
 
 	public User00DTO update(Long id, User00DTO obj) {

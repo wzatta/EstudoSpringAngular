@@ -16,6 +16,7 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
+import java.security.Security;
 
 @Component
 @RequiredArgsConstructor
@@ -34,7 +35,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 		
 		final String authHeader = request.getHeader("Authorization");
 		final String jwt;
-		final String username;
+		final String user00Name;
 		
 		if(authHeader == null || !authHeader.startsWith("Bearer ")){
 			filterChain.doFilter(request, response);
@@ -42,10 +43,10 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 		}
 		
 		jwt = authHeader.substring(7);
-		username = jwtService.extractUsername(jwt);
-		if(username != null 
+		user00Name = jwtService.extractUsername(jwt);
+		if(user00Name != null 
 				&& SecurityContextHolder.getContext().getAuthentication()==null) {
-			UserDetails userDetails = this.userDetailsService.loadUserByUsername(username);
+			UserDetails userDetails = this.userDetailsService.loadUserByUsername(user00Name);
 			if(jwtService.isTokenValid(jwt, userDetails)) {
 				
 				UsernamePasswordAuthenticationToken authToken = new 

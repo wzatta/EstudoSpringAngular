@@ -15,18 +15,18 @@ public class User00DTO {
 	private Long id;
 	private String name;
 	private String cpf;
-	private String userName;
+	private String user00Name;
 	private String password;
 	private Boolean userAtivo;
 	private Boolean userBloqueado;
 	
 	private Role role;
 	
-	public User00DTO(Long id, String name, String cpf, String userName, String password, Boolean userAtivo,Boolean userBloqueado, Role role) {
+	public User00DTO(Long id, String name, String cpf, String user00Name, String password, Boolean userAtivo,Boolean userBloqueado, Role role) {
 		this.id = id;
 		this.name = name;
 		this.cpf = cpf;
-		this.userName = userName;
+		this.user00Name = user00Name;
 		this.password = password;
 		this.userAtivo = userAtivo;
 		this.userBloqueado = userBloqueado;
@@ -37,7 +37,7 @@ public class User00DTO {
 		id = user.getId();
 		name = user.getName();
 		cpf = user.getCpf();
-		userName = user.getUsername();
+		user00Name = user.getUsername();
 		password = "********";
 		userAtivo = user.getUserAtivo();
 		userBloqueado = user.getUserBloqueado();

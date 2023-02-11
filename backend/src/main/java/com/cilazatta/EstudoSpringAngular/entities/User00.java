@@ -65,11 +65,11 @@ public class User00 implements UserDetails, Serializable {
 	@Column(name="cpf", length = 11, nullable=false)
 	private String cpf;
 	
-	@Column(name="username", length = 30, unique = true, nullable = false)
+	@Column(name="user00name", length = 30, unique = true, nullable = false)
     @NotNull(groups = CreateUser.class)
     @NotEmpty(groups = CreateUser.class)
     @Size(groups = CreateUser.class, min = 2, max = 30)
-	private String userName;
+	private String user00Name;
 	
 	@Column(name="password", length = 200, nullable = false)
 	@JsonProperty(access = Access.WRITE_ONLY)
@@ -99,7 +99,7 @@ public class User00 implements UserDetails, Serializable {
 		this.id = id;
 		this.name = name;
 		this.cpf = cpf;
-		this.userName = userName;
+		this.user00Name = userName;
 		this.password = password;
 		this.userAtivo = userAtivo;
 		this.userBloqueado = userBloqueado;
@@ -110,7 +110,7 @@ public class User00 implements UserDetails, Serializable {
 		this.id = userDto.getId();
 		this.name = userDto.getName();
 		this.cpf = userDto.getCpf();
-		this.userName = userDto.getUserName();
+		this.user00Name = userDto.getUser00Name();
 		this.password = userDto.getPassword();
 		this.userAtivo = userDto.getUserAtivo();
 		this.userBloqueado = userDto.getUserBloqueado();
@@ -126,7 +126,7 @@ public class User00 implements UserDetails, Serializable {
 
 	@Override
 	public String getUsername() {
-		return this.userName;
+		return this.user00Name;
 	}
 	
 	@Override
@@ -164,7 +164,7 @@ public class User00 implements UserDetails, Serializable {
 		builder.append(", cpf=");
 		builder.append(cpf);
 		builder.append(", userName=");
-		builder.append(userName);
+		builder.append(user00Name);
 		builder.append(", password=");
 		builder.append(password);
 		builder.append(", userAtivo=");

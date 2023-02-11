@@ -12,6 +12,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import com.cilazatta.EstudoSpringAngular.services.User00Service;
+import com.cilazatta.EstudoSpringAngular.services.exception.UserNameNotFoundException;
 
 import lombok.RequiredArgsConstructor;
 
@@ -24,7 +25,7 @@ public class ApplicationConfig {
 	@Bean
 	public UserDetailsService userDetailsService() {
 		return username -> userService.findByUsername(username)
-				.orElseThrow(()-> new UsernameNotFoundException("User not Found"));
+				.orElseThrow(()-> new UserNameNotFoundException("User or Password invalid."));
 		}
 	
 	@Bean
