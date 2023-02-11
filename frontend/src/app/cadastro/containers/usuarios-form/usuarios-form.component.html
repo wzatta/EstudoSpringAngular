@@ -23,8 +23,8 @@
 
       <mat-form-field class="full-width" appearance="fill">
         <label for="username">Username</label>
-        <input matInput placeholder="UserName" id="username" required="true" formControlName="userName">
-        <mat-error *ngIf="form.get('userName')?.invalid"> {{getErrorMessage('userName')}} </mat-error>
+        <input matInput placeholder="UserName" id="username" required="true" formControlName="user00Name">
+        <mat-error *ngIf="form.get('user00Name')?.invalid"> {{getErrorMessage('user00Name')}} </mat-error>
       </mat-form-field>
 
       <mat-form-field class="full-width" appearance="fill">
@@ -42,7 +42,7 @@
 
       <mat-form-field class="full-width" appearance="fill">
         <label for="userativo">Usuario Bloqueado ?</label>
-        <mat-select  placeholder="Escolha a Opção!"  required="true" disableOptionCentering="false" formControlName="userNaoBloqueado">
+        <mat-select  placeholder="Escolha a Opção!"  required="true" disableOptionCentering="false" formControlName="userBloqueado">
         <mat-option *ngFor="let op of optionsBoolean" [value]="op.value">{{op.viewValue}}</mat-option>
       </mat-select>
       </mat-form-field>

@@ -19,7 +19,7 @@ export class UsuariosResolverResolver implements Resolve<Usuariointerface> {
        if(route.params && route.params['id']){
           return this.service.loadById(route.params['id']);
        }
-    return of( {id : '', name: '', cpf : '', userName : '', password : '', userAtivo : '',userNaoBloqueado : '',
+    return of( {id : '', name: '', cpf : '', user00Name : '', password : '', userAtivo : '',userBloqueado : '',
     role : ''}
     );
   }

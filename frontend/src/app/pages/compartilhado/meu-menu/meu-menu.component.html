@@ -1,0 +1,15 @@
+<div>
+<button mat-button [matMenuTriggerFor]="cadastros">Cadastro</button>
+
+<mat-menu #cadastros="matMenu">
+  <button mat-menu-item [routerLink] ="['/userTela']">User</button>
+  <button mat-menu-item>Holding</button>
+</mat-menu>
+
+<!--
+<mat-menu #programer="matMenu" >
+  <button mat-menu-item [routerLinkActive] ="['/userTela']">Inclusão</button>
+  <button mat-menu-item>Consulta</button>
+</mat-menu>
+-->
+</div>

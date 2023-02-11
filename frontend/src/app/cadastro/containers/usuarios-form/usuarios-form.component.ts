@@ -33,10 +33,10 @@ export class UsuariosFormComponent implements OnInit {
                 Validators.minLength(10),
                 Validators.maxLength(49)]],
     cpf : ['' , [Validators.required]],
-    userName : ['' , [Validators.required]],
+    user00Name : ['' , [Validators.required]],
     password : ['' , [Validators.required]],
     userAtivo : ['' , [Validators.required]],
-    userNaoBloqueado : ['' , [Validators.required]],
+    userBloqueado : ['' , [Validators.required]],
     role : ['' , [Validators.required]]
   });
 
@@ -52,7 +52,7 @@ export class UsuariosFormComponent implements OnInit {
       const usuarioConst: Usuariointerface = this.route.snapshot.data['usuarioresolve'];
 
       if(usuarioConst.id!=""){
-        this.form.controls.userName.disable();
+        this.form.controls.user00Name.disable();
         this.form.controls.password.disable();
       }
 
@@ -60,9 +60,9 @@ export class UsuariosFormComponent implements OnInit {
         id: usuarioConst.id,
         name: usuarioConst.name,
         cpf: usuarioConst.cpf,
-        userName:usuarioConst.userName,
+        user00Name:usuarioConst.user00Name,
         userAtivo:usuarioConst.userAtivo,
-        userNaoBloqueado: usuarioConst.userNaoBloqueado,
+        userBloqueado: usuarioConst.userBloqueado,
         role: usuarioConst.role,
         password: usuarioConst.password
       });

@@ -20,7 +20,7 @@
 
       <ng-container matColumnDef="username">
         <mat-header-cell  *matHeaderCellDef> USERNAME </mat-header-cell>
-        <mat-cell  *matCellDef="let wzj"> {{wzj.userName}} </mat-cell>
+        <mat-cell  *matCellDef="let wzj"> {{wzj.user00Name}} </mat-cell>
       </ng-container>
 
       <ng-container matColumnDef="userativo">
@@ -30,7 +30,7 @@
 
       <ng-container matColumnDef="usernaobloq">
         <mat-header-cell  *matHeaderCellDef> BLOQUEADO </mat-header-cell>
-        <mat-cell  *matCellDef="let wzj">{{wzj.userNaoBloqueado==true?'SIM':'NÃO'}}</mat-cell>
+        <mat-cell  *matCellDef="let wzj">{{wzj.userBloqueado==true?'SIM':'NÃO'}}</mat-cell>
       </ng-container>
 
       <ng-container matColumnDef="role">
