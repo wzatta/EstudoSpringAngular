@@ -36,9 +36,15 @@ public class User00Resource {
 		return ResponseEntity.ok().body(users);
 	}
 
-	@GetMapping(value = "/{id}")
+	@GetMapping(value = "/id/{id}")
 	public ResponseEntity<User00DTO> findById(@PathVariable Long id){
 		User00DTO userdto = userServ.findById(id);
+		return ResponseEntity.ok().body(userdto);
+	}
+	
+	@GetMapping(value = "/{username}")
+	public ResponseEntity<User00DTO> findByUsername(@PathVariable String username){
+		User00DTO userdto = new User00DTO(userServ.findByUsername(username).orElseThrow(() -> new ObjectNotFoundException("Registro não Encontrado")));
 		return ResponseEntity.ok().body(userdto);
 	}
 	

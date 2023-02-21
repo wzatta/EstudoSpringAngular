@@ -23,9 +23,6 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -45,13 +42,6 @@ public class User00 implements UserDetails, Serializable {
 	 * Definição do usuário de Implantação
 	 */
 	
-	   public interface CreateUser {
-	    }
-
-	    public interface UpdateUser {
-	    }
-	
-	
 	private static final long serialVersionUID = 1L;
 	
 	@Id
@@ -66,16 +56,10 @@ public class User00 implements UserDetails, Serializable {
 	private String cpf;
 	
 	@Column(name="user00name", length = 30, unique = true, nullable = false)
-    @NotNull(groups = CreateUser.class)
-    @NotEmpty(groups = CreateUser.class)
-    @Size(groups = CreateUser.class, min = 2, max = 30)
 	private String user00Name;
 	
 	@Column(name="password", length = 200, nullable = false)
 	@JsonProperty(access = Access.WRITE_ONLY)
-	@NotNull(groups = { CreateUser.class, UpdateUser.class })
-    @NotEmpty(groups = { CreateUser.class, UpdateUser.class })
-    @Size(groups = { CreateUser.class, UpdateUser.class }, min = 8, max = 200)
 	private String password;
 	
 	@Column(name="ativo", nullable = false)
@@ -89,22 +73,19 @@ public class User00 implements UserDetails, Serializable {
 	
 	//=========================================================
 	
-	public User00(Long id, String name, String cpf,
-			@NotNull(groups = CreateUser.class) @NotEmpty(groups = CreateUser.class) @Size(groups = CreateUser.class, min = 2, max = 30) String userName,
-			@NotNull(groups = { CreateUser.class, UpdateUser.class }) @NotEmpty(groups = { CreateUser.class,
-					UpdateUser.class }) @Size(groups = { CreateUser.class,
-							UpdateUser.class }, min = 8, max = 200) String password,
-			Boolean userAtivo, Boolean userBloqueado, Role role) {
-	
+	public User00(Long id, String name, String cpf, String user00Name, String password, Boolean userAtivo,
+			Boolean userBloqueado, Role role) {
+		super();
 		this.id = id;
 		this.name = name;
 		this.cpf = cpf;
-		this.user00Name = userName;
+		this.user00Name = user00Name;
 		this.password = password;
 		this.userAtivo = userAtivo;
 		this.userBloqueado = userBloqueado;
 		this.role = role;
 	}
+	
 
 	public User00(User00DTO userDto) {
 		this.id = userDto.getId();
@@ -176,8 +157,6 @@ public class User00 implements UserDetails, Serializable {
 		builder.append("]");
 		return builder.toString();
 	}
-
-	
 
 
 }

@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 
 import com.cilazatta.EstudoSpringAngular.services.exception.FieldDataIntegrityViolationException;
 import com.cilazatta.EstudoSpringAngular.services.exception.FieldNotNullException;
+import com.cilazatta.EstudoSpringAngular.services.exception.GenericsExceptionError;
 import com.cilazatta.EstudoSpringAngular.services.exception.ObjectNotFoundException;
 import com.cilazatta.EstudoSpringAngular.services.exception.UserNameNotFoundException;
 
@@ -62,6 +63,18 @@ public class ResourceExceptionHandler {
 				System.currentTimeMillis(),
 				status.value(),
 				"Waldyr Zatta Junior",
+				e.getMessage(),
+				request.getRequestURI()
+				);
+		return ResponseEntity.status(status).body(err);
+	}
+	@ExceptionHandler(GenericsExceptionError.class)
+	public ResponseEntity<StandardError> genericsException(GenericsExceptionError e, HttpServletRequest request){
+		HttpStatus status = HttpStatus.BAD_REQUEST;
+		StandardError err = new StandardError(
+				System.currentTimeMillis(),
+				status.value(),
+				"Error",
 				e.getMessage(),
 				request.getRequestURI()
 				);

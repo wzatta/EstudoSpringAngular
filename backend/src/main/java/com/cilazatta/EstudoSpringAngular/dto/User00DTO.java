@@ -43,5 +43,11 @@ public class User00DTO {
 		userBloqueado = user.getUserBloqueado();
 		role = user.getRole();
 	}
+
+	@Override
+	public String toString() {
+		return "User00DTO [id=" + id + ", name=" + name + ", cpf=" + cpf + ", user00Name=" + user00Name + ", password="
+				+ password + ", userAtivo=" + userAtivo + ", userBloqueado=" + userBloqueado + ", role=" + role + "]";
+	}
 	
 }
