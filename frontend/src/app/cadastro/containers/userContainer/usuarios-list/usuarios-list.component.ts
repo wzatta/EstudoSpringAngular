@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Usuariointerface } from '../../model/usuariointerface';
+import { UsuarioInterface } from '../../../model/UsuarioInterface';
 
 @Component({
   selector: 'app-usuarios-list',
@@ -8,7 +8,7 @@ import { Usuariointerface } from '../../model/usuariointerface';
 })
 export class UsuariosListComponent implements OnInit {
 
-@Input() usuariosdb: Usuariointerface[] = [];
+@Input() usuariosdb: UsuarioInterface[] = [];
 @Output() add = new EventEmitter(false);
 @Output() edit = new EventEmitter(false);
 @Output() deluser = new EventEmitter(false);
@@ -23,11 +23,11 @@ onAdd(){
     this.add.emit(true);
  }
 
- onEdit(usuario: Usuariointerface){
+ onEdit(usuario: UsuarioInterface){
   this.edit.emit(usuario);
   }
 
- onDelete(usuario: Usuariointerface){
+ onDelete(usuario: UsuarioInterface){
     this.deluser.emit(usuario);
  }
 

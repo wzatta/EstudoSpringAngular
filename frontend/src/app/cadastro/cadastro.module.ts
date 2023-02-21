@@ -5,9 +5,12 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AppMaterialModule } from '../shared/app-material/app-material.module';
 import { SharedModule } from '../shared/shared.module';
 import { CadastroRoutingModule } from './cadastro-routing.module';
-import { UsuariosListComponent } from './components/usuarios-list/usuarios-list.component';
-import { UsuariosFormComponent } from './containers/usuarios-form/usuarios-form.component';
-import { UsuariosComponent } from './containers/usuarios/usuarios.component';
+import { UsuariosListComponent } from './containers/userContainer/usuarios-list/usuarios-list.component';
+import { UsuariosFormComponent } from './containers/userContainer/usuarios-form/usuarios-form.component';
+import { UsuariosComponent } from './containers/userContainer/usuarios/usuarios.component';
+import { HoldingsComponent } from './containers/holdContainer/holdings/holdings.component';
+import { HoldigFormComponent } from './containers/holdContainer/holdings-form/holdig-form.component';
+import { HoldingsListComponent } from './containers/holdContainer/holdings-list/holdings-list.component';
 
 
 
@@ -15,7 +18,10 @@ import { UsuariosComponent } from './containers/usuarios/usuarios.component';
   declarations: [
     UsuariosComponent,
     UsuariosFormComponent,
-    UsuariosListComponent
+    UsuariosListComponent,
+    HoldingsComponent,
+    HoldigFormComponent,
+    HoldingsListComponent
   ],
   imports: [
     CommonModule,

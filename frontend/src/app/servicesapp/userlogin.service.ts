@@ -3,6 +3,9 @@ import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { Observable, tap } from 'rxjs';
 import { LoginInterface } from '../cadastro/model/LoginInterface';
+import { UsuarioInterface } from '../cadastro/model/UsuarioInterface';
+import  jwt_decode from 'jwt-decode';
+import { UsuariosService } from '../cadastro/services/usuarios.service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,10 +14,18 @@ export class UserloginService {
 
   private readonly APILOGIN = 'api/v1/auth/authenticate';
 
+  private userlogado: UsuarioInterface | null = null;
+
+
+  private storage: Storage;
+
   constructor(
     private httpClient: HttpClient,
-    private router: Router
-  ) { }
+    private router: Router,
+    private userservice: UsuariosService
+  ) {
+    this.storage = window.sessionStorage;
+  }
 
   logar(usuario: LoginInterface) : Observable<any>{
     return this.httpClient.post<any>(this.APILOGIN, usuario)
@@ -22,28 +33,47 @@ export class UserloginService {
       tap((resposta) =>
        {
         if(!resposta) return;
-        localStorage.setItem('token' , JSON.stringify(resposta['token']));
+        this.storage.clear();
+        this.storage.setItem('token', JSON.stringify(resposta['token']));
+       // localStorage.setItem('token' , JSON.stringify(resposta['token']));
         this.router.navigate(['']);
       })
     );
   }
 
   deslogar(){
-    localStorage.clear();
+    this.storage.clear();
+    //localStorage.clear();
     this.router.navigate(['login']);
   }
 
 
 
-  get obterTokenUsuario(): string {
-    return localStorage.getItem('token') ? "localStorage.getItem('token')" : "fraco";
+  get obterTokenUsuario(): string | null {
+    return this.storage.getItem('token') ? this.storage.getItem('token') : null;
   }
+
+  get obterUsuario(): Observable<UsuarioInterface> | null{
+    let tokenprovisorio: string | null  = this.obterTokenUsuario;
+    if(tokenprovisorio != null){
+      type dados = {
+      'sub': '';
+      'iat': 0;
+      'exp': 0;
+    }
+    var teste:dados = jwt_decode(tokenprovisorio);
+    return this.userservice.loadByUsername(teste.sub);
+    }
+    return null;
+  }
+
 
   get logado(): boolean {
-    return localStorage.getItem('token') ? true : false;
+      return this.storage.getItem('token') ? true : false;
+    //return localStorage.getItem('token') ? true : false;
+
+
   }
-
-
 
 
 }

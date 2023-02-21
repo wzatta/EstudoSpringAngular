@@ -1,0 +1,48 @@
+<table mat-table [dataSource]="holdingdb" class="mat-elevation-z8">
+
+  <ng-container matColumnDef="idHold">
+    <mat-header-cell  *matHeaderCellDef> ID HOLD </mat-header-cell>
+    <mat-cell  *matCellDef="let hold"> {{hold.idHold}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="rsocial">
+    <mat-header-cell *matHeaderCellDef>RAZÃO SOCIAL</mat-header-cell>
+    <mat-cell *matCellDef="let hold"> {{hold.rsocial}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="dsocial">
+    <mat-header-cell *matHeaderCellDef>FANTASIA</mat-header-cell>
+    <mat-cell *matCellDef="let hold"> {{hold.dsocial}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="cnpj">
+    <mat-header-cell *matHeaderCellDef> CNPJ </mat-header-cell>
+    <mat-cell *matCellDef="let hold"> {{hold.cnpj}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="municipio">
+    <mat-header-cell *matHeaderCellDef> MUNICIPIO </mat-header-cell>
+    <mat-cell *matCellDef="let hold"> {{hold.municipio}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="uf">
+    <mat-header-cell *matHeaderCellDef> UF </mat-header-cell>
+    <mat-cell *matCellDef="let hold"> {{hold.uf}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="actions">
+    <mat-header-cell  *matHeaderCellDef> AÇÕES </mat-header-cell>
+    <mat-cell  *matCellDef="let hold" >
+    <button mat-mini-fab color="primary" aria-label="Editar" (click)="onEdit(hold)">
+      <mat-icon>edit</mat-icon>
+    </button>
+    <button mat-mini-fab color="warn" aria-label="Deletar"  (click)="onDelete(hold)">
+        <mat-icon>delete</mat-icon>
+    </button>
+
+    </mat-cell>
+  </ng-container>
+
+  <mat-header-row  *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row  *matRowDef="let row; columns: displayedColumns;"></mat-row>
+</table>

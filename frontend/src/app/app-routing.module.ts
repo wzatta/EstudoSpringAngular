@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, Component } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { LoginComponent } from './pages/login/login.component';
@@ -6,7 +6,8 @@ import { PrincipalComponent } from './pages/compartilhado/principal/principal.co
 import { HomeComponent } from './pages/home/home.component';
 import { UsuarioAutenticadoGuard } from './pages/guards/usuario-autenticado.guard';
 import { UsuarioNaoAutenticadoGuard } from './pages/guards/usuario-nao-autenticado.guard';
-import { UsuariosComponent } from './cadastro/containers/usuarios/usuarios.component';
+import { UsuariosComponent } from './cadastro/containers/userContainer/usuarios/usuarios.component';
+import { HoldingsComponent } from './cadastro/containers/holdContainer/holdings/holdings.component';
 
 const routes: Routes = [
   /*
@@ -18,21 +19,27 @@ const routes: Routes = [
   }
   */
   { path: 'login', component: LoginComponent, canActivate: [UsuarioNaoAutenticadoGuard]},
-  { path:'userTela', pathMatch: 'full', redirectTo: 'telausuario'},
+  { path:'userTela', pathMatch: 'full', redirectTo: 'telaUsuario' },
+  { path:'holdTela', pathMatch: 'full', redirectTo: 'telaHolding'},
+  { path:'', component: HomeComponent},
 
 
 
-   {
-    path: '', component: PrincipalComponent, canActivate: [UsuarioAutenticadoGuard],
-    children: [
-      { path: 'home', component: HomeComponent },
-      {
-        path: 'telausuario',
+
+    { path: 'principal', component: PrincipalComponent, canActivate: [UsuarioAutenticadoGuard]},
+    { path: 'home', component: HomeComponent  },
+    {
+        path: 'telaUsuario',
         loadChildren: () => import('./cadastro/cadastro.module').then(m => m.CadastroModule),
-
+        component: UsuariosComponent, canActivate: [UsuarioAutenticadoGuard]
       },
-    ],
-  },
+      {
+        path: 'telaHolding',
+        loadChildren: () => import('./cadastro/cadastro.module').then(m => m.CadastroModule),
+        component: HoldingsComponent, canActivate: [UsuarioAutenticadoGuard]
+      },
+
+
 ];
 
 @NgModule({

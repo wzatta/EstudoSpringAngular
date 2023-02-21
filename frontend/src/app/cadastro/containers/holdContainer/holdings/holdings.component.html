@@ -1,0 +1,35 @@
+<mat-card class="mat-card">
+
+  <mat-toolbar class="toobarSecondary">
+    <span>Cadastro de Empresas (Contrato)</span>
+    <span class="spacer"></span>
+
+    <button mat-mini-fab color="primary" aria-label="Retorno page Home" [routerLink]="['/home']">
+      <mat-icon >home</mat-icon>
+    </button>
+
+    <button mat-mini-fab color="primary" aria-label="Inclusão de Holging" (click)="onAdd()" >
+      <mat-icon >add</mat-icon>
+    </button>
+  </mat-toolbar>
+
+  <div class="column-flex mat-elevation-z8">
+
+  <app-holdings-list
+    *ngIf="holdingdb$ | async as holdingdb; else loading"
+    [holdingdb] = "holdingdb"
+    (add)="onAdd()"
+    (editHold)="onEdit($event)"
+    (delHold)="onDelete($event)"
+  ></app-holdings-list>
+
+    <ng-template #loading>
+      <div class="loading-spinner">
+        <mat-spinner></mat-spinner>
+      </div>
+    </ng-template>
+
+  </div>
+
+  </mat-card>
+

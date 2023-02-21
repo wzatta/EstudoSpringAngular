@@ -2,9 +2,9 @@ import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { NonNullableFormBuilder, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { UsuariosService } from '../../services/usuarios.service';
+import { UsuariosService } from '../../../services/usuarios.service';
 import { ActivatedRoute } from '@angular/router';
-import { Usuariointerface } from '../../model/usuariointerface';
+import { UsuarioInterface } from '../../../model/UsuarioInterface';
 
 export interface OptionBoolean {
   value: string;
@@ -49,7 +49,7 @@ export class UsuariosFormComponent implements OnInit {
   }
 
     ngOnInit(): void{
-      const usuarioConst: Usuariointerface = this.route.snapshot.data['usuarioresolve'];
+      const usuarioConst: UsuarioInterface = this.route.snapshot.data['usuarioresolve'];
 
       if(usuarioConst.id!=""){
         this.form.controls.user00Name.disable();
@@ -70,8 +70,11 @@ export class UsuariosFormComponent implements OnInit {
 
     onSubmit(){
       this.userService.save(this.form.value)
-      .subscribe(result => this.onSucess(), error => this.onError());
-    }
+      .subscribe({
+        complete:()=>{this.onSucess()},
+        error: ()=>{this.onError()}
+    })
+  }
 
     onCancel(){
       this.location.back();
@@ -103,9 +106,6 @@ export class UsuariosFormComponent implements OnInit {
         const requiredLength: number = field.errors ? field.errors['maxlength']['requiredLength']:49;
         return  'Tamanho Maximo ${requiredLength} caracteres.'
       }
-
-
-
 
       return 'Campo Invalido';
     }

@@ -4,10 +4,10 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { catchError, Observable, of } from 'rxjs';
 
-import { ErrorDialogComponent } from '../../../shared/components/error-dialog/error-dialog.component';
-import { Usuariointerface } from '../../model/usuariointerface';
-import { UsuariosService } from '../../services/usuarios.service';
-import { ConfirmationDialogComponent } from '../../../shared/components/confirmation-dialog/confirmation-dialog.component';
+import { ErrorDialogComponent } from '../../../../shared/components/error-dialog/error-dialog.component';
+import { UsuariosService } from '../../../services/usuarios.service';
+import { ConfirmationDialogComponent } from '../../../../shared/components/confirmation-dialog/confirmation-dialog.component';
+import { UsuarioInterface } from '../../../model/UsuarioInterface';
 
 
 
@@ -18,7 +18,7 @@ import { ConfirmationDialogComponent } from '../../../shared/components/confirma
 })
 export class UsuariosComponent implements OnInit {
 
-  usuariosdb$: Observable<Usuariointerface[]> | null  = null;
+  usuariosdb$: Observable<UsuarioInterface[]> | null  = null;
 
   displayedColumns = ['id' , 'name', 'cpf','username','userativo','usernaobloq','role','actions'];
 
@@ -60,11 +60,11 @@ export class UsuariosComponent implements OnInit {
     this.router.navigate(['new'],{relativeTo: this.route});
  }
 
- onEdit(usuario:Usuariointerface){
+ onEdit(usuario:UsuarioInterface){
     this.router.navigate(['edit',usuario.id],{relativeTo: this.route});
   }
 
- onDelete(usuario: Usuariointerface){
+ onDelete(usuario: UsuarioInterface){
 
   const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
     data: 'Tem Certeza que Deseja Remover o Registro ?',

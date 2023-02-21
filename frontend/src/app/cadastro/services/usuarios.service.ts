@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { first, tap } from 'rxjs';
-import { Usuariointerface } from '../model/usuariointerface';
+import { UsuarioInterface } from '../model/UsuarioInterface';
 
 @Injectable({
   providedIn: 'root'
@@ -13,22 +13,27 @@ export class UsuariosService {
   constructor(private httpClient: HttpClient) { }
 
   list()  {
-    return this.httpClient.get<Usuariointerface[]>(this.API)
+    return this.httpClient.get<UsuarioInterface[]>(this.API)
     .pipe(
           first(),
           tap(usuarios=>console.log(usuarios))
     );
   }
 
-  save(record: Partial<Usuariointerface>){
-      if(record.id){
+  save(record: Partial<UsuarioInterface>){
+
+    if(record.id){
         return this.update(record);
       }
     return this.create(record);
   }
 
   loadById(id: string){
-   return this.httpClient.get<Usuariointerface>(this.API+'/'+id);
+   return this.httpClient.get<UsuarioInterface>(this.API+'/'+id);
+  }
+
+  loadByUsername<UsuarioInterface>(username: string){
+    return this.httpClient.get<UsuarioInterface>(this.API+'/'+username);
   }
 
   deluser(id:String){
@@ -36,12 +41,12 @@ export class UsuariosService {
   }
 
 
-  private create(record: Partial<Usuariointerface>){
-    return this.httpClient.post<Usuariointerface>(this.API, record);
+  private create(record: Partial<UsuarioInterface>){
+    return this.httpClient.post<UsuarioInterface>(this.API, record);
   }
 
-  private update(record: Partial<Usuariointerface>){
-    return this.httpClient.put<Usuariointerface>(this.API+'/'+record.id, record);
+  private update(record: Partial<UsuarioInterface>){
+    return this.httpClient.put<UsuarioInterface>(this.API+'/'+record.id, record);
   }
 
 
