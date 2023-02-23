@@ -11,6 +11,7 @@ import { UsuariosComponent } from './containers/userContainer/usuarios/usuarios.
 import { HoldingsComponent } from './containers/holdContainer/holdings/holdings.component';
 import { HoldigFormComponent } from './containers/holdContainer/holdings-form/holdig-form.component';
 import { HoldingsListComponent } from './containers/holdContainer/holdings-list/holdings-list.component';
+import { FilialComponent } from './container/filialContainer/filial/filial.component';
 
 
 
@@ -21,7 +22,8 @@ import { HoldingsListComponent } from './containers/holdContainer/holdings-list/
     UsuariosListComponent,
     HoldingsComponent,
     HoldigFormComponent,
-    HoldingsListComponent
+    HoldingsListComponent,
+    FilialComponent
   ],
   imports: [
     CommonModule,
