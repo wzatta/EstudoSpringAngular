@@ -2,6 +2,8 @@ package com.cilazatta.EstudoSpringAngular.entities;
 
 import java.io.Serializable;
 
+import com.cilazatta.EstudoSpringAngular.dto.FilialDTO;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.ForeignKey;
@@ -54,5 +56,16 @@ public class Filial implements Serializable{
 	@ManyToOne
 	@JoinColumn(name = "user00_id", nullable = false, foreignKey = @ForeignKey(name = "fk_Filial_idUser00"))
 	private User00 user00;
+	
+	public Filial(FilialDTO filialDto) {
+		this.idFilial = filialDto.getIdFilial();
+		this.rSocial = filialDto.getRSocial();
+		this.dSocial = filialDto.getDSocial();
+		this.cnpj = filialDto.getCnpj();
+		this.municipio = filialDto.getMunicipio();
+		this.uf = filialDto.getUf();
+		this.user00 = new User00(filialDto.getUser00Dto());
+		this.holding = new Holding(filialDto.getHoldingDto());
+	}
 
 }
