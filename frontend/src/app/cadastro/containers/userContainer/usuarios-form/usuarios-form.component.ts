@@ -99,12 +99,12 @@ export class UsuariosFormComponent implements OnInit {
       }
       if(field?.hasError('minlenght')){
         const requiredLength: number = field.errors ? field.errors['minlength']['requiredLength']:5;
-        return  'Tamanho minimo ${requiredLength} caracteres.'
+        return  'Tamanho minimo ${requiredLength} caracteres.';
       }
 
       if(field?.hasError('maxlenght')){
         const requiredLength: number = field.errors ? field.errors['maxlength']['requiredLength']:49;
-        return  'Tamanho Maximo ${requiredLength} caracteres.'
+        return  'Tamanho Maximo ${requiredLength} caracteres.';
       }
 
       return 'Campo Invalido';

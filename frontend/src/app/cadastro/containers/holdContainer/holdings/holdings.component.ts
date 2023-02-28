@@ -20,6 +20,7 @@ export class HoldingsComponent implements OnInit {
 
   holdingdb$: Observable<HoldInterface[]> | null = null;
   displayedColumns = ['idHold','rsocial', 'dsocial', 'cnpj', 'municipio', 'uf', 'actions' ];
+  listar: boolean = false;
 
   constructor(
     private holdService: HoldingService,
@@ -39,6 +40,10 @@ export class HoldingsComponent implements OnInit {
           return of([]);
         })
       );
+    }
+
+    onListHold(){
+      this.listar = !this.listar;
     }
 
     onError(errorMSG : string){

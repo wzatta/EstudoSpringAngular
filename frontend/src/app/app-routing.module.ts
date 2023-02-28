@@ -1,13 +1,14 @@
-import { NgModule, Component } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { LoginComponent } from './pages/login/login.component';
+import { FilialComponent } from './cadastro/containers/filialContainer/filial/filial.component';
+import { HoldingsComponent } from './cadastro/containers/holdContainer/holdings/holdings.component';
+import { UsuariosComponent } from './cadastro/containers/userContainer/usuarios/usuarios.component';
 import { PrincipalComponent } from './pages/compartilhado/principal/principal.component';
-import { HomeComponent } from './pages/home/home.component';
 import { UsuarioAutenticadoGuard } from './pages/guards/usuario-autenticado.guard';
 import { UsuarioNaoAutenticadoGuard } from './pages/guards/usuario-nao-autenticado.guard';
-import { UsuariosComponent } from './cadastro/containers/userContainer/usuarios/usuarios.component';
-import { HoldingsComponent } from './cadastro/containers/holdContainer/holdings/holdings.component';
+import { HomeComponent } from './pages/home/home.component';
+import { LoginComponent } from './pages/login/login.component';
 
 const routes: Routes = [
   /*
@@ -21,6 +22,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent, canActivate: [UsuarioNaoAutenticadoGuard]},
   { path:'userTela', pathMatch: 'full', redirectTo: 'telaUsuario' },
   { path:'holdTela', pathMatch: 'full', redirectTo: 'telaHolding'},
+  { path: 'filialTela', pathMatch: 'full', redirectTo: 'telaFilial'},
   { path:'', component: HomeComponent},
 
 
@@ -37,6 +39,12 @@ const routes: Routes = [
         path: 'telaHolding',
         loadChildren: () => import('./cadastro/cadastro.module').then(m => m.CadastroModule),
         component: HoldingsComponent, canActivate: [UsuarioAutenticadoGuard]
+      },
+
+      {
+        path: 'telaFilial',
+        loadChildren: () => import('./cadastro/cadastro.module').then(m => m.CadastroModule),
+        component: FilialComponent, canActivate: [UsuarioAutenticadoGuard]
       },
 
 

@@ -14,15 +14,16 @@ export class HoldingService {
 
   private readonly API = 'api/v1/holding';
 
-constructor(private httpClient: HttpClient,
-            private userLoginService: UserloginService) { }
+constructor(private httpClient: HttpClient
+            //private userLoginService: UserloginService
+            ) { }
 
 list(){
-  return this.httpClient.get<HoldInterface[]>(this.API)
-  .pipe(
-    first(),
-    tap(empresas => console.log(empresas))
-  );
+  return this.httpClient.get<HoldInterface[]>(this.API);
+//  .pipe(
+  //  first(),
+   // tap(empresas => console.log(empresas, 'aqui'))
+  //);
 }
 
 save(record: Partial<HoldInterface>){

@@ -15,7 +15,6 @@ import { CadastroModule } from './cadastro/cadastro.module';
 import { TokenInterceptor } from './servicesapp/token.interceptor';
 
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,6 +32,7 @@ import { TokenInterceptor } from './servicesapp/token.interceptor';
     AppMaterialModule,
     ReactiveFormsModule,
     CadastroModule
+
 
   ],
   providers: [
