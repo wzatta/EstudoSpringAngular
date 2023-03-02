@@ -1,14 +1,12 @@
 package com.cilazatta.EstudoSpringAngular.entities;
 
 import java.io.Serializable;
-
 import java.util.Collection;
 import java.util.List;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-
 
 import com.cilazatta.EstudoSpringAngular.dto.User00DTO;
 import com.cilazatta.EstudoSpringAngular.enums.Role;
@@ -22,6 +20,7 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;

@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.cilazatta.EstudoSpringAngular.dto.User00DTO;
@@ -44,7 +45,7 @@ public class User00Service {
 	}
 
 	public List<User00DTO> findAll() {
-		List<User00> users = userRepo.findAll();
+		List<User00> users = userRepo.findAll(Sort.by(Sort.Direction.ASC, "name"));
 		List<User00DTO> usersDto = users.stream().map(w -> new User00DTO(w)).collect(Collectors.toList());
 		return usersDto;
 	}

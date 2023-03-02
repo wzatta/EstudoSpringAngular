@@ -5,6 +5,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.cilazatta.EstudoSpringAngular.dto.HoldingDTO;
@@ -34,7 +35,7 @@ public class HoldingService {
 	}
 	
 	public List<HoldingDTO> findAll(){
-		List<Holding> listHold = holdRepo.findAll();
+		List<Holding> listHold = holdRepo.findAll(Sort.by(Sort.Direction.ASC,"rSocial"));
 		List<HoldingDTO> listHoldDto = listHold.stream()
 				.map(w-> new HoldingDTO(w)).collect(Collectors.toList());
 		return listHoldDto;		
