@@ -1,5 +1,6 @@
+import { HoldingService } from 'src/app/cadastro/services/Holding.service';
 import { Component, OnInit } from '@angular/core';
-import { NonNullableFormBuilder, Validators } from '@angular/forms';
+import { FormControl, NonNullableFormBuilder, Validators } from '@angular/forms';
 import { UsuarioInterface } from 'src/app/cadastro/model/UsuarioInterface';
 import { UserloginService } from '../../../../servicesapp/userlogin.service';
 import { FilialInterface } from '../../../model/filial-interface';
@@ -20,6 +21,8 @@ export class FilialFormComponent implements OnInit {
 
   private hold1: HoldInterface | any = {};
 
+  holds: HoldInterface[] = [];
+
   formFilial = this.formBuilder.group({
     idFilial:[''],
     rsocial:['', [Validators.required,
@@ -32,6 +35,9 @@ export class FilialFormComponent implements OnInit {
     user00Dto: [this.userlogado1]
   });
 
+  formHold = new FormControl<HoldInterface[] | null >(null, Validators.required);
+
+
 
   constructor(
     private formBuilder: NonNullableFormBuilder,
@@ -39,7 +45,8 @@ export class FilialFormComponent implements OnInit {
     private snackBar: MatSnackBar,
     private route: ActivatedRoute,
     private filialService: FilialService,
-    private location: Location
+    private location: Location,
+    private holdServ: HoldingService
   ){}
 
   ngOnInit(): void {
@@ -65,6 +72,7 @@ export class FilialFormComponent implements OnInit {
         user00Dto: filialConst.user00Dto      }
       );
 
+        this.holdServ.list().subscribe(dados => this.holds = dados);
 
 
   } //ngOnInit
@@ -101,9 +109,9 @@ getErrorMessage(fieldName:string){
     return 'Campo Obrigatório';
   }
 
-  if(field?.hasError('maxleght')){
-    const requiredLength: number = field.errors ? field.errors['maxlength']['requiredLength']:49;
-    return 'Tamanho Maximo ${requiredLength} caracteres.'
+  if(field?.hasError('maxlength')){
+    const requiredLength: number = field.errors ? field.errors['maxlength']['requiredLength'] : 49;
+    return 'Tamanho Maximo ' + requiredLength +' caracteres.';
   }
 
   return 'Campo Invalido';

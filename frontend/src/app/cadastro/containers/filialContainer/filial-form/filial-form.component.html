@@ -40,17 +40,28 @@
         <mat-error *ngIf="formFilial.get('uf')?.invalid">{{getErrorMessage('uf')}}</mat-error>
       </mat-form-field>
 
+      <mat-form-field class="full-width" appearance="fill">
+         <label>Holding</label>
+         <mat-select [formControl]="formHold" required="true" formControlName="holdingDto">
+          <mat-option>--</mat-option>
+          <mat-option *ngFor="let holdNew of holds" [value]="holdNew">
+            {{holdNew.rsocial}}
+          </mat-option>
+
+         </mat-select>
+      </mat-form-field>
+
     </form>
 
   </mat-card-content>
 
   <mat-card-actions class="bt-container">
-    <button mat-raised-button (click)="onSubmit()" color="primary" style="margin: 1px">
+    <button mat-raised-button [disabled]=formFilial.invalid (click)="onSubmit()" color="primary" style="margin: 1px">
       <mat-icon>save</mat-icon>
       Salvar
     </button>
 
-    <button mat-raised-button (click)="onCancel()" style="margin: 1px; background-color: #00E5FF;">
+    <button mat-raised-button  (click)="onCancel()" style="margin: 1px; background-color: #00E5FF;">
       <mat-icon>cancell</mat-icon>
       Cancelar
     </button>
