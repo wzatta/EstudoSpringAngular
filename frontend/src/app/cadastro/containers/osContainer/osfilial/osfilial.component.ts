@@ -3,18 +3,18 @@ import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ErrorDialogComponent } from 'src/app/shared/components/error-dialog/error-dialog.component';
 
-import { FilialInterface } from '../../../model/filial-interface';
+import { OsFilialInterface } from '../../../model/OsfilialInteface';
 
 @Component({
-  selector: 'app-filial',
-  templateUrl: './filial.component.html',
-  styleUrls: ['./filial.component.scss']
+  selector: 'app-osfilial',
+  templateUrl: './osfilial.component.html',
+  styleUrls: ['./osfilial.component.scss']
 })
-export class FilialComponent implements OnInit {
+export class OsfilialComponent implements OnInit {
 
   public listar: boolean = false;
 
-  displayedColumns = ['rsocial', 'dsocial', 'cnpj', 'municipio', 'uf'];
+  teste:boolean = true;
 
   constructor(
     private dialog: MatDialog,
@@ -24,16 +24,17 @@ export class FilialComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  onAddFilial(){
-    this.router.navigate(['newFilial'],{relativeTo: this.route});
+  addOsFilial(){
+    console.log("cheguei aqui");
+    this.router.navigate(['newOsFilial'],{relativeTo: this.route});
   }
 
-  onEdit(filial: FilialInterface){
-    this.router.navigate(['editFilial', filial.idFilial],{relativeTo: this.route});
+  onEdit(osfilial: OsFilialInterface){
+    this.router.navigate(['editOsFilial', osfilial.idOs],{relativeTo: this.route});
 
   }
 
-  onListFilial(){
+  listOsFilial(){
     this.listar = !this.listar;
   }
 
@@ -42,4 +43,6 @@ export class FilialComponent implements OnInit {
       data : errorMSG
     });
 }
+
+
 }

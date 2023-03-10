@@ -11,6 +11,9 @@ import { FilialComponent } from './containers/filialContainer/filial/filial.comp
 import { HoldigFormComponent } from './containers/holdContainer/holdings-form/holdig-form.component';
 import { HoldingsListComponent } from './containers/holdContainer/holdings-list/holdings-list.component';
 import { HoldingsComponent } from './containers/holdContainer/holdings/holdings.component';
+import { OsfilialFormComponent } from './containers/osContainer/osfilial-form/osfilial-form.component';
+import { OsfilialListComponent } from './containers/osContainer/osfilial-list/osfilial-list.component';
+import { OsfilialComponent } from './containers/osContainer/osfilial/osfilial.component';
 import { UsuariosFormComponent } from './containers/userContainer/usuarios-form/usuarios-form.component';
 import { UsuariosListComponent } from './containers/userContainer/usuarios-list/usuarios-list.component';
 import { UsuariosComponent } from './containers/userContainer/usuarios/usuarios.component';
@@ -27,7 +30,10 @@ import { UsuariosComponent } from './containers/userContainer/usuarios/usuarios.
     HoldingsListComponent,
     FilialComponent,
     FilialListComponent,
-    FilialFormComponent
+    FilialFormComponent,
+    OsfilialComponent,
+    OsfilialFormComponent,
+    OsfilialListComponent
   ],
   imports: [
     CommonModule,

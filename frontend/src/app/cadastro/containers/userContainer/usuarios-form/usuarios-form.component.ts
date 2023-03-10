@@ -5,11 +5,12 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { UsuariosService } from '../../../services/usuarios.service';
 import { ActivatedRoute } from '@angular/router';
 import { UsuarioInterface } from '../../../model/UsuarioInterface';
+import { OptionBoolean } from 'src/app/cadastro/model/option-boolean';
 
-export interface OptionBoolean {
-  value: string;
-  viewValue: string;
-}
+//export interface OptionBoolean {
+//  value: string;
+ // viewValue: string;
+//}
 
 @Component({
   selector: 'app-usuarios-form',
@@ -61,8 +62,8 @@ export class UsuariosFormComponent implements OnInit {
         name: usuarioConst.name,
         cpf: usuarioConst.cpf,
         user00Name:usuarioConst.user00Name,
-        userAtivo:usuarioConst.userAtivo,
-        userBloqueado: usuarioConst.userBloqueado,
+        userAtivo:usuarioConst.userAtivo.toString(),
+        userBloqueado: usuarioConst.userBloqueado.toString(),
         role: usuarioConst.role,
         password: usuarioConst.password
       });

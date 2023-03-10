@@ -29,7 +29,7 @@ export class UsuariosService {
   }
 
   loadById(id: string){
-   return this.httpClient.get<UsuarioInterface>(this.API+'/'+id);
+   return this.httpClient.get<UsuarioInterface>(this.API+'/id/'+id);
   }
 
   loadByUsername<UsuarioInterface>(username: string){

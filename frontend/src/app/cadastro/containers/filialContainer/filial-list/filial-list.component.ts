@@ -55,7 +55,6 @@ export class FilialListComponent implements OnInit {
 
 
   onEdit(filial: FilialInterface){
-    console.log('funcionou');
     this.router.navigate(['editFilial', filial.idFilial],{relativeTo: this.route});
   }
 

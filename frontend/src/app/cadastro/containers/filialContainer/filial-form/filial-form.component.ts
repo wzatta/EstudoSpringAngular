@@ -35,7 +35,7 @@ export class FilialFormComponent implements OnInit {
     user00Dto: [this.userlogado1]
   });
 
-  formHold = new FormControl<HoldInterface[] | null >(null, Validators.required);
+  //formHold = new FormControl<HoldInterface[] | null >(null, Validators.required);
 
 
 

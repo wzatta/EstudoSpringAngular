@@ -23,7 +23,6 @@ export class FilialService {
   }
 
   findById(id:String){
-    console.log('chegou aqui no serviço')
     return this.httpCliente.get<FilialInterface>(this.APIFilial+'/'+id);
   }
 

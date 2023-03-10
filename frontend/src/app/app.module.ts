@@ -13,6 +13,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MeuMenuComponent } from './pages/compartilhado/meu-menu/meu-menu.component';
 import { CadastroModule } from './cadastro/cadastro.module';
 import { TokenInterceptor } from './servicesapp/token.interceptor';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MAT_DATE_LOCALE } from '@angular/material/core'
 
 
 @NgModule({
@@ -31,12 +33,16 @@ import { TokenInterceptor } from './servicesapp/token.interceptor';
     HttpClientModule,
     AppMaterialModule,
     ReactiveFormsModule,
-    CadastroModule
+    CadastroModule,
+    MatNativeDateModule
+
 
 
   ],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },
+    { provide: MAT_DATE_LOCALE, useValue: 'en-GB' }
+
   ],
   bootstrap: [AppComponent]
 })

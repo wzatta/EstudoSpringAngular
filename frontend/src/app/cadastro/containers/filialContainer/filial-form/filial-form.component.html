@@ -42,7 +42,7 @@
 
       <mat-form-field class="full-width" appearance="fill">
          <label>Holding</label>
-         <mat-select [formControl]="formHold" required="true" formControlName="holdingDto">
+         <mat-select formControlName="holdingDto">
           <mat-option>--</mat-option>
           <mat-option *ngFor="let holdNew of holds" [value]="holdNew">
             {{holdNew.rsocial}}
