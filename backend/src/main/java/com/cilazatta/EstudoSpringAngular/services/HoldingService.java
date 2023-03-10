@@ -48,12 +48,10 @@ public class HoldingService {
 	}
 	
 	public HoldingDTO update(Long id, HoldingDTO holdDto) {
-		
 		Holding hold = holdRepo.getReferenceById(id);
 		updateData(hold, holdDto);
 		hold = holdRepo.save(hold);
 		return new HoldingDTO(hold);
-		
 	}
 	
 	private void updateData(Holding hold, HoldingDTO holdDto) {

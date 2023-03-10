@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.cilazatta.EstudoSpringAngular.auth.AuthenticationRequest;
 import com.cilazatta.EstudoSpringAngular.auth.AuthenticationResponse;
 import com.cilazatta.EstudoSpringAngular.auth.AuthenticationService;
-import com.cilazatta.EstudoSpringAngular.auth.RegisterRequest;
+//import com.cilazatta.EstudoSpringAngular.auth.RegisterRequest;
 
 import lombok.RequiredArgsConstructor;
 
@@ -29,12 +29,12 @@ public class AuthenticationResource {
 		return ResponseEntity.ok(service.authenticate(request));
 	}
 	
-	@PostMapping(value="/register")
+/*	@PostMapping(value="/register")
 	public ResponseEntity<AuthenticationResponse> register(
 			@RequestBody RegisterRequest request
 			){
 		return ResponseEntity.ok(service.register(request));
-	}
+	}*/
 	
 	
 }

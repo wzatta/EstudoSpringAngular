@@ -5,9 +5,13 @@ import java.time.LocalDate;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.ForeignKey;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -19,7 +23,7 @@ import lombok.Setter;
 @Setter
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Entity
-@Table(name = "colborador")
+@Table(name = "colaborador")
 public class Colaborador implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -46,6 +50,10 @@ public class Colaborador implements Serializable {
 	
 	@Column(name = "datedem")
 	private LocalDate dateDem;
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "osfilialid", nullable = false, foreignKey = @ForeignKey(name = "fk_idOsFilial"))
+	private OsFilial osFilial;
 	
 	public Colaborador(Long id, String matricula, String cpf, String name, String funcao, LocalDate dateAdm,
 			LocalDate dateDem) {

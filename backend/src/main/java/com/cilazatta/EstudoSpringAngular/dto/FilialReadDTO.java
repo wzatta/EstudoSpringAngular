@@ -12,19 +12,19 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-public class FilialDTO {
+public class FilialReadDTO {
 	private Long idFilial;
 	private String rSocial;
 	private String dSocial;
 	private String cnpj;
 	private String municipio;
 	private String uf;
-	//@JsonProperty(access = Access.WRITE_ONLY)
+	@JsonProperty(access = Access.WRITE_ONLY)
 	private HoldingDTO holdingDto;
-	//@JsonProperty(access = Access.WRITE_ONLY)
+	@JsonProperty(access = Access.WRITE_ONLY)
 	private User00DTO user00Dto;
 	
-	public FilialDTO(Long idFilial, String rSocial, String dSocial, String cnpj, String municipio, String uf,
+	public FilialReadDTO(Long idFilial, String rSocial, String dSocial, String cnpj, String municipio, String uf,
 			HoldingDTO holdingDto, User00DTO user00Dto) {
 		super();
 		this.idFilial = idFilial;
@@ -37,7 +37,7 @@ public class FilialDTO {
 		this.user00Dto = user00Dto;
 	}
 		
-		public FilialDTO(Filial filial) {
+		public FilialReadDTO(Filial filial) {
 			this.idFilial = filial.getIdFilial();
 			this.rSocial = filial.getRSocial();
 			this.dSocial = filial.getDSocial();
@@ -47,13 +47,6 @@ public class FilialDTO {
 			this.holdingDto = new HoldingDTO(filial.getHolding());
 			this.user00Dto = new User00DTO(filial.getUser00());
 			
-		}
-
-		@Override
-		public String toString() {
-			return "FilialDTO [idFilial=" + idFilial + ", rSocial=" + rSocial + ", dSocial=" + dSocial + ", cnpj="
-					+ cnpj + ", municipio=" + municipio + ", uf=" + uf + ", holdingDto=" + holdingDto + ", user00Dto="
-					+ user00Dto + "]";
 		}
 		
 		
