@@ -1,0 +1,87 @@
+<mat-card class="mat-card">
+  <mat-card-header>
+    <mat-toolbar class="toobarSecondary">
+      Colaborador - ( {{ telaDe }} )
+    </mat-toolbar>
+  </mat-card-header>
+
+  <mat-card-content>
+    <form [formGroup]="formColaborador">
+
+      <mat-form-field class="full-width" appearance="fill">
+        <mat-label for="matid">Matricula</mat-label>
+        <input matInput id="matid" placeholder="Matricula" formControlName="matricula" #vmatricula />
+        <mat-hint align="end">{{ vmatricula.value.length || 0 }}/20</mat-hint>
+        <mat-error *ngIf="formColaborador.get('matricula')?.invalid"> {{ getErrorMessage('matricula') }} </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="full-width" appearance="fill">
+        <mat-label for="cpfid">CPF</mat-label>
+        <input matInput placeholder="CPF" formControlName="cpf" />
+        <mat-error *ngIf="formColaborador.get('cpf')?.invalid"> {{ getErrorMessage('cpf') }} </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="full-width" appearance="fill">
+        <mat-label for="nameid">Nome do Colaborador</mat-label>
+        <input matInput placeholder="Nome do Colaborador" formControlName="name" #vname />
+        <mat-hint align="end">{{ vname.value.length || 0 }}/49</mat-hint>
+        <mat-error *ngIf="formColaborador.get('name')?.invalid"> {{ getErrorMessage('name') }} </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="full-width" appearance="fill">
+        <mat-label for="funcaoid">Função</mat-label>
+        <input matInput placeholder="Função" formControlName="funcao" #vfuncao />
+        <mat-hint align="end">{{ vfuncao.value.length || 0 }}/35</mat-hint>
+        <mat-error *ngIf="formColaborador.get('funcao')?.invalid"> {{ getErrorMessage('funcao') }} </mat-error>
+      </mat-form-field>
+
+      <mat-form-field   class="full-width" appearance="fill">
+        <mat-label>Data de Admissão</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="dateAdm">
+        <mat-hint>DD/MM/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="picker">
+          <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+        </mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+
+      <mat-form-field *ngIf="exibirCampo" class="full-width" appearance="fill">
+        <mat-label>Data de Demissão</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="dateDem">
+        <mat-hint>DD/MM/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="picker">
+          <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+        </mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+
+      <mat-form-field class="full-width" appearance="fill">
+        <mat-label>Filial</mat-label>
+        <mat-select [compareWith]="compareObj" placeholder="Escolha a Filial!" formControlName="filialDto">
+        <mat-option *ngFor="let filial of filiais | async" [value]="filial">
+          {{ filial.rsocial }}
+        </mat-option>
+        </mat-select>
+
+      </mat-form-field>
+
+
+
+    </form>
+
+  </mat-card-content>
+
+  <mat-card-actions class="bt-container">
+    <button mat-raised-button [disabled]=formColaborador.invalid (click)="onSubmit()" color="primary"
+      style="margin: 1px">
+      <mat-icon>save</mat-icon>
+      Salvar
+    </button>
+
+    <button mat-raised-button (click)="onCancel()" style="margin: 1px; background-color: #00E5FF;">
+      <mat-icon>cancell</mat-icon>
+      Cancelar
+    </button>
+  </mat-card-actions>
+
+</mat-card>

@@ -1,5 +1,4 @@
 import { HoldInterface } from './HoldInterface';
-import { UsuarioInterface } from './UsuarioInterface';
 
 export interface FilialInterface {
   idFilial: string,
@@ -9,5 +8,4 @@ export interface FilialInterface {
 	municipio: string,
 	uf: string,
 	holdingDto: HoldInterface,
-	user00Dto: UsuarioInterface
 }

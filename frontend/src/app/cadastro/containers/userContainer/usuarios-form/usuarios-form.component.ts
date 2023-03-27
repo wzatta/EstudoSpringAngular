@@ -1,11 +1,14 @@
 import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { NonNullableFormBuilder, Validators } from '@angular/forms';
+import { FormControl, NonNullableFormBuilder, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { UsuariosService } from '../../../services/usuarios.service';
 import { ActivatedRoute } from '@angular/router';
 import { UsuarioInterface } from '../../../model/UsuarioInterface';
 import { OptionBoolean } from 'src/app/cadastro/model/option-boolean';
+import { ColaboradorInterface } from '../../../model/colaboradorInterface';
+import { ColaboradorService } from '../../../services/colaborador.service';
+import { filter, map, Observable, distinctUntilChanged, switchMap } from 'rxjs';
 
 //export interface OptionBoolean {
 //  value: string;
@@ -21,11 +24,15 @@ export class UsuariosFormComponent implements OnInit {
 
   public is_Edit1: boolean = true;
 
+  colab : ColaboradorInterface | any = {};
+
   public optionsBoolean: OptionBoolean[] = [
     {value: 'true', viewValue: 'SIM'},
     {value: 'false', viewValue: 'NÃO'},
   ];
 
+  listColab$: Observable<ColaboradorInterface[]> | null = null;
+  queryField = new FormControl();
 
   form= this.formBuilder.group({
 
@@ -38,7 +45,8 @@ export class UsuariosFormComponent implements OnInit {
     password : ['' , [Validators.required]],
     userAtivo : ['' , [Validators.required]],
     userBloqueado : ['' , [Validators.required]],
-    role : ['' , [Validators.required]]
+    role : ['' , [Validators.required]],
+    colabDto : [this.colab,[Validators.required]],
   });
 
   constructor(
@@ -46,6 +54,7 @@ export class UsuariosFormComponent implements OnInit {
     private userService: UsuariosService,
     private snackBar: MatSnackBar,
     private location: Location,
+    private colabServ: ColaboradorService,
     private route: ActivatedRoute){
   }
 
@@ -65,8 +74,20 @@ export class UsuariosFormComponent implements OnInit {
         userAtivo:usuarioConst.userAtivo.toString(),
         userBloqueado: usuarioConst.userBloqueado.toString(),
         role: usuarioConst.role,
-        password: usuarioConst.password
+        password: usuarioConst.password,
+        colabDto : usuarioConst.colabDto,
       });
+
+
+      this.listColab$ = this.queryField.valueChanges
+      .pipe(
+        map(value=> value.trim()),
+        filter(value=> value.length > 5),
+        distinctUntilChanged(),
+        switchMap(value=> this.colabServ.listName(value))
+      );
+
+
     }
 
     onSubmit(){
@@ -98,12 +119,12 @@ export class UsuariosFormComponent implements OnInit {
         return 'Campo Obrigatório';
 
       }
-      if(field?.hasError('minlenght')){
+      if(field?.hasError('minlength')){
         const requiredLength: number = field.errors ? field.errors['minlength']['requiredLength']:5;
         return  'Tamanho minimo ${requiredLength} caracteres.';
       }
 
-      if(field?.hasError('maxlenght')){
+      if(field?.hasError('maxlength')){
         const requiredLength: number = field.errors ? field.errors['maxlength']['requiredLength']:49;
         return  'Tamanho Maximo ${requiredLength} caracteres.';
       }

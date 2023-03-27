@@ -20,10 +20,6 @@ constructor(private httpClient: HttpClient
 
 list(){
   return this.httpClient.get<HoldInterface[]>(this.API);
-//  .pipe(
-  //  first(),
-   // tap(empresas => console.log(empresas, 'aqui'))
-  //);
 }
 
 save(record: Partial<HoldInterface>){

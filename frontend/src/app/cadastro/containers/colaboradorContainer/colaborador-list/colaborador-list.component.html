@@ -1,0 +1,52 @@
+<div *ngIf="colabDb$ |async as colabDb">
+
+
+  <table mat-table [dataSource]="colabDb" class="mat-elevation-z8">
+
+
+
+    <ng-container matColumnDef="matricula">
+      <mat-header-cell  *matHeaderCellDef> Matricula </mat-header-cell>
+      <mat-cell  *matCellDef="let colab"> {{ colab.matricula }} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="name">
+      <mat-header-cell  *matHeaderCellDef> Nome Colaborador </mat-header-cell>
+      <mat-cell  *matCellDef="let colab"> {{ colab.name }} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="funcao">
+      <mat-header-cell  *matHeaderCellDef> Função </mat-header-cell>
+      <mat-cell  *matCellDef="let colab"> {{ colab.funcao }} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="dateAdm">
+      <mat-header-cell  *matHeaderCellDef> Admissão </mat-header-cell>
+      <mat-cell  *matCellDef="let colab"> {{ colab.dateAdm }} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="dateDem">
+      <mat-header-cell  *matHeaderCellDef> Demissão </mat-header-cell>
+      <mat-cell  *matCellDef="let colab"> {{ colab.dateDem }} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+      <mat-header-cell  *matHeaderCellDef> AÇÕES </mat-header-cell>
+      <mat-cell  *matCellDef="let colab" >
+      <button mat-mini-fab color="primary" aria-label="Editar" (click)="onEdit(colab)">
+        <mat-icon>edit</mat-icon>
+      </button>
+      <button mat-mini-fab color="warn" aria-label="Deletar"  (click)="onDelete(colab)">
+          <mat-icon>delete</mat-icon>
+      </button>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row  *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row  *matRowDef="let row; columns: displayedColumns;"></mat-row>
+
+
+  </table>
+
+
+</div>

@@ -7,5 +7,4 @@ export interface HoldInterface {
   cnpj: string;
   municipio: string;
   uf: string;
-  user00Dto: UsuarioInterface;
 }

@@ -9,6 +9,7 @@ import { HoldInterface } from '../../../model/HoldInterface';
 import { FilialService } from '../../../services/filial.service';
 import { Location } from '@angular/common';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-filial-form',
@@ -17,11 +18,12 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class FilialFormComponent implements OnInit {
 
-  private userlogado1: UsuarioInterface = {id:'', cpf:'', name:'', password:'',user00Name:'',userAtivo:'',userBloqueado:'',role:''};
+  //private userlogado1: UsuarioInterface = {id:'', cpf:'', name:'', password:'',user00Name:'',userAtivo:'',userBloqueado:'',role:''};
 
   private hold1: HoldInterface | any = {};
 
-  holds: HoldInterface[] = [];
+
+  holds: Observable<HoldInterface[]> | any = [];
 
   formFilial = this.formBuilder.group({
     idFilial:[''],
@@ -32,7 +34,6 @@ export class FilialFormComponent implements OnInit {
     municipio:['',[Validators.required]],
     uf:['',[Validators.required]],
     holdingDto: [this.hold1,[Validators.required]],
-    user00Dto: [this.userlogado1]
   });
 
   //formHold = new FormControl<HoldInterface[] | null >(null, Validators.required);
@@ -54,7 +55,7 @@ export class FilialFormComponent implements OnInit {
     const user$ = this.logService.obterUsuario?.subscribe(
       user => {
         this.formFilial.patchValue({
-          user00Dto: user
+          //user00Dto: user
         });
       }
     );
@@ -68,15 +69,20 @@ export class FilialFormComponent implements OnInit {
         cnpj: filialConst.cnpj,
         municipio: filialConst.municipio,
         uf: filialConst.uf,
-        holdingDto: filialConst.holdingDto,
-        user00Dto: filialConst.user00Dto      }
+        holdingDto: filialConst.holdingDto
+             }
       );
 
-        this.holdServ.list().subscribe(dados => this.holds = dados);
+        //this.holdServ.list().subscribe(dados => this.holds = dados);
+        this.holds = this.holdServ.list(); //Popular o Select do formulario
 
 
   } //ngOnInit
 
+
+compareObj(o1:HoldInterface, o2: HoldInterface){
+  return o1.idHold === o2.idHold;
+}
 
   onSubmit(){
     this.filialService.save(this.formFilial.value)

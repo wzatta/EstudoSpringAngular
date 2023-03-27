@@ -16,7 +16,7 @@ export class OsfilialResolver implements Resolve<OsFilialInterface> {
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<OsFilialInterface> {
 
-    let userlogado2: UsuarioInterface = {id:'', cpf:'', name:'', password:'',user00Name:'',userAtivo:'',userBloqueado:'',role:''};
+    let userlogado2: UsuarioInterface | any = {};
     let filial1: FilialInterface | any = '';
 
     if(route.params && route.params['id']){

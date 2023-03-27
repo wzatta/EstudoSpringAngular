@@ -19,13 +19,12 @@ export class FilialResolver implements Resolve<FilialInterface> {
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<FilialInterface> {
 
-    let userlogado2: UsuarioInterface = {id:'', cpf:'', name:'', password:'',user00Name:'',userAtivo:'',userBloqueado:'',role:''};
     let hold2: HoldInterface | any = '';
 
     if(route.params && route.params['id']){
       return this.filialServ.findById(route.params['id']);
     }
 
-    return of({idFilial:'', rsocial: '', dsocial:'', cnpj:'', municipio: '', uf:'', holdingDto:hold2, user00Dto:userlogado2});
+    return of({idFilial:'', rsocial: '', dsocial:'', cnpj:'', municipio: '', uf:'', holdingDto:hold2});
   }
 }

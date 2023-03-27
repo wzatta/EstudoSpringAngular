@@ -1,3 +1,4 @@
+import { ColaboradorInterface } from './colaboradorInterface';
 export interface UsuarioInterface {
   id: string;
   name: string;
@@ -7,6 +8,5 @@ export interface UsuarioInterface {
   userAtivo: string;
   userBloqueado: string;
   role:string;
-
-
+  colabDto: ColaboradorInterface;
 }

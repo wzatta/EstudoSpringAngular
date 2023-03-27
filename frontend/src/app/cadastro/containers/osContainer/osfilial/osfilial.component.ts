@@ -25,7 +25,6 @@ export class OsfilialComponent implements OnInit {
   ngOnInit(): void {}
 
   addOsFilial(){
-    console.log("cheguei aqui");
     this.router.navigate(['newOsFilial'],{relativeTo: this.route});
   }
 

@@ -15,7 +15,7 @@ import { UsuarioInterface } from '../../../model/UsuarioInterface';
 })
 export class HoldigFormComponent implements OnInit {
 
-  private userlogado1: UsuarioInterface = {id:'', cpf:'', name:'', password:'',user00Name:'',userAtivo:'',userBloqueado:'',role:''};
+ // private userlogado1: UsuarioInterface = {id:'', cpf:'', name:'', password:'',user00Name:'',userAtivo:'',userBloqueado:'',role:''};
 
   formHold = this.formBuilder.group({
     idHold:[''],
@@ -25,7 +25,6 @@ export class HoldigFormComponent implements OnInit {
     cnpj:['', [Validators.required]],
     municipio:['',[Validators.required]],
     uf:['',[Validators.required]],
-    user00Dto: [this.userlogado1]
   });
 
   constructor(
@@ -39,14 +38,6 @@ export class HoldigFormComponent implements OnInit {
 
   ngOnInit(): void {
 
-    const user$ = this.logService.obterUsuario?.subscribe(
-      user => {
-        this.formHold.patchValue({
-          user00Dto: user
-        });
-      }
-    );
-
     const holdingConst: HoldInterface = this.route.snapshot.data['holdingresolver'];
 
       this.formHold.patchValue({
@@ -56,7 +47,6 @@ export class HoldigFormComponent implements OnInit {
         cnpj: holdingConst.cnpj,
         municipio:holdingConst.municipio,
         uf:holdingConst.uf,
-        user00Dto:holdingConst.user00Dto
       }
       );
   }

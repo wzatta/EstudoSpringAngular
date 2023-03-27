@@ -20,11 +20,11 @@ export class HoldingResolver implements Resolve<HoldInterface> {
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<HoldInterface> {
 
-    let userlogado2: UsuarioInterface = {id:'', cpf:'', name:'', password:'',user00Name:'',userAtivo:'',userBloqueado:'',role:''};
+  //  let userlogado2: UsuarioInterface = {id:'', cpf:'', name:'', password:'',user00Name:'',userAtivo:'',userBloqueado:'',role:''};
 
       if(route.params && route.params['id']){
         return this.holdService.loadById(route.params['id']);
       }
-    return of({idHold:'', rsocial: '', dsocial:'', cnpj:'', municipio: '', uf:'', user00Dto:userlogado2});
+    return of({idHold:'', rsocial: '', dsocial:'', cnpj:'', municipio: '', uf:''});
   }
 }

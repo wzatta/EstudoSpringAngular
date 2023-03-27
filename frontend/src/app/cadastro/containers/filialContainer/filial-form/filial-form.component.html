@@ -42,9 +42,9 @@
 
       <mat-form-field class="full-width" appearance="fill">
          <label>Holding</label>
-         <mat-select formControlName="holdingDto">
+         <mat-select [compareWith]="compareObj" formControlName="holdingDto">
           <mat-option>--</mat-option>
-          <mat-option *ngFor="let holdNew of holds" [value]="holdNew">
+          <mat-option *ngFor="let holdNew of holds | async" [value]="holdNew">
             {{holdNew.rsocial}}
           </mat-option>
 

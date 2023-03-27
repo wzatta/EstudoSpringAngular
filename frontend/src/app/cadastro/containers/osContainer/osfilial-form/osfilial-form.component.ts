@@ -19,8 +19,8 @@ import { Observable } from 'rxjs';
 })
 export class OsfilialFormComponent implements OnInit {
 
-  private userlogado1: UsuarioInterface = {id:'', cpf:'', name:'', password:'',user00Name:'',userAtivo:'',userBloqueado:'',role:''};
-
+  //private userlogado1: UsuarioInterface = {id:'', cpf:'', name:'', password:'',user00Name:'',userAtivo:'',userBloqueado:'',role:''};
+  private userlogado1: UsuarioInterface | any = {};
   private filial: FilialInterface | any = {};
 
   telaDe : string = "Inclusão";
