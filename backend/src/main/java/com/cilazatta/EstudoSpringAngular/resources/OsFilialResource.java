@@ -27,10 +27,6 @@ public class OsFilialResource {
 	@PostMapping
 	public ResponseEntity<OsFilialDTO> insertOsFilial(@RequestBody OsFilialDTO osDto){
 		
-		for(int i=0 ; i<10; i++) {
-			System.out.println(osDto.toString());
-		}
-		
 		osDto = osService.insertOsFilial(osDto);
 		return ResponseEntity.created(null).body(osDto);
 	}

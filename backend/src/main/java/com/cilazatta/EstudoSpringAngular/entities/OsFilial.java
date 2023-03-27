@@ -2,7 +2,6 @@ package com.cilazatta.EstudoSpringAngular.entities;
 
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 
 import com.cilazatta.EstudoSpringAngular.dto.OsFilialDTO;
 
@@ -52,7 +51,7 @@ public class OsFilial implements Serializable{
 	private Boolean osIsAtiva;
 	
 	@ManyToOne()
-	@JoinColumn(name="osid", nullable = false, foreignKey = @ForeignKey(name="fkidos"))
+	@JoinColumn(name="osid", nullable = false, foreignKey = @ForeignKey(name="fkFilialidos"))
 	private Filial filial;
 	
 	@ManyToOne()

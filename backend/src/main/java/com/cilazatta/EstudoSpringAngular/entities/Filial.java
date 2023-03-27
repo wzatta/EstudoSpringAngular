@@ -53,9 +53,18 @@ public class Filial implements Serializable{
 	@JoinColumn(name = "holding_id", nullable = false, foreignKey = @ForeignKey(name = "fk_idHolding"))
 	private Holding holding;
 	
-	@ManyToOne
-	@JoinColumn(name = "user00_id", nullable = false, foreignKey = @ForeignKey(name = "fk_Filial_idUser00"))
-	private User00 user00;
+	//===================================
+	
+	public Filial(Long idFilial, String rSocial, String dSocial, String cnpj, String municipio, String uf,
+			Holding holding) {
+		this.idFilial = idFilial;
+		this.rSocial = rSocial;
+		this.dSocial = dSocial;
+		this.cnpj = cnpj;
+		this.municipio = municipio;
+		this.uf = uf;
+		this.holding = holding;
+	}
 	
 	public Filial(FilialDTO filialDto) {
 		this.idFilial = filialDto.getIdFilial();
@@ -64,8 +73,8 @@ public class Filial implements Serializable{
 		this.cnpj = filialDto.getCnpj();
 		this.municipio = filialDto.getMunicipio();
 		this.uf = filialDto.getUf();
-		this.user00 = new User00(filialDto.getUser00Dto());
 		this.holding = new Holding(filialDto.getHoldingDto());
 	}
+
 
 }

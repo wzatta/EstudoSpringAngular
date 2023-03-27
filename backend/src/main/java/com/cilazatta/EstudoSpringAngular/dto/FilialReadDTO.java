@@ -1,7 +1,6 @@
 package com.cilazatta.EstudoSpringAngular.dto;
 
 import com.cilazatta.EstudoSpringAngular.entities.Filial;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonProperty.Access;
 
@@ -21,12 +20,9 @@ public class FilialReadDTO {
 	private String uf;
 	@JsonProperty(access = Access.WRITE_ONLY)
 	private HoldingDTO holdingDto;
-	@JsonProperty(access = Access.WRITE_ONLY)
-	private User00DTO user00Dto;
 	
 	public FilialReadDTO(Long idFilial, String rSocial, String dSocial, String cnpj, String municipio, String uf,
-			HoldingDTO holdingDto, User00DTO user00Dto) {
-		super();
+			HoldingDTO holdingDto) {
 		this.idFilial = idFilial;
 		this.rSocial = rSocial;
 		this.dSocial = dSocial;
@@ -34,7 +30,6 @@ public class FilialReadDTO {
 		this.municipio = municipio;
 		this.uf = uf;
 		this.holdingDto = holdingDto;
-		this.user00Dto = user00Dto;
 	}
 		
 		public FilialReadDTO(Filial filial) {
@@ -45,7 +40,7 @@ public class FilialReadDTO {
 			this.municipio = filial.getMunicipio();
 			this.uf = filial.getUf();
 			this.holdingDto = new HoldingDTO(filial.getHolding());
-			this.user00Dto = new User00DTO(filial.getUser00());
+			
 			
 		}
 		

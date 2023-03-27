@@ -16,18 +16,15 @@ public class HoldingDTO {
 	private String cnpj;
 	private String municipio;
 	private String uf;
-	private User00DTO user00Dto;
 	
 	
-	public HoldingDTO(Long idHold, String rSocial, String dSocial, String cnpj, String municipio, String uf,
-			User00DTO user00) {
+	public HoldingDTO(Long idHold, String rSocial, String dSocial, String cnpj, String municipio, String uf) {
 		this.idHold = idHold;
 		this.rSocial = rSocial;
 		this.dSocial = dSocial;
 		this.cnpj = cnpj;
 		this.municipio = municipio;
 		this.uf = uf;
-		this.user00Dto = user00;
 	}
 
 	public HoldingDTO(Holding hold) {
@@ -38,15 +35,16 @@ public class HoldingDTO {
 		this.cnpj = hold.getCnpj();
 		this.municipio = hold.getMunicipio();
 		this.uf = hold.getUf();
-		this.user00Dto = new User00DTO(hold.getUser00());
 		
 	}
 
 	@Override
 	public String toString() {
 		return "HoldingDTO [idHold=" + idHold + ", rSocial=" + rSocial + ", dSocial=" + dSocial + ", cnpj=" + cnpj
-				+ ", municipio=" + municipio + ", uf=" + uf + ", user00Dto=" + user00Dto + "]";
+				+ ", municipio=" + municipio + ", uf=" + uf + "]";
 	}
+
+	
 	
 	
 }

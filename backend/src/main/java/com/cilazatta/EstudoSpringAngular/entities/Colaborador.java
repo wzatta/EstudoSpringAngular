@@ -2,6 +2,7 @@ package com.cilazatta.EstudoSpringAngular.entities;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import com.cilazatta.EstudoSpringAngular.dto.ColaboradorDTO;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -45,19 +46,18 @@ public class Colaborador implements Serializable {
 	@Column(name = "funcao",length = 35, nullable = false)
 	private String funcao;
 	
-	@Column(name = "dateadm")
+	@Column(name = "dateadm", nullable = false)
 	private LocalDate dateAdm;
 	
-	@Column(name = "datedem")
+	@Column(name = "datedem", nullable = true)
 	private LocalDate dateDem;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "osfilialid", nullable = false, foreignKey = @ForeignKey(name = "fk_idOsFilial"))
-	private OsFilial osFilial;
-	
+	@JoinColumn(name = "filialid", nullable = false, foreignKey = @ForeignKey(name = "fk_idFilial"))
+	private Filial filial;
+
 	public Colaborador(Long id, String matricula, String cpf, String name, String funcao, LocalDate dateAdm,
-			LocalDate dateDem) {
-		super();
+			LocalDate dateDem,  Filial filial) {
 		this.id = id;
 		this.matricula = matricula;
 		this.cpf = cpf;
@@ -65,27 +65,42 @@ public class Colaborador implements Serializable {
 		this.funcao = funcao;
 		this.dateAdm = dateAdm;
 		this.dateDem = dateDem;
+		this.filial = filial;
+	}
+	
+	/*public Colaborador(Long id, String matricula, String cpf, String name, String funcao, LocalDate dateAdm,
+			 Filial filial) {
+		this.id = id;
+		this.matricula = matricula;
+		this.cpf = cpf;
+		this.name = name;
+		this.funcao = funcao;
+		this.dateAdm = dateAdm;
+		this.filial = filial;
+	}*/
+	
+	public Colaborador(ColaboradorDTO colabDto) {
+		
+		this.id = colabDto.getId();
+		this.matricula = colabDto.getMatricula();
+		this.name = colabDto.getName();
+		this.cpf = colabDto.getCpf();
+		this.funcao = colabDto.getFuncao();
+		this.dateAdm = LocalDate.parse(colabDto.getDateAdm().subSequence(0, 10));
+		if(colabDto.getDateDem()!="" && colabDto.getDateDem()!=null) {
+			System.out.println("entrei aqui");
+		this.dateDem =  LocalDate.parse(colabDto.getDateDem());}
+		this.filial = new Filial(colabDto.getFilialDto());
 	}
 
 	@Override
 	public String toString() {
-		StringBuilder builder = new StringBuilder();
-		builder.append("Colaborador [id=");
-		builder.append(id);
-		builder.append(", matricula=");
-		builder.append(matricula);
-		builder.append(", cpf=");
-		builder.append(cpf);
-		builder.append(", name=");
-		builder.append(name);
-		builder.append(", funcao=");
-		builder.append(funcao);
-		builder.append(", dateAdm=");
-		builder.append(dateAdm);
-		builder.append(", dateDem=");
-		builder.append(dateDem);
-		builder.append("]");
-		return builder.toString();
+		return "Colaborador [id=" + id + ", matricula=" + matricula + ", cpf=" + cpf + ", name=" + name + ", funcao="
+				+ funcao + ", dateAdm=" + dateAdm + ", dateDem=" + dateDem + ", filial=" + filial + "]";
 	}
+
+	
+
+	
 	
 }

@@ -1,6 +1,5 @@
 package com.cilazatta.EstudoSpringAngular.dto;
 
-import java.time.LocalDate;
 
 import com.cilazatta.EstudoSpringAngular.entities.Colaborador;
 
@@ -18,11 +17,12 @@ public class ColaboradorDTO {
 	private String cpf;
 	private String name;
 	private String funcao;
-	private LocalDate dateAdm;
-	private LocalDate dateDem;
+	private String dateAdm;
+	private String dateDem;
+	private FilialDTO filialDto;
 	
-	public ColaboradorDTO(Long id, String matricula, String cpf, String name, String funcao, LocalDate dateAdm,
-			LocalDate dateDem) {
+	public ColaboradorDTO(Long id, String matricula, String cpf, String name, String funcao, String dateAdm,
+			String dateDem, FilialDTO filialDto) {
 		this.id = id;
 		this.matricula = matricula;
 		this.cpf = cpf;
@@ -30,21 +30,32 @@ public class ColaboradorDTO {
 		this.funcao = funcao;
 		this.dateAdm = dateAdm;
 		this.dateDem = dateDem;
+		this.filialDto = filialDto;
 	}
-	
+
+/*	public ColaboradorDTO(Long id, String matricula, String cpf, String name, String funcao, String dateAdm,
+			 FilialDTO filialDto) {
+		this.id = id;
+		this.matricula = matricula;
+		this.cpf = cpf;
+		this.name = name;
+		this.funcao = funcao;
+		this.dateAdm = dateAdm;
+		this.filialDto = filialDto;
+	}
+	*/
 	public ColaboradorDTO(Colaborador colab) {
-	
 		this.id = colab.getId();
 		this.matricula = colab.getMatricula();
 		this.name = colab.getName();
 		this.cpf = colab.getCpf();
 		this.funcao = colab.getFuncao();
-		this.dateAdm = colab.getDateAdm();
-		this.dateDem = colab.getDateDem();
+		this.dateAdm = colab.getDateAdm().toString();
+		if(colab.getDateDem()!=null) {
+		this.dateDem = colab.getDateDem().toString();}
+		this.filialDto = new FilialDTO(colab.getFilial());
 		
 	}
-	
-	
 	
 	
 	

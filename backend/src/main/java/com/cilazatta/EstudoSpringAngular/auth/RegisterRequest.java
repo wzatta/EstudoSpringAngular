@@ -1,5 +1,6 @@
 package com.cilazatta.EstudoSpringAngular.auth;
 
+import com.cilazatta.EstudoSpringAngular.entities.Colaborador;
 import com.cilazatta.EstudoSpringAngular.enums.Role;
 
 import lombok.AllArgsConstructor;
@@ -16,6 +17,7 @@ public class RegisterRequest {
 	private String name;
 	private String cpf;
 	private String userName;
+	private Colaborador colab;
 	private String password;
 	private Boolean userAtivo;
 	private Boolean userBloqueado;

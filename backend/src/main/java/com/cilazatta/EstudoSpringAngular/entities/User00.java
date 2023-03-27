@@ -17,20 +17,25 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
+import jakarta.persistence.ForeignKey;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 @NoArgsConstructor
 @Builder
 @Getter
 @Setter
+@ToString
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Entity
 @Table(name = "user00")
@@ -47,18 +52,29 @@ public class User00 implements UserDetails, Serializable {
 	@EqualsAndHashCode.Include
 	private Long id;
 	
-	@Column(name="name", length = 50, nullable = false)
-	private String name;
-	
-	@Column(name="cpf", length = 11, nullable=false)
-	private String cpf;
-	
 	@Column(name="user00name", length = 30, unique = true, nullable = false)
 	private String user00Name;
 	
 	@Column(name="password", length = 200, nullable = false)
 	@JsonProperty(access = Access.WRITE_ONLY)
 	private String password;
+	
+	@Column(name="name", length = 50, nullable = false)
+	private String name;
+	
+	@Column(name="cpf", length = 11, nullable=false)
+	private String cpf;
+	
+	//==========================================
+	
+	
+	@OneToOne(optional = false)
+	@JoinColumn(name="idcolab", nullable = false, referencedColumnName = "id", foreignKey = @ForeignKey(name="fkcolabid"))
+	private Colaborador colab;
+	
+	
+	//===========================================
+
 	
 	@Column(name="ativo", nullable = false)
 	private Boolean userAtivo;
@@ -71,26 +87,27 @@ public class User00 implements UserDetails, Serializable {
 	
 	//=========================================================
 	
-	public User00(Long id, String name, String cpf, String user00Name, String password, Boolean userAtivo,
-			Boolean userBloqueado, Role role) {
-		super();
+	public User00(Long id, String user00Name, String password, String name, String cpf, Colaborador colab,
+			Boolean userAtivo, Boolean userBloqueado, Role role) {
 		this.id = id;
-		this.name = name;
-		this.cpf = cpf;
 		this.user00Name = user00Name;
 		this.password = password;
+		this.name = name;
+		this.cpf = cpf;
+		this.colab = colab;
 		this.userAtivo = userAtivo;
 		this.userBloqueado = userBloqueado;
 		this.role = role;
 	}
 	
-
+	
 	public User00(User00DTO userDto) {
 		this.id = userDto.getId();
-		this.name = userDto.getName();
-		this.cpf = userDto.getCpf();
 		this.user00Name = userDto.getUser00Name();
 		this.password = userDto.getPassword();
+		this.name = userDto.getName();
+		this.cpf = userDto.getCpf();
+		this.colab = new Colaborador(userDto.getColabDto());
 		this.userAtivo = userDto.getUserAtivo();
 		this.userBloqueado = userDto.getUserBloqueado();
 		this.role = userDto.getRole();
@@ -133,28 +150,6 @@ public class User00 implements UserDetails, Serializable {
 		return this.userAtivo;
 	}
 
-	@Override
-	public String toString() {
-		StringBuilder builder = new StringBuilder();
-		builder.append("User00 [id=");
-		builder.append(id);
-		builder.append(", name=");
-		builder.append(name);
-		builder.append(", cpf=");
-		builder.append(cpf);
-		builder.append(", userName=");
-		builder.append(user00Name);
-		builder.append(", password=");
-		builder.append(password);
-		builder.append(", userAtivo=");
-		builder.append(userAtivo);
-		builder.append(", userBloqueado=");
-		builder.append(userBloqueado);
-		builder.append(", role=");
-		builder.append(role);
-		builder.append("]");
-		return builder.toString();
-	}
 
 
 }

@@ -66,27 +66,24 @@ public class FilialService {
 			return true;
 		}).orElse(false);
 	}
-	
-	public Page<FilialDTO> searchByRsocialDSocial(String searchTerm, int page, int size){
-		PageRequest pageRequest = PageRequest.of(page, size, Sort.Direction.ASC,"name");
-		return filialRepo.searchP(searchTerm.toLowerCase(), pageRequest).map(w-> new FilialDTO(w));
-	} 
-	
-	public Page<FilialDTO> findAllPage(){
+
+	public Page<FilialDTO> searchByRsocialDSocial(String searchTerm, int page, int size) {
+		PageRequest pageRequest = PageRequest.of(page, size, Sort.Direction.ASC, "name");
+		return filialRepo.searchP(searchTerm.toLowerCase(), pageRequest).map(w -> new FilialDTO(w));
+	}
+
+	public Page<FilialDTO> findAllPage() {
 		int page = 0;
 		int size = 10;
-		PageRequest pageRequest = PageRequest.of(page, size, Sort.Direction.ASC,"name");
-		List<FilialDTO> listDto = filialRepo.findAll().stream().map(w->new FilialDTO(w)).collect(Collectors.toList());
-		return new PageImpl<FilialDTO>(
-				listDto,
-				pageRequest, size);
+		PageRequest pageRequest = PageRequest.of(page, size, Sort.Direction.ASC, "name");
+		List<FilialDTO> listDto = filialRepo.findAll().stream().map(w -> new FilialDTO(w)).collect(Collectors.toList());
+		return new PageImpl<FilialDTO>(listDto, pageRequest, size);
 	}
-	
-	public List<FilialDTO> findByRsocial(String rsocial){
-		return filialRepo.findByrSocialContainingIgnoreCase(rsocial)
-				.stream()
-				.map(w -> new FilialDTO(w)).collect(Collectors.toList());
-				
+
+	public List<FilialDTO> findByRsocial(String rsocial) {
+		return filialRepo.findByrSocialContainingIgnoreCase(rsocial).stream().map(w -> new FilialDTO(w))
+				.collect(Collectors.toList());
+
 	}
 
 }

@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,6 +17,10 @@ import org.springframework.web.bind.annotation.RestController;
 import com.cilazatta.EstudoSpringAngular.dto.HoldingDTO;
 import com.cilazatta.EstudoSpringAngular.services.HoldingService;
 
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
+
+@Validated
 @RestController
 @RequestMapping(value="api/v1/holding")
 public class HoldingResource {
@@ -37,19 +42,19 @@ public class HoldingResource {
 	} 
 	
 	@GetMapping(value = "/{id}")
-	public ResponseEntity<HoldingDTO> findById(@PathVariable Long id){
+	public ResponseEntity<HoldingDTO> findById(@PathVariable @NotNull @Positive Long id){
 		HoldingDTO holdDto = holdService.findById(id);
 		return ResponseEntity.ok().body(holdDto);
 	}
 	
 	@PutMapping(value = "/{id}")
-	public ResponseEntity<HoldingDTO> update(@PathVariable Long id, @RequestBody HoldingDTO obj){
+	public ResponseEntity<HoldingDTO> update(@PathVariable @NotNull @Positive Long id, @RequestBody HoldingDTO obj){
 		obj = holdService.update(id, obj);
 		return ResponseEntity.ok().body(obj);
 	}
 	
 	@DeleteMapping(value = "/{id}")
-	public ResponseEntity<Void> delete(@PathVariable Long id){
+	public ResponseEntity<Void> delete(@PathVariable @NotNull @Positive Long id){
 		Boolean isDeletado = holdService.deleteById(id);
 		if(isDeletado) {
 			return ResponseEntity.noContent().<Void>build();

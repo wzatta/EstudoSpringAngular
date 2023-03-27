@@ -3,17 +3,12 @@ package com.cilazatta.EstudoSpringAngular.entities;
 import java.io.Serializable;
 
 import com.cilazatta.EstudoSpringAngular.dto.HoldingDTO;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.ForeignKey;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -50,14 +45,8 @@ public class Holding implements Serializable{
 	@Column(name = "uf", length = 2, nullable = false)
 	private String uf;
 	
-	@JsonIgnore
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "user00_id", nullable = false, foreignKey = @ForeignKey(name = "fk_idUser00"))
-	private User00 user00;
-	
-
-	public Holding(Long idHold, String rSocial, String dSocial, String cnpj, String municipio, String uf,
-			User00 user00) {
+	public Holding(Long idHold, String rSocial, String dSocial, String cnpj, String municipio, String uf
+			) {
 		super();
 		this.idHold = idHold;
 		this.rSocial = rSocial;
@@ -65,7 +54,7 @@ public class Holding implements Serializable{
 		this.cnpj = cnpj;
 		this.municipio = municipio;
 		this.uf = uf;
-		this.user00 = user00;
+		
 	}
 	
 	
@@ -77,7 +66,7 @@ public class Holding implements Serializable{
 		this.municipio = holdDto.getMunicipio();
 		this.uf = holdDto.getUf();
 			
-		this.user00 = new User00(holdDto.getUser00Dto());
+		
 	}
 
 

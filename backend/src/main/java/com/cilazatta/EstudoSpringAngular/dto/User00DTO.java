@@ -15,6 +15,7 @@ public class User00DTO {
 	private Long id;
 	private String name;
 	private String cpf;
+	private ColaboradorDTO colabDto;
 	private String user00Name;
 	private String password;
 	private Boolean userAtivo;
@@ -22,26 +23,31 @@ public class User00DTO {
 	
 	private Role role;
 	
-	public User00DTO(Long id, String name, String cpf, String user00Name, String password, Boolean userAtivo,Boolean userBloqueado, Role role) {
+	public User00DTO(Long id, String name, String cpf, ColaboradorDTO colabDto, String user00Name, String password,
+			Boolean userAtivo, Boolean userBloqueado, Role role) {
 		this.id = id;
 		this.name = name;
 		this.cpf = cpf;
+		this.colabDto = colabDto;
 		this.user00Name = user00Name;
 		this.password = password;
 		this.userAtivo = userAtivo;
 		this.userBloqueado = userBloqueado;
 		this.role = role;
 	}
+	
+	
 
 	public User00DTO(User00 user) {
-		id = user.getId();
-		name = user.getName();
-		cpf = user.getCpf();
-		user00Name = user.getUsername();
-		password = "********";
-		userAtivo = user.getUserAtivo();
-		userBloqueado = user.getUserBloqueado();
-		role = user.getRole();
+		this.id = user.getId();
+		this.name = user.getName();
+		this.cpf = user.getCpf();
+		this.colabDto = new ColaboradorDTO(user.getColab());
+		this.user00Name = user.getUsername();
+		this.password = "********";
+		this.userAtivo = user.getUserAtivo();
+		this.userBloqueado = user.getUserBloqueado();
+		this.role = user.getRole();
 	}
 
 	@Override
@@ -49,5 +55,8 @@ public class User00DTO {
 		return "User00DTO [id=" + id + ", name=" + name + ", cpf=" + cpf + ", user00Name=" + user00Name + ", password="
 				+ password + ", userAtivo=" + userAtivo + ", userBloqueado=" + userBloqueado + ", role=" + role + "]";
 	}
+
+	
+
 	
 }

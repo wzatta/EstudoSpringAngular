@@ -1,9 +1,6 @@
 package com.cilazatta.EstudoSpringAngular.dto;
 
 import com.cilazatta.EstudoSpringAngular.entities.Filial;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonProperty.Access;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -21,11 +18,9 @@ public class FilialDTO {
 	private String uf;
 	//@JsonProperty(access = Access.WRITE_ONLY)
 	private HoldingDTO holdingDto;
-	//@JsonProperty(access = Access.WRITE_ONLY)
-	private User00DTO user00Dto;
 	
 	public FilialDTO(Long idFilial, String rSocial, String dSocial, String cnpj, String municipio, String uf,
-			HoldingDTO holdingDto, User00DTO user00Dto) {
+			HoldingDTO holdingDto) {
 		super();
 		this.idFilial = idFilial;
 		this.rSocial = rSocial;
@@ -34,7 +29,7 @@ public class FilialDTO {
 		this.municipio = municipio;
 		this.uf = uf;
 		this.holdingDto = holdingDto;
-		this.user00Dto = user00Dto;
+		
 	}
 		
 		public FilialDTO(Filial filial) {
@@ -45,16 +40,17 @@ public class FilialDTO {
 			this.municipio = filial.getMunicipio();
 			this.uf = filial.getUf();
 			this.holdingDto = new HoldingDTO(filial.getHolding());
-			this.user00Dto = new User00DTO(filial.getUser00());
+			
 			
 		}
 
 		@Override
 		public String toString() {
 			return "FilialDTO [idFilial=" + idFilial + ", rSocial=" + rSocial + ", dSocial=" + dSocial + ", cnpj="
-					+ cnpj + ", municipio=" + municipio + ", uf=" + uf + ", holdingDto=" + holdingDto + ", user00Dto="
-					+ user00Dto + "]";
+					+ cnpj + ", municipio=" + municipio + ", uf=" + uf + ", holdingDto=" + holdingDto + "]";
 		}
+
+		
 		
 		
 		

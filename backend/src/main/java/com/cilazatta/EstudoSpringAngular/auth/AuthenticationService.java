@@ -35,6 +35,7 @@ public class AuthenticationService {
 		var user = User00.builder()
 				.name(request.getName())
 				.cpf(request.getCpf())
+				.colab(request.getColab())
 				.user00Name(request.getUserName())
 				.password(request.getPassword())
 				.userAtivo(request.getUserAtivo())
