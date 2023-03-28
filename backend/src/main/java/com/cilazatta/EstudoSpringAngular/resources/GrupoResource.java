@@ -41,7 +41,7 @@ public class GrupoResource {
 	}
 
 	@GetMapping("/{id}")
-	public ResponseEntity<GrupoDTO> findById(@PathVariable @NotNull @Positive Long id) {
+	public ResponseEntity<GrupoDTO> findById(@PathVariable @NotNull(message="{field.not.null}") @Positive(message="{field.not.negative}") Long id) {
 		GrupoDTO grDto = grServ.findById(id);
 		return ResponseEntity.ok().body(grDto);
 	}

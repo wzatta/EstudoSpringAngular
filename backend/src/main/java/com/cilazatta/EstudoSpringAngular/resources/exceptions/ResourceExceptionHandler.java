@@ -12,9 +12,10 @@ import com.cilazatta.EstudoSpringAngular.services.exception.ObjectNotFoundExcept
 import com.cilazatta.EstudoSpringAngular.services.exception.UserNameNotFoundException;
 
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.validation.ConstraintViolationException;
 
 @ControllerAdvice
-public class ResourceExceptionHandler {
+public class ResourceExceptionHandler  {
 
 	@ExceptionHandler(ObjectNotFoundException.class)
 	public ResponseEntity<StandardError> objectNotFound(ObjectNotFoundException e, HttpServletRequest request){
@@ -68,6 +69,7 @@ public class ResourceExceptionHandler {
 				);
 		return ResponseEntity.status(status).body(err);
 	}
+	
 	@ExceptionHandler(GenericsExceptionError.class)
 	public ResponseEntity<StandardError> genericsException(GenericsExceptionError e, HttpServletRequest request){
 		HttpStatus status = HttpStatus.BAD_REQUEST;
@@ -80,6 +82,21 @@ public class ResourceExceptionHandler {
 				);
 		return ResponseEntity.status(status).body(err);
 	}
+
+	@ExceptionHandler(ConstraintViolationException.class)
+	public ResponseEntity<StandardError> genericsException(ConstraintViolationException e, HttpServletRequest request){
+		HttpStatus status = HttpStatus.BAD_REQUEST;
+		StandardError err = new StandardError(
+				System.currentTimeMillis(),
+				status.value(),
+				"Error",
+				e.getMessage(),
+				request.getRequestURI()
+				);
+		return ResponseEntity.status(status).body(err);
+	}
+	
+	
 	
 	
 	
