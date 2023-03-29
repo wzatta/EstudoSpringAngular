@@ -1,0 +1,38 @@
+<div *ngIf="grupodb$ |async as grupoDb">
+
+  <table mat-table [dataSource]="grupoDb" class="mat-elevation-z8">
+
+    <ng-container matColumnDef="codigoGr">
+      <mat-header-cell *matHeaderCellDef> Grupo </mat-header-cell>
+      <mat-cell *matCellDef="let grupo"> {{ grupo.codigoGr }} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="descGr">
+      <mat-header-cell *matHeaderCellDef> Titulo Grupo </mat-header-cell>
+      <mat-cell *matCellDef="let grupo"> {{ grupo.descGr }} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+      <mat-header-cell *matHeaderCellDef> AÇÕES </mat-header-cell>
+      <mat-cell *matCellDef="let grupo">
+
+        <button mat-mini-fab color="primary" aria-label="Editar" (click)="onEdit(grupo)">
+          <mat-icon>edit</mat-icon>
+        </button>
+
+        <button mat-mini-fab color="warn" aria-label="Deletar" (click)="onDelete(grupo)">
+          <mat-icon>delete</mat-icon>
+        </button>
+
+      </mat-cell>
+
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+
+
+  </table>
+
+
+</div>

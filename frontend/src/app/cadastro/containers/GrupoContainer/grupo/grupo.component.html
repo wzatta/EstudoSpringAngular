@@ -1,0 +1,37 @@
+<mat-card  class="mat-card">
+<mat-card-header>
+  <mat-toolbar class="toobarSecondary">
+    <span>Grupo</span>
+    <span class="spacer"></span>
+
+    <button class="btnSec" mat-mini-fab color="primary" aria-label="Retorno page Home" [routerLink]="['/home']">
+      <mat-icon>home</mat-icon>
+    </button>
+    <button class="btnSec" mat-mini-fab color="primary" aria-label="Listar Grupo" (click)="onListGrupo()">
+      <mat-icon>search</mat-icon>
+    </button>
+    <button class="btnSec"  mat-mini-fab color="primary" aria-label="Add Grupo" (click)="onAddGrupo()">
+      <mat-icon>add</mat-icon>
+    </button>
+
+  </mat-toolbar>
+</mat-card-header>
+<mat-card-content>
+  <div class="column-flex mat-elevation-z8" >
+
+    <ng-container  *ngIf="listar">
+      <app-grupo-list></app-grupo-list>
+    </ng-container>
+
+    <ng-template #loading>
+      <div class="loading-spinner">
+        <mat-spinner></mat-spinner>
+      </div>
+    </ng-template>
+
+  </div>
+
+</mat-card-content>
+
+
+</mat-card>

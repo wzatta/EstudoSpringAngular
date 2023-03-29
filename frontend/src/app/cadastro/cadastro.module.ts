@@ -20,6 +20,9 @@ import { UsuariosComponent } from './containers/userContainer/usuarios/usuarios.
 import { ColaboradorComponent } from './containers/colaboradorContainer/colaborador/colaborador.component';
 import { ColaboradorListComponent } from './containers/colaboradorContainer/colaborador-list/colaborador-list.component';
 import { ColaboradorFormComponent } from './containers/colaboradorContainer/colaborador-form/colaborador-form.component';
+import { GrupoComponent } from './containers/GrupoContainer/grupo/grupo.component';
+import { GrupoFormComponent } from './containers/GrupoContainer/grupo-form/grupo-form.component';
+import { GrupoListComponent } from './containers/GrupoContainer/grupo-list/grupo-list.component';
 
 
 
@@ -39,7 +42,10 @@ import { ColaboradorFormComponent } from './containers/colaboradorContainer/cola
     OsfilialListComponent,
     ColaboradorComponent,
     ColaboradorListComponent,
-    ColaboradorFormComponent
+    ColaboradorFormComponent,
+    GrupoComponent,
+    GrupoFormComponent,
+    GrupoListComponent
   ],
   imports: [
     CommonModule,

@@ -13,6 +13,8 @@ import { OsfilialResolver } from './guards/osfilial.resolver';
 import { OsfilialFormComponent } from './containers/osContainer/osfilial-form/osfilial-form.component';
 import { ColaboradorFormComponent } from './containers/colaboradorContainer/colaborador-form/colaborador-form.component';
 import { ColaboradorResolver } from './guards/colaborador.resolver';
+import { GrupoFormComponent } from './containers/GrupoContainer/grupo-form/grupo-form.component';
+import { GrupoResolver } from './guards/grupo.resolver';
 const routes: Routes = [
 
   {path:'telaUsuario/new', component: UsuariosFormComponent, resolve: {usuarioresolve: UsuariosResolverResolver}},
@@ -29,6 +31,9 @@ const routes: Routes = [
 
   { path: 'telaColab/newColab', component: ColaboradorFormComponent, resolve: {colabresolver: ColaboradorResolver}},
   { path: 'telaColab/editColab/:id', component: ColaboradorFormComponent, resolve: {colabresolver: ColaboradorResolver}},
+
+  { path: 'telaGrupo/newGrupo', component: GrupoFormComponent, resolve: {gruporesolver: GrupoResolver}},
+  { path: 'telaGrupo/editGrupo/:id', component: GrupoFormComponent, resolve: {gruporesolver: GrupoResolver}},
 
 ];
 

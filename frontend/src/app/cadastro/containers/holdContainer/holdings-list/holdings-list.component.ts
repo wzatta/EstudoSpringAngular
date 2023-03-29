@@ -13,7 +13,7 @@ export class HoldingsListComponent implements OnInit {
  @Output() editHold = new EventEmitter(false);
  @Output() delHold = new EventEmitter(false);
 
- readonly displayedColumns = ['idHold','rsocial', 'dsocial', 'cnpj', 'municipio', 'uf', 'actions' ];
+ readonly displayedColumns = ['rsocial', 'dsocial', 'cnpj', 'municipio', 'uf', 'actions' ];
 
 
   constructor(){}

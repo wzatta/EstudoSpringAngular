@@ -11,6 +11,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './pages/login/login.component';
 import { OsfilialComponent } from './cadastro/containers/osContainer/osfilial/osfilial.component';
 import { ColaboradorComponent } from './cadastro/containers/colaboradorContainer/colaborador/colaborador.component';
+import { GrupoComponent } from './cadastro/containers/GrupoContainer/grupo/grupo.component';
 
 const routes: Routes = [
   /*
@@ -27,6 +28,8 @@ const routes: Routes = [
   { path: 'filialTela', pathMatch: 'full', redirectTo: 'telaFilial'},
   { path: 'osfilialTela', pathMatch: 'full', redirectTo: 'telaOsFilial'},
   { path: 'colabTela', pathMatch: 'full', redirectTo: 'telaColab'},
+  { path: 'grupoTela', pathMatch: 'full', redirectTo: 'telaGrupo'},
+
   { path:'', component: HomeComponent},
 
 
@@ -61,6 +64,12 @@ const routes: Routes = [
         path: 'telaColab',
         loadChildren: () => import('./cadastro/cadastro.module').then(m => m.CadastroModule),
         component: ColaboradorComponent, canActivate: [UsuarioAutenticadoGuard]
+      },
+
+      {
+        path: 'telaGrupo',
+        loadChildren: () => import('./cadastro/cadastro.module').then(m => m.CadastroModule),
+        component: GrupoComponent, canActivate: [UsuarioAutenticadoGuard]
       },
 
 
