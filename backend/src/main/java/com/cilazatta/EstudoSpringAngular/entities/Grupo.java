@@ -29,7 +29,7 @@ public class Grupo implements Serializable{
 	@EqualsAndHashCode.Include
 	private Long idGr;
 	
-	@Column(name = "codigogr", nullable = false)
+	@Column(name = "codigogr", nullable = false, unique = true)
 	private Integer codigoGr;
 	
 	@Column(name= "descgr", length = 50, nullable = false)

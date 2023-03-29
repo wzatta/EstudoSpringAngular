@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.cilazatta.EstudoSpringAngular.dto.GrupoDTO;
 import com.cilazatta.EstudoSpringAngular.entities.Grupo;
 import com.cilazatta.EstudoSpringAngular.repositories.GrupoRepository;
+import com.cilazatta.EstudoSpringAngular.services.exception.FieldDataIntegrityViolationException;
 import com.cilazatta.EstudoSpringAngular.services.exception.ObjectNotFoundException;
 
 @Service
@@ -19,6 +20,10 @@ public class GrupoService {
 
 	public GrupoDTO insertGr(GrupoDTO grDto) {
 		Grupo grupo = new Grupo(grDto);
+
+		if(grRepo.findByCodigoGr(grupo.getCodigoGr()).isPresent()) {
+			throw new FieldDataIntegrityViolationException("Grupo Cadastrado");
+		}
 		grupo = grRepo.save(grupo);
 		return new GrupoDTO(grupo);
 	}

@@ -53,7 +53,7 @@ public class Colaborador implements Serializable {
 	private LocalDate dateDem;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "filialid", nullable = false, foreignKey = @ForeignKey(name = "fk_idFilial"))
+	@JoinColumn(name = "filial_id", nullable = false, foreignKey = @ForeignKey(name = "fk_Colab_idFilial"))
 	private Filial filial;
 
 	public Colaborador(Long id, String matricula, String cpf, String name, String funcao, LocalDate dateAdm,
