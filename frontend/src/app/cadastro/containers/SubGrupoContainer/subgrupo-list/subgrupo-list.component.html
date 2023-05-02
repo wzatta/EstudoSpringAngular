@@ -1,0 +1,49 @@
+<div *ngIf="sbGrupodb$ |async as sbGrupoDb">
+
+  <table mat-table [dataSource]="sbGrupoDb" class="mat-elevation-z8">
+
+    <ng-container matColumnDef="grupoDtoA">
+      <mat-header-cell *matHeaderCellDef> Grupo </mat-header-cell>
+      <mat-cell *matCellDef="let sbgrupo"> {{ sbgrupo.grupoDto['codigoGr'] }} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="grupoDtoB">
+      <mat-header-cell *matHeaderCellDef> Titulo </mat-header-cell>
+      <mat-cell *matCellDef="let sbgrupo"> {{ sbgrupo.grupoDto['descGr'] }} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="codigoSbGr">
+      <mat-header-cell *matHeaderCellDef> SubGrupo </mat-header-cell>
+      <mat-cell *matCellDef="let sbgrupo"> {{ sbgrupo.codigoSubGr }} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="descSbGr">
+      <mat-header-cell *matHeaderCellDef> Titulo  </mat-header-cell>
+      <mat-cell *matCellDef="let sbgrupo"> {{ sbgrupo.descSubGr }} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+      <mat-header-cell *matHeaderCellDef> AÇÕES </mat-header-cell>
+      <mat-cell *matCellDef="let sbgrupo">
+
+        <button mat-mini-fab color="primary" aria-label="Editar" (click)="onEdit(sbgrupo)">
+          <mat-icon>edit</mat-icon>
+        </button>
+
+        <button mat-mini-fab color="warn" aria-label="Deletar" (click)="onDelete(sbgrupo)">
+          <mat-icon>delete</mat-icon>
+        </button>
+
+      </mat-cell>
+
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+
+
+  </table>
+
+
+</div>
+

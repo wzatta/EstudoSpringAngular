@@ -1,26 +1,24 @@
 <div>
-<button mat-button [matMenuTriggerFor]="cadastros">Cadastro</button>
+<button mat-button [matMenuTriggerFor]="cadastros">cadastro</button>
 <button mat-button [matMenuTriggerFor]="util">Utilitarios</button>
 
 
 <mat-menu #cadastros="matMenu">
 
-<button mat-menu-item [routerLink] ="['holdTela']">Holding</button>
-<button mat-menu-item [routerLink] ="['filialTela']">Filial</button>
+<button *ngIf="roleString=='ADMIN'" mat-menu-item [routerLink] ="['holdTela']">Holding</button>
+<button *ngIf="roleString=='ADMIN'" mat-menu-item [routerLink] ="['filialTela']">Filial</button>
 <button mat-menu-item [routerLink] ="['colabTela']">Colaborador</button>
 <button mat-menu-item [routerLink] ="['userTela']">User</button>
-<button mat-menu-item [routerLink] ="['osfilialTela']">Contrato (OS)</button>
+<button *ngIf="roleString=='ADMIN'" mat-menu-item [routerLink] ="['osfilialTela']">Contrato (OS)</button>
 <button mat-menu-item [routerLink] ="['grupoTela']">Grupo</button>
+<button mat-menu-item [routerLink] ="['sbGrupoTela']">Sub Grupo</button>
 </mat-menu>
 
-<mat-menu #util="matMenu">
+<mat-menu  #util="matMenu">
   <button mat-menu-item >Importar Colaborador</button>
 
 
 </mat-menu>
-
-
-
 
 <!--
 <mat-menu #programer="matMenu" >
@@ -30,3 +28,4 @@
 -->
 
 </div>
+

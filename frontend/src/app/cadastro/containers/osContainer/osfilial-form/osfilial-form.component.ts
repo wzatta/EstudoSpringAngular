@@ -11,6 +11,7 @@ import { OsfilialService } from '../../../services/osfilial.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { OptionBoolean } from 'src/app/cadastro/model/option-boolean';
 import { Observable } from 'rxjs';
+import { Usuario } from 'src/app/cadastro/model/classes/usuario';
 
 @Component({
   selector: 'app-osfilial-form',
@@ -19,6 +20,7 @@ import { Observable } from 'rxjs';
 })
 export class OsfilialFormComponent implements OnInit {
 
+  private userLogado:UsuarioInterface = new Usuario();
   //private userlogado1: UsuarioInterface = {id:'', cpf:'', name:'', password:'',user00Name:'',userAtivo:'',userBloqueado:'',role:''};
   private userlogado1: UsuarioInterface | any = {};
   private filial: FilialInterface | any = {};
@@ -58,13 +60,16 @@ export class OsfilialFormComponent implements OnInit {
 
   ngOnInit(): void {
 
-    const user$ = this.logService.obterUsuario?.subscribe(
-      user => {
-        this.formOsFilial.patchValue({
-          user00Dto: user
-        });
-      }
+    this.logService.obterUsuario.subscribe(
+      res=>{this.userLogado = res}
     );
+
+
+        this.formOsFilial.patchValue({
+          user00Dto: this.userLogado
+        });
+
+
 
    const osFilialConst: OsFilialInterface = this.route.snapshot.data['osfilialresolver'];
 

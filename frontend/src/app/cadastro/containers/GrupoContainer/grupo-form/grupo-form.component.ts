@@ -17,7 +17,6 @@ export class GrupoFormComponent implements OnInit{
 
   telaDe : string = "Inclusão";
 
-
   formGrupo = this.formBuilder.group({
 
     idGr:[''],
@@ -50,7 +49,7 @@ export class GrupoFormComponent implements OnInit{
       codigoGr:grupoConst.codigoGr,
       descGr:grupoConst.descGr
 
-    })
+    });
 
     if(grupoConst.idGr){
       this.telaDe = "Edição";
@@ -94,13 +93,13 @@ export class GrupoFormComponent implements OnInit{
       const requiredLength: number = field.errors ? field.errors['minLength'] ['requiredLength']:10;
       return  'Tamanho minimo ${requiredLength} caracteres.';
     }
-    if(field?.hasError('maxlength')){
+    if(field?.hasError('maxLength')){
       const requiredLength: number = field.errors ? field.errors['maxlength']['requiredLength']:49;
       return  'Tamanho Maximo ' + requiredLength +' caracteres.';
     }
 
     if(field?.hasError('min') || field?.hasError('max')){
-      return 'Codigo do Grupo deve ser de 1 a 99!'
+      return 'Codigo do Grupo deve ser de 1 a 99 !';
     }
 
 

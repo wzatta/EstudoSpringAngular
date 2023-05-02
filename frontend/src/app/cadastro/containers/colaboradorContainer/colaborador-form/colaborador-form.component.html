@@ -55,7 +55,7 @@
         <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>
 
-      <mat-form-field class="full-width" appearance="fill">
+      <mat-form-field *ngIf="roleString==='ADMIN'" class="full-width" appearance="fill">
         <mat-label>Filial</mat-label>
         <mat-select [compareWith]="compareObj" placeholder="Escolha a Filial!" formControlName="filialDto">
         <mat-option *ngFor="let filial of filiais | async" [value]="filial">
@@ -64,8 +64,6 @@
         </mat-select>
 
       </mat-form-field>
-
-
 
     </form>
 

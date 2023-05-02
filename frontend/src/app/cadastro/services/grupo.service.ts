@@ -19,7 +19,6 @@ export class GrupoService {
   }
 
   findById(id:string){
-    console.log(id);
     return this.httpCliente.get<GrupoInterface>(this.APIGRUPO+"/"+id);
   }
 

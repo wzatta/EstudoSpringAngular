@@ -4,7 +4,6 @@ import { UserloginService } from '../../servicesapp/userlogin.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { NonNullableFormBuilder, Validators } from '@angular/forms';
 import { tap, Observable, map, catchError } from 'rxjs';
-import { HttpResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-login',
@@ -39,8 +38,8 @@ export class LoginComponent implements OnInit {
     var usuario = this.formlogin.getRawValue() as LoginInterface;
     this.userLogSev.logar(usuario).subscribe(
       (response) => {
-        if(!response){
-          console.log('waldyr');
+        if(response){
+          window.location.reload();
         }
       }
     );

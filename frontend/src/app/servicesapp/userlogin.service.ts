@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { Observable, tap } from 'rxjs';
+import { Observable, pipe, tap } from 'rxjs';
 import { LoginInterface } from '../cadastro/model/LoginInterface';
 import { UsuarioInterface } from '../cadastro/model/UsuarioInterface';
 import  jwt_decode from 'jwt-decode';
 import { UsuariosService } from '../cadastro/services/usuarios.service';
+import { Usuario } from '../cadastro/model/classes/usuario';
 
 @Injectable({
   providedIn: 'root'
@@ -13,8 +14,6 @@ import { UsuariosService } from '../cadastro/services/usuarios.service';
 export class UserloginService {
 
   private readonly APILOGIN = 'api/v1/auth/authenticate';
-
-  private userlogado: UsuarioInterface | null = null;
 
 
   private storage: Storage;
@@ -44,7 +43,8 @@ export class UserloginService {
   deslogar(){
     this.storage.clear();
     //localStorage.clear();
-    this.router.navigate(['login']);
+    window.location.reload();
+    this.router.navigate(['login'])
   }
 
 
@@ -53,7 +53,7 @@ export class UserloginService {
     return this.storage.getItem('token') ? this.storage.getItem('token') : null;
   }
 
-  get obterUsuario(): Observable<UsuarioInterface> | null{
+  get obterUsuario(): Observable<UsuarioInterface>  {
     let tokenprovisorio: string | null  = this.obterTokenUsuario;
     if(tokenprovisorio != null){
       type dados = {
@@ -64,16 +64,16 @@ export class UserloginService {
     var teste:dados = jwt_decode(tokenprovisorio);
     return this.userservice.loadByUsername(teste.sub);
     }
-    return null;
+    return new Observable<Usuario>;
   }
 
 
   get logado(): boolean {
       return this.storage.getItem('token') ? true : false;
     //return localStorage.getItem('token') ? true : false;
-
-
   }
+
+
 
 
 }

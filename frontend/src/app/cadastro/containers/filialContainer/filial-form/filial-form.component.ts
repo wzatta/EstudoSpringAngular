@@ -21,7 +21,7 @@ export class FilialFormComponent implements OnInit {
   //private userlogado1: UsuarioInterface = {id:'', cpf:'', name:'', password:'',user00Name:'',userAtivo:'',userBloqueado:'',role:''};
 
   private hold1: HoldInterface | any = {};
-
+  roleString: String = "USER";
 
   holds: Observable<HoldInterface[]> | any = [];
 
@@ -52,13 +52,13 @@ export class FilialFormComponent implements OnInit {
 
   ngOnInit(): void {
 
-    const user$ = this.logService.obterUsuario?.subscribe(
-      user => {
+    const user = this.logService.obterUsuario;
+
         this.formFilial.patchValue({
           //user00Dto: user
         });
-      }
-    );
+
+
 
     const filialConst: FilialInterface = this.route.snapshot.data['filialresolver'];
 
@@ -75,6 +75,10 @@ export class FilialFormComponent implements OnInit {
 
         //this.holdServ.list().subscribe(dados => this.holds = dados);
         this.holds = this.holdServ.list(); //Popular o Select do formulario
+
+
+
+
 
 
   } //ngOnInit

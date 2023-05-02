@@ -15,6 +15,8 @@ import { ColaboradorFormComponent } from './containers/colaboradorContainer/cola
 import { ColaboradorResolver } from './guards/colaborador.resolver';
 import { GrupoFormComponent } from './containers/GrupoContainer/grupo-form/grupo-form.component';
 import { GrupoResolver } from './guards/grupo.resolver';
+import { SbgrupoResolver } from './guards/sbgrupo.resolver';
+import { SubgrupoFormComponent } from './containers/SubGrupoContainer/subgrupo-form/subgrupo-form.component';
 const routes: Routes = [
 
   {path:'telaUsuario/new', component: UsuariosFormComponent, resolve: {usuarioresolve: UsuariosResolverResolver}},
@@ -34,6 +36,9 @@ const routes: Routes = [
 
   { path: 'telaGrupo/newGrupo', component: GrupoFormComponent, resolve: {gruporesolver: GrupoResolver}},
   { path: 'telaGrupo/editGrupo/:id', component: GrupoFormComponent, resolve: {gruporesolver: GrupoResolver}},
+
+  { path: 'telaSubGrupo/newSbGrupo', component: SubgrupoFormComponent , resolve: {sbgruporesolver: SbgrupoResolver}},
+  { path: 'telaSubGrupo/editSbGrupo/:id', component: SubgrupoFormComponent  , resolve: {sbgruporesolver: SbgrupoResolver}},
 
 ];
 

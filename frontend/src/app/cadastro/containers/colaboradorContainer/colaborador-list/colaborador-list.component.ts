@@ -7,6 +7,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { ErrorDialogComponent } from 'src/app/shared/components/error-dialog/error-dialog.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ConfirmationDialogComponent } from 'src/app/shared/components/confirmation-dialog/confirmation-dialog.component';
+import { UserloginService } from 'src/app/servicesapp/userlogin.service';
+import { Colaborador } from 'src/app/cadastro/model/classes/Colaborador';
 
 @Component({
   selector: 'app-colaborador-list',
@@ -19,12 +21,14 @@ export class ColaboradorListComponent implements OnInit{
  // @Output() editColab = new EventEmitter(false);
  // @Output() delColab = new EventEmitter(false);
 
-
-  colabDb$ : Observable<ColaboradorInterface[]> | null = null;
+ roleString: String = "USER";
+  //colabDb$ : Observable<ColaboradorInterface[]> | null = null;
+  colabDb$ : Observable<ColaboradorInterface[]> = new Observable<Colaborador[]>;
   readonly displayedColumns = ['matricula','name','funcao','dateAdm','dateDem','actions'];
 
   constructor(
     private colabServ: ColaboradorService,
+    private logUser: UserloginService,
     private router: Router,
     private route: ActivatedRoute,
     private dialog: MatDialog,
@@ -37,7 +41,18 @@ export class ColaboradorListComponent implements OnInit{
 
 
   refresh(){
-    this.colabDb$ = this.colabServ.listAll();
+    //this.colabDb$ = this.colabServ.listAll();
+    this.logUser.obterUsuario.subscribe(
+      res=>{
+        this.roleString = res.role;
+        if(this.roleString==="ADMIN"){
+          this.colabDb$ = this.colabServ.findAllByHolding(res.colabDto.filialDto.holdingDto);
+        }
+        if(this.roleString==="USER"){
+         this.colabDb$ = this.colabServ.findAllByFilial(res.colabDto.filialDto);
+        }
+      }
+    )
   }
 
   onEdit(colab: ColaboradorInterface){

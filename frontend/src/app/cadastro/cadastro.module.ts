@@ -23,6 +23,9 @@ import { ColaboradorFormComponent } from './containers/colaboradorContainer/cola
 import { GrupoComponent } from './containers/GrupoContainer/grupo/grupo.component';
 import { GrupoFormComponent } from './containers/GrupoContainer/grupo-form/grupo-form.component';
 import { GrupoListComponent } from './containers/GrupoContainer/grupo-list/grupo-list.component';
+import { SubgrupoComponent } from './containers/SubGrupoContainer/subgrupo/subgrupo.component';
+import { SubgrupoFormComponent } from './containers/SubGrupoContainer/subgrupo-form/subgrupo-form.component';
+import { SubgrupoListComponent } from './containers/SubGrupoContainer/subgrupo-list/subgrupo-list.component';
 
 
 
@@ -45,7 +48,10 @@ import { GrupoListComponent } from './containers/GrupoContainer/grupo-list/grupo
     ColaboradorFormComponent,
     GrupoComponent,
     GrupoFormComponent,
-    GrupoListComponent
+    GrupoListComponent,
+    SubgrupoComponent,
+    SubgrupoFormComponent,
+    SubgrupoListComponent,
   ],
   imports: [
     CommonModule,
