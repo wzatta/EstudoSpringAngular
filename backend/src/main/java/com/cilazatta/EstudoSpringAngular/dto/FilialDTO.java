@@ -1,6 +1,7 @@
 package com.cilazatta.EstudoSpringAngular.dto;
 
 import com.cilazatta.EstudoSpringAngular.entities.Filial;
+import com.cilazatta.EstudoSpringAngular.services.util.Convertible;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -9,7 +10,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-public class FilialDTO {
+public class FilialDTO implements Convertible<Filial> {
 	private Long idFilial;
 	private String rSocial;
 	private String dSocial;
@@ -48,6 +49,11 @@ public class FilialDTO {
 		public String toString() {
 			return "FilialDTO [idFilial=" + idFilial + ", rSocial=" + rSocial + ", dSocial=" + dSocial + ", cnpj="
 					+ cnpj + ", municipio=" + municipio + ", uf=" + uf + ", holdingDto=" + holdingDto + "]";
+		}
+
+		@Override
+		public Filial convert() {
+			return new Filial(this);
 		}
 
 		

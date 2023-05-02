@@ -1,6 +1,8 @@
 package com.cilazatta.EstudoSpringAngular.dto;
 
 import com.cilazatta.EstudoSpringAngular.entities.Holding;
+import com.cilazatta.EstudoSpringAngular.services.util.Convertible;
+
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -8,7 +10,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-public class HoldingDTO {
+public class HoldingDTO implements Convertible<Holding>{
 	
 	private Long idHold;
 	private String rSocial;
@@ -42,6 +44,12 @@ public class HoldingDTO {
 	public String toString() {
 		return "HoldingDTO [idHold=" + idHold + ", rSocial=" + rSocial + ", dSocial=" + dSocial + ", cnpj=" + cnpj
 				+ ", municipio=" + municipio + ", uf=" + uf + "]";
+	}
+
+	@Override
+	public Holding convert() {
+		
+		return new Holding(this);
 	}
 
 	

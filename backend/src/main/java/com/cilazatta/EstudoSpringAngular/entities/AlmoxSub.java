@@ -3,6 +3,9 @@ package com.cilazatta.EstudoSpringAngular.entities;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
+import com.cilazatta.EstudoSpringAngular.dto.AlmoxSubDTO;
+import com.cilazatta.EstudoSpringAngular.services.util.Convertible;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.ForeignKey;
@@ -21,7 +24,7 @@ import lombok.Setter;
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @NoArgsConstructor
 @Entity
-public class SubAlmox implements Serializable{
+public class AlmoxSub implements Convertible<AlmoxSubDTO>, Serializable{
 
 	private static final long serialVersionUID = 1L;
 
@@ -43,6 +46,35 @@ public class SubAlmox implements Serializable{
 	private LocalDateTime dataCriacao;
 	
 	@ManyToOne
-	@JoinColumn(name="id_Almox", nullable = false, foreignKey = @ForeignKey(name="fk_idAlmox"))
-	private AlmoxPrincipal almoxCentral;
+	@JoinColumn(name="fk_sub_almox", nullable = false, foreignKey = @ForeignKey(name="pk_idAlmox"))
+	private Almox almox;
+
+	public AlmoxSub(Long idSub, String tituloSub, Boolean isAtiva, Boolean isOnLine, LocalDateTime dataCriacao,
+			Almox almox) {
+		this.idSub = idSub;
+		this.tituloSub = tituloSub;
+		this.isAtiva = isAtiva;
+		this.isOnLine = isOnLine;
+		this.dataCriacao = dataCriacao;
+		this.almox = almox;
+	}
+
+	public AlmoxSub(AlmoxSubDTO dto) {
+		
+		this.idSub = dto.getIdSubdto();
+		this.tituloSub = dto.getTituloSubdto();
+		this.isAtiva = dto.getIsAtivadto();
+		this.isOnLine = dto.getIsOnLine();
+		this.dataCriacao = dto.getDataCriacaodto();
+		this.almox = new Almox(dto.getAlmoxdto());
+		
+	}
+
+	@Override
+	public AlmoxSubDTO convert() {
+		return new AlmoxSubDTO(this);
+	}
+	
+	
+	
 }

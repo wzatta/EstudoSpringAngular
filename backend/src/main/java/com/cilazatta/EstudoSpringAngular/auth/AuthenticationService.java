@@ -41,6 +41,7 @@ public class AuthenticationService {
 				.userAtivo(request.getUserAtivo())
 				.userBloqueado(request.getUserBloqueado())
 				.role(request.getRole())
+				.colab(request.getColab())
 				.build();
 		service.save(user);
 		var jwtToken = jwtService.generateToken(user);

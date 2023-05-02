@@ -3,6 +3,9 @@ package com.cilazatta.EstudoSpringAngular.entities;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
+import com.cilazatta.EstudoSpringAngular.dto.AlmoxDTO;
+import com.cilazatta.EstudoSpringAngular.services.util.Convertible;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.ForeignKey;
@@ -21,7 +24,7 @@ import lombok.Setter;
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @NoArgsConstructor
 @Entity
-public class AlmoxPrincipal implements Serializable {
+public class Almox implements Serializable, Convertible<AlmoxDTO> {
 
 	private static final long serialVersionUID = 1L;
 	
@@ -43,7 +46,7 @@ public class AlmoxPrincipal implements Serializable {
 	@JoinColumn(name = "id_filial", nullable = false, foreignKey = @ForeignKey(name="fk_idfilial" ))
 	private Filial filial;
 
-	public AlmoxPrincipal(Long idAlmox, String titulo, Boolean isAtivo, LocalDateTime dataCriacao, Filial filial) {
+	public Almox(Long idAlmox, String titulo, Boolean isAtivo, LocalDateTime dataCriacao, Filial filial) {
 		this.idAlmox = idAlmox;
 		this.titulo = titulo;
 		this.isAtivo = isAtivo;
@@ -51,6 +54,18 @@ public class AlmoxPrincipal implements Serializable {
 		this.filial = filial;
 	}
 
+	public Almox(AlmoxDTO dto) {
+		this.idAlmox = dto.getIdAlmoxdto();
+		this.titulo = dto.getTitulodto();
+		this.isAtivo = dto.getIsAtivodto();
+		this.dataCriacao = dto.getDataCriacaodto();
+		this.filial = new Filial(dto.getFilialdto());
+	}
+
+	@Override
+	public AlmoxDTO convert() {
+		return new AlmoxDTO(this);
+	}
 	
 	
 }

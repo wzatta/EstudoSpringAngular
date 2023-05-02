@@ -1,5 +1,6 @@
 package com.cilazatta.EstudoSpringAngular.services;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -13,33 +14,27 @@ import org.springframework.stereotype.Service;
 import com.cilazatta.EstudoSpringAngular.dto.FilialDTO;
 import com.cilazatta.EstudoSpringAngular.entities.Filial;
 import com.cilazatta.EstudoSpringAngular.repositories.FilialRepository;
-import com.cilazatta.EstudoSpringAngular.services.exception.FieldNotNullException;
-import com.cilazatta.EstudoSpringAngular.services.exception.GenericsExceptionError;
-import com.cilazatta.EstudoSpringAngular.services.exception.ObjectNotFoundException;
 import com.cilazatta.EstudoSpringAngular.services.util.GenericsAbstractService;
 
 @Service
-public class FilialService extends GenericsAbstractService<Filial, FilialDTO, Long>{
+public class FilialServ extends GenericsAbstractService<Filial, FilialDTO, Long> {
 
 	@Autowired
 	private FilialRepository filialRepo;
 
-	public FilialDTO insertFilial(FilialDTO filialDto) {
-		try {
-			Filial filial = new Filial(filialDto);
-			filial = filialRepo.save(filial);
-			return new FilialDTO(filial);
-		} catch (NullPointerException n) {
-			throw new FieldNotNullException("Usuário não Identificado.");
-		} catch (Exception e) {
-			throw new GenericsExceptionError(e.toString());
-		}
-
+	@Override
+	public List<FilialDTO> findAll() {
+		return super.findAll()
+				.stream()
+				.sorted(Comparator.comparing(FilialDTO::getRSocial))
+				.collect(Collectors.toList());
 	}
 
-	public FilialDTO update(Long id, FilialDTO filialDto) {
+/*=========================================================
+	@Override
+	public FilialDTO update(Long id, FilialDTO dto) {
 		Filial filial = filialRepo.getReferenceById(id);
-		updateData(filial, filialDto);
+		updateData(filial, dto);
 		filial = filialRepo.save(filial);
 		return new FilialDTO(filial);
 	}
@@ -50,24 +45,8 @@ public class FilialService extends GenericsAbstractService<Filial, FilialDTO, Lo
 		filial.setMunicipio(filialDto.getMunicipio());
 		filial.setUf(filialDto.getUf());
 	}
-
-	public List<FilialDTO> findAll() {
-		return filialRepo.findAll().stream().map(w -> new FilialDTO(w)).collect(Collectors.toList());
-	}
-
-	public FilialDTO findById(Long id) {
-		Filial filial = filialRepo.findById(id)
-				.orElseThrow(() -> new ObjectNotFoundException("Registro não Encontrado"));
-		return new FilialDTO(filial);
-	}
-
-	public Boolean deleteById(Long id) {
-		return filialRepo.findById(id).map(recordFound -> {
-			filialRepo.deleteById(id);
-			return true;
-		}).orElse(false);
-	}
-
+*/
+//===================================================================
 	public Page<FilialDTO> searchByRsocialDSocial(String searchTerm, int page, int size) {
 		PageRequest pageRequest = PageRequest.of(page, size, Sort.Direction.ASC, "name");
 		return filialRepo.searchP(searchTerm.toLowerCase(), pageRequest).map(w -> new FilialDTO(w));

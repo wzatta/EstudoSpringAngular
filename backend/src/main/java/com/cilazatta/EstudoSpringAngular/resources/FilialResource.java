@@ -15,18 +15,19 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cilazatta.EstudoSpringAngular.dto.FilialDTO;
-import com.cilazatta.EstudoSpringAngular.services.FilialService;
+import com.cilazatta.EstudoSpringAngular.services.FilialServ;
 
 @RestController
 @RequestMapping(value = "api/v1/filial")
 public class FilialResource {
 
 	@Autowired
-	private FilialService filialServ;
+	//private FilialService filialServ;
+	  private FilialServ filialServ;
 	
 	@PostMapping
 	public ResponseEntity<FilialDTO> insertFilial(@RequestBody FilialDTO filialDto){
-		filialDto = filialServ.insertFilial(filialDto);
+		filialDto = filialServ.insertObj(filialDto);
 		return ResponseEntity.created(null).body(filialDto);
 	}
 	

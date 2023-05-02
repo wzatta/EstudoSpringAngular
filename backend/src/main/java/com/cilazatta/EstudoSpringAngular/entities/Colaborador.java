@@ -3,6 +3,7 @@ package com.cilazatta.EstudoSpringAngular.entities;
 import java.io.Serializable;
 import java.time.LocalDate;
 import com.cilazatta.EstudoSpringAngular.dto.ColaboradorDTO;
+import com.cilazatta.EstudoSpringAngular.services.util.Convertible;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -25,7 +26,7 @@ import lombok.Setter;
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Entity
 @Table(name = "colaborador")
-public class Colaborador implements Serializable {
+public class Colaborador implements Convertible<ColaboradorDTO>, Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
@@ -97,6 +98,11 @@ public class Colaborador implements Serializable {
 	public String toString() {
 		return "Colaborador [id=" + id + ", matricula=" + matricula + ", cpf=" + cpf + ", name=" + name + ", funcao="
 				+ funcao + ", dateAdm=" + dateAdm + ", dateDem=" + dateDem + ", filial=" + filial + "]";
+	}
+
+	@Override
+	public ColaboradorDTO convert() {
+		return new ColaboradorDTO(this);
 	}
 
 	

@@ -14,50 +14,48 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.cilazatta.EstudoSpringAngular.dto.HoldingDTO;
-import com.cilazatta.EstudoSpringAngular.services.util.HoldServ;
+import com.cilazatta.EstudoSpringAngular.dto.AlmoxSubDTO;
+import com.cilazatta.EstudoSpringAngular.services.AlmoxSubService;
 
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
 
 @Validated
 @RestController
-@RequestMapping(value="api/v1/holding")
-public class HoldingResource {
+@RequestMapping(value="api/v1/almoxsub")
+public class AlmoxSubResource {
 
 	@Autowired
-	//private GenericsService<Holding, HoldingDTO, Long> holdService;
-	private HoldServ holdService;
-	//private HoldingService holdService;
+	private AlmoxSubService service;
 	
 	
 	@PostMapping
-	public ResponseEntity<HoldingDTO> insertHold(@RequestBody HoldingDTO holdDto){
-		HoldingDTO hold = holdService.insertObj(holdDto);
-		return ResponseEntity.created(null).body(hold);
+	public ResponseEntity<AlmoxSubDTO> insertObj(@RequestBody AlmoxSubDTO dto){
+		dto = service.insertObj(dto);
+		return ResponseEntity.created(null).body(dto);
 	}
 
 	@GetMapping
-	public ResponseEntity<List<HoldingDTO>> findAll(){
-		List<HoldingDTO> listHoldDto = holdService.findAll();
-		return ResponseEntity.ok().body(listHoldDto);
+	public ResponseEntity<List<AlmoxSubDTO>> findAll(){
+		List<AlmoxSubDTO> listDto = service.findAll();
+		return ResponseEntity.ok().body(listDto);
 	} 
 	
 	@GetMapping(value = "/{id}")
-	public ResponseEntity<HoldingDTO> findById(@PathVariable @NotNull @Positive Long id){
-		HoldingDTO holdDto = holdService.findById(id);
-		return ResponseEntity.ok().body(holdDto);
+	public ResponseEntity<AlmoxSubDTO> findById(@PathVariable @NotNull @Positive Long id){
+		AlmoxSubDTO dto = service.findById(id);
+		return ResponseEntity.ok().body(dto);
 	}
 	
 	@PutMapping(value = "/{id}")
-	public ResponseEntity<HoldingDTO> update(@PathVariable @NotNull @Positive Long id, @RequestBody HoldingDTO obj){
-		obj = holdService.update(id, obj);
-		return ResponseEntity.ok().body(obj);
+	public ResponseEntity<AlmoxSubDTO> update(@PathVariable @NotNull @Positive Long id, @RequestBody AlmoxSubDTO dto){
+		dto = service.update(id, dto);
+		return ResponseEntity.ok().body(dto);
 	}
 	
 	@DeleteMapping(value = "/{id}")
 	public ResponseEntity<Void> delete(@PathVariable @NotNull @Positive Long id){
-		Boolean isDeletado = holdService.deleteById(id);
+		Boolean isDeletado = service.deleteById(id);
 		if(isDeletado) {
 			return ResponseEntity.noContent().<Void>build();
 		} else {

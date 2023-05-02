@@ -4,6 +4,8 @@ import java.io.Serializable;
 
 import org.hibernate.validator.constraints.Length;
 
+import com.cilazatta.EstudoSpringAngular.dto.SubGrupoDTO;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.ForeignKey;
@@ -13,6 +15,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import jakarta.persistence.UniqueConstraint;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
@@ -26,7 +29,7 @@ import lombok.Setter;
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @NoArgsConstructor
 @Entity
-@Table(name = "subgrupo")
+@Table(name = "subgrupo", uniqueConstraints = { @UniqueConstraint( name = "uniqueGrupoeSub" , columnNames = {"idgrupo","codigoSubGr"})})
 public class SubGrupo implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -61,6 +64,12 @@ public class SubGrupo implements Serializable {
 		this.descSubGr = descSubGr;
 	}
 	
+	public SubGrupo(SubGrupoDTO sbGrDto) {
+		this.idSubGr = sbGrDto.getIdSubGr();
+		this.codigoSubGr = sbGrDto.getCodigoSubGr();
+		this.descSubGr = sbGrDto.getDescSubGr();
+		this.grupo = new Grupo(sbGrDto.getGrupoDto());
+	}
 	
 	
 	

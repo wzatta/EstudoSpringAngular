@@ -14,18 +14,21 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cilazatta.EstudoSpringAngular.dto.ColaboradorDTO;
-import com.cilazatta.EstudoSpringAngular.services.ColaboradorService;
+import com.cilazatta.EstudoSpringAngular.dto.FilialDTO;
+import com.cilazatta.EstudoSpringAngular.dto.HoldingDTO;
+import com.cilazatta.EstudoSpringAngular.services.ColabService;
 
 @RestController
 @RequestMapping(value = "api/v1/colab")
 public class ColaboradorResource {
 	
 	@Autowired
-	private ColaboradorService colabService;
+	//private ColaboradorService colabService;
+	  private ColabService colabService;
 	
 	@PostMapping
 	public ResponseEntity<ColaboradorDTO> insertColab(@RequestBody ColaboradorDTO colabDto){
-		colabDto = colabService.saveColab(colabDto);
+		colabDto = colabService.insertObj(colabDto);
 		return ResponseEntity.created(null).body(colabDto);
 	}
 	
@@ -34,6 +37,19 @@ public class ColaboradorResource {
 		List<ColaboradorDTO> listDto = colabService.findAll();
 		return ResponseEntity.ok().body(listDto);
 	}
+
+	@PostMapping(value = "/hold")
+	public ResponseEntity<List<ColaboradorDTO>> findAllByHolding(@RequestBody HoldingDTO dto){
+		List<ColaboradorDTO> listDto = colabService.findAllByHolding(dto);
+		return ResponseEntity.ok().body(listDto);
+	}
+
+	@PostMapping(value = "/filial")
+	public ResponseEntity<List<ColaboradorDTO>> findByFilial(@RequestBody FilialDTO dto){
+		List<ColaboradorDTO> listDto = colabService.findByFilial(dto);
+		return ResponseEntity.ok().body(listDto);
+	}
+
 	
 	@GetMapping(value = "/{id}")
 	public ResponseEntity<ColaboradorDTO> findById(@PathVariable Long id){
@@ -42,8 +58,8 @@ public class ColaboradorResource {
 	}
 	
 	@PutMapping(value = "/{id}")
-	public ResponseEntity<ColaboradorDTO> updateColab(@PathVariable Long Id, @RequestBody ColaboradorDTO obj){
-		obj = colabService.updateColab(Id, obj);
+	public ResponseEntity<ColaboradorDTO> updateColab(@PathVariable Long id, @RequestBody ColaboradorDTO obj){
+		obj = colabService.update(id, obj);
 		return ResponseEntity.ok().body(obj);
 	}
 	

@@ -25,7 +25,7 @@ public class GrupoDTO {
 	@Max(value = 99, message = "{codigo.grupo.min.max}")
 	private Integer codigoGr;
 
-	@NotNull
+	@NotNull(message = "{field.not.null}")
 	@Length(min = 10, max = 50)
 	private String descGr;
 

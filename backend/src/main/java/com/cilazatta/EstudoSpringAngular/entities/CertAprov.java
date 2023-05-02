@@ -3,6 +3,9 @@ package com.cilazatta.EstudoSpringAngular.entities;
 import java.io.Serializable;
 import java.time.LocalDate;
 
+import com.cilazatta.EstudoSpringAngular.dto.CertAprovDTO;
+import com.cilazatta.EstudoSpringAngular.services.util.Convertible;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -20,7 +23,7 @@ import lombok.Setter;
 @Setter
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Entity
-public class CertAprov implements Serializable {
+public class CertAprov implements Convertible<CertAprovDTO>, Serializable {
 
 	private static final long serialVersionUID = 1L;
 
@@ -50,6 +53,20 @@ public class CertAprov implements Serializable {
 		this.validade = validade;
 		if(validade.isBefore(LocalDate.now())) {
 		this.isValido = false;}
+	}
+
+	public CertAprov(CertAprovDTO dto) {
+		this.idCa = dto.getIdCadto();
+		this.produto = dto.getProdutodto();
+		this.numeroCa = dto.getNumeroCadto();
+		this.isValido = dto.getIsValidodto();
+		this.validade = dto.getValidadedto();
+	}
+	
+	
+	@Override
+	public CertAprovDTO convert() {
+		return new CertAprovDTO(this);
 	}
 
 	

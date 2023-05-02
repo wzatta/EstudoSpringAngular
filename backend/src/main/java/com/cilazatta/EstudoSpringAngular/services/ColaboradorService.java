@@ -27,9 +27,6 @@ public class ColaboradorService {
 	public ColaboradorDTO saveColab(ColaboradorDTO colabDto) {
 		
 			Colaborador colab = new Colaborador(colabDto);
-			for(int i=0; i<10; i++) {
-				System.out.println(colab.getDateAdm());
-			}
 			try {
 			colab = colabRepo.save(colab);
 			return new ColaboradorDTO(colab);

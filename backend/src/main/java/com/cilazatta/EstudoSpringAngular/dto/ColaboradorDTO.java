@@ -2,6 +2,7 @@ package com.cilazatta.EstudoSpringAngular.dto;
 
 
 import com.cilazatta.EstudoSpringAngular.entities.Colaborador;
+import com.cilazatta.EstudoSpringAngular.services.util.Convertible;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -10,7 +11,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-public class ColaboradorDTO {
+public class ColaboradorDTO implements Convertible<Colaborador> {
 	
 	private Long id;
 	private String matricula;
@@ -56,6 +57,11 @@ public class ColaboradorDTO {
 		this.filialDto = new FilialDTO(colab.getFilial());
 		
 	}
+
+@Override
+public Colaborador convert() {
+	return new Colaborador(this);
+}
 	
 	
 	

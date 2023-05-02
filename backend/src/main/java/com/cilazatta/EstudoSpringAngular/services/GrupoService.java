@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.cilazatta.EstudoSpringAngular.dto.GrupoDTO;
@@ -29,7 +30,7 @@ public class GrupoService {
 	}
 
 	public List<GrupoDTO> findAll() {
-		return grRepo.findAll().stream().map(w -> new GrupoDTO(w)).collect(Collectors.toList());
+		return grRepo.findAll(Sort.by(Sort.Direction.ASC, "codigoGr")).stream().map(w -> new GrupoDTO(w)).collect(Collectors.toList());
 	}
 
 	public GrupoDTO findById(Long id) {

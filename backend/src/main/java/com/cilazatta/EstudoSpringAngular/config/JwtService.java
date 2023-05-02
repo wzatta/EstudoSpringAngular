@@ -6,8 +6,11 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Function;
 
+import org.apache.catalina.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
+
+import com.cilazatta.EstudoSpringAngular.entities.User00;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;

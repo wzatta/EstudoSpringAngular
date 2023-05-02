@@ -3,6 +3,7 @@ package com.cilazatta.EstudoSpringAngular.entities;
 import java.io.Serializable;
 
 import com.cilazatta.EstudoSpringAngular.dto.HoldingDTO;
+import com.cilazatta.EstudoSpringAngular.services.util.Convertible;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -21,7 +22,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @Entity
 @Table(name = "holding")
-public class Holding implements Serializable{
+public class Holding implements Serializable, Convertible<HoldingDTO> {
 
 	private static final long serialVersionUID = 1L;
 	
@@ -70,5 +71,24 @@ public class Holding implements Serializable{
 	}
 
 
+	
+	
+	
+	@Override
+	public HoldingDTO convert() {
+		return new HoldingDTO(this);
+	}
+
+
+	@Override
+	public String toString() {
+		return "Holding [idHold=" + idHold + ", rSocial=" + rSocial + ", dSocial=" + dSocial + ", cnpj=" + cnpj
+				+ ", municipio=" + municipio + ", uf=" + uf + "]";
+	}
+
+
+	
+
+	
 }
 

@@ -3,6 +3,7 @@ package com.cilazatta.EstudoSpringAngular.entities;
 import java.io.Serializable;
 
 import com.cilazatta.EstudoSpringAngular.dto.FilialDTO;
+import com.cilazatta.EstudoSpringAngular.services.util.Convertible;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -24,7 +25,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @Entity
 @Table(name = "filial")
-public class Filial implements Serializable{
+public class Filial implements Convertible<FilialDTO>, Serializable{
 
 	private static final long serialVersionUID = 1L;
 	
@@ -76,5 +77,11 @@ public class Filial implements Serializable{
 		this.holding = new Holding(filialDto.getHoldingDto());
 	}
 
+	
+
+	@Override
+	public FilialDTO convert() {
+		return new FilialDTO(this);
+	}
 
 }
