@@ -1,0 +1,47 @@
+<div *ngIf="almoxDb$ |async as almoxDb">
+
+
+  <table mat-table [dataSource]="almoxDb" class="mat-elevation-z8">
+
+    <ng-container matColumnDef="titulodto">
+      <mat-header-cell  *matHeaderCellDef> Titulo </mat-header-cell>
+      <mat-cell  *matCellDef="let obj"> {{ obj.titulodto }} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="isAtivodto">
+      <mat-header-cell  *matHeaderCellDef> Ativo </mat-header-cell>
+      <mat-cell  *matCellDef="let obj"> {{ obj.isAtivodto==true?'SIM':'NÃO' }} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="dataCriacaodto">
+      <mat-header-cell  *matHeaderCellDef> Data de Criação </mat-header-cell>
+      <mat-cell  *matCellDef="let obj"> {{ obj.dataCriacaodto }} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="filialDto">
+      <mat-header-cell  *matHeaderCellDef> Filial </mat-header-cell>
+      <mat-cell  *matCellDef="let obj"> {{ obj.filialDto.rsocial }} </mat-cell>
+    </ng-container>
+
+
+
+    <ng-container matColumnDef="actions">
+      <mat-header-cell  *matHeaderCellDef> AÇÕES </mat-header-cell>
+      <mat-cell  *matCellDef="let obj" >
+      <button mat-mini-fab color="primary" aria-label="Editar" (click)="onEdit(obj)">
+        <mat-icon>edit</mat-icon>
+      </button>
+      <button mat-mini-fab color="warn" aria-label="Deletar"  (click)="onDelete(obj)">
+          <mat-icon>delete</mat-icon>
+      </button>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row  *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row  *matRowDef="let row; columns: displayedColumns;"></mat-row>
+
+
+  </table>
+
+
+</div>

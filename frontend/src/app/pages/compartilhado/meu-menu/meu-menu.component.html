@@ -1,23 +1,30 @@
 <div>
+
+<button *ngIf="roleString=='ADMIN' || roleString=='DEV'" mat-button [matMenuTriggerFor]="implantacao">Implantação</button>
 <button mat-button [matMenuTriggerFor]="cadastros">cadastro</button>
 <button mat-button [matMenuTriggerFor]="util">Utilitarios</button>
 
 
-<mat-menu #cadastros="matMenu">
+<mat-menu #implantacao="matMenu">
+  <button *ngIf="roleString=='DEV'"   mat-menu-item [routerLink] ="['holdTela']">Holding</button>
+  <button *ngIf="roleString=='ADMIN'" mat-menu-item [routerLink] ="['filialTela']">Filial</button>
+  <button *ngIf="roleString=='ADMIN'" mat-menu-item [routerLink] ="['userTela']">User</button>
+  <button *ngIf="roleString=='ADMIN'" mat-menu-item [routerLink] ="['osfilialTela']">Contrato (OS)</button>
 
-<button *ngIf="roleString=='ADMIN'" mat-menu-item [routerLink] ="['holdTela']">Holding</button>
-<button *ngIf="roleString=='ADMIN'" mat-menu-item [routerLink] ="['filialTela']">Filial</button>
+</mat-menu>
+
+
+<mat-menu #cadastros="matMenu">
 <button mat-menu-item [routerLink] ="['colabTela']">Colaborador</button>
-<button mat-menu-item [routerLink] ="['userTela']">User</button>
-<button *ngIf="roleString=='ADMIN'" mat-menu-item [routerLink] ="['osfilialTela']">Contrato (OS)</button>
 <button mat-menu-item [routerLink] ="['grupoTela']">Grupo</button>
 <button mat-menu-item [routerLink] ="['sbGrupoTela']">Sub Grupo</button>
+<button mat-menu-item [routerLink] ="['almoxTela']">Almoxarifado</button>
+<button mat-menu-item [routerLink] ="['almoxSubTela']">Sub-Almoxarifado</button>
+
 </mat-menu>
 
 <mat-menu  #util="matMenu">
   <button mat-menu-item >Importar Colaborador</button>
-
-
 </mat-menu>
 
 <!--

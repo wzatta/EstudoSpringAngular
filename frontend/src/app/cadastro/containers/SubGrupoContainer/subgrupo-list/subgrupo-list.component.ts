@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { SubGrupoInterface } from '../../../model/SubGrupoInterface';
-import { SubgrupoService } from '../../../services/subgrupo.service';
-import { GrupoService } from '../../../services/grupo.service';
+import { SubGrupoInterface } from '../../../model/grupo/SubGrupoInterface';
+import { SubgrupoService } from '../../../services/grupo/subgrupo.service';
+import { GrupoService } from '../../../services/grupo/grupo.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({

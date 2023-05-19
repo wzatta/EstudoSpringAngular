@@ -5,8 +5,8 @@ import {
   ActivatedRouteSnapshot
 } from '@angular/router';
 import { Observable, of } from 'rxjs';
-import { GrupoInterface } from '../model/GrupoInterface';
-import { GrupoService } from '../services/grupo.service';
+import { GrupoInterface } from '../model/grupo/GrupoInterface';
+import { GrupoService } from '../services/grupo/grupo.service';
 
 @Injectable({
   providedIn: 'root'

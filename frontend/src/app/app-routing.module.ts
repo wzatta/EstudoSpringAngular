@@ -13,6 +13,8 @@ import { OsfilialComponent } from './cadastro/containers/osContainer/osfilial/os
 import { ColaboradorComponent } from './cadastro/containers/colaboradorContainer/colaborador/colaborador.component';
 import { GrupoComponent } from './cadastro/containers/GrupoContainer/grupo/grupo.component';
 import { SubgrupoComponent } from './cadastro/containers/SubGrupoContainer/subgrupo/subgrupo.component';
+import { AlmoxarifadoComponent } from './cadastro/containers/almoxContainer/almoxarifado/almoxarifado.component';
+import { AlmoxarifadoSubComponent } from './cadastro/containers/almoxsubContainer/almoxarifado-sub/almoxarifado-sub.component';
 
 const routes: Routes = [
   /*
@@ -31,6 +33,9 @@ const routes: Routes = [
   { path: 'colabTela', pathMatch: 'full', redirectTo: 'telaColab'},
   { path: 'grupoTela', pathMatch: 'full', redirectTo: 'telaGrupo'},
   { path: 'sbGrupoTela', pathMatch: 'full', redirectTo: 'telaSubGrupo'},
+  { path: 'almoxTela', pathMatch: 'full', redirectTo: 'telaAlmox'},
+  { path: 'almoxSubTela', pathMatch: 'full', redirectTo: 'telaAlmoxSub'},
+
 
   { path:'', component: HomeComponent},
 
@@ -78,6 +83,18 @@ const routes: Routes = [
         path: 'telaSubGrupo',
         loadChildren: () => import('./cadastro/cadastro.module').then(m => m.CadastroModule),
         component: SubgrupoComponent, canActivate: [UsuarioAutenticadoGuard]
+      },
+
+      {
+        path: 'telaAlmox',
+        loadChildren: () => import('./cadastro/cadastro.module').then(m => m.CadastroModule),
+        component: AlmoxarifadoComponent, canActivate: [UsuarioAutenticadoGuard]
+      },
+
+      {
+        path: 'telaAlmoxSub',
+        loadChildren: () => import('./cadastro/cadastro.module').then(m => m.CadastroModule),
+        component: AlmoxarifadoSubComponent, canActivate: [UsuarioAutenticadoGuard]
       },
 
 

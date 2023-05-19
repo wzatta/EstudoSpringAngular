@@ -26,6 +26,12 @@ import { GrupoListComponent } from './containers/GrupoContainer/grupo-list/grupo
 import { SubgrupoComponent } from './containers/SubGrupoContainer/subgrupo/subgrupo.component';
 import { SubgrupoFormComponent } from './containers/SubGrupoContainer/subgrupo-form/subgrupo-form.component';
 import { SubgrupoListComponent } from './containers/SubGrupoContainer/subgrupo-list/subgrupo-list.component';
+import { AlmoxarifadoComponent } from './containers/almoxContainer/almoxarifado/almoxarifado.component';
+import { AlmoxarifadoFormComponent } from './containers/almoxContainer/almoxarifado-form/almoxarifado-form.component';
+import { AlmoxarifadoListComponent } from './containers/almoxContainer/almoxarifado-list/almoxarifado-list.component';
+import { AlmoxarifadoSubComponent } from './containers/almoxsubContainer/almoxarifado-sub/almoxarifado-sub.component';
+import { AlmoxarifadoSubFormComponent } from './containers/almoxsubContainer/almoxarifado-sub-form/almoxarifado-sub-form.component';
+import { AlmoxarifadoSubListComponent } from './containers/almoxsubContainer/almoxarifado-sub-list/almoxarifado-sub-list.component';
 
 
 
@@ -52,6 +58,12 @@ import { SubgrupoListComponent } from './containers/SubGrupoContainer/subgrupo-l
     SubgrupoComponent,
     SubgrupoFormComponent,
     SubgrupoListComponent,
+    AlmoxarifadoComponent,
+    AlmoxarifadoFormComponent,
+    AlmoxarifadoListComponent,
+    AlmoxarifadoSubComponent,
+    AlmoxarifadoSubFormComponent,
+    AlmoxarifadoSubListComponent,
   ],
   imports: [
     CommonModule,

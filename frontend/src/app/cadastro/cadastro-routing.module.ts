@@ -17,6 +17,11 @@ import { GrupoFormComponent } from './containers/GrupoContainer/grupo-form/grupo
 import { GrupoResolver } from './guards/grupo.resolver';
 import { SbgrupoResolver } from './guards/sbgrupo.resolver';
 import { SubgrupoFormComponent } from './containers/SubGrupoContainer/subgrupo-form/subgrupo-form.component';
+import { AlmoxarifadoComponent } from './containers/almoxContainer/almoxarifado/almoxarifado.component';
+import { AlmoxResolver } from './guards/almox.resolver';
+import { AlmoxarifadoFormComponent } from './containers/almoxContainer/almoxarifado-form/almoxarifado-form.component';
+import { AlmoxarifadoSubFormComponent } from './containers/almoxsubContainer/almoxarifado-sub-form/almoxarifado-sub-form.component';
+import { AlmoxSubResolver } from './guards/almox-sub.resolver';
 const routes: Routes = [
 
   {path:'telaUsuario/new', component: UsuariosFormComponent, resolve: {usuarioresolve: UsuariosResolverResolver}},
@@ -39,6 +44,12 @@ const routes: Routes = [
 
   { path: 'telaSubGrupo/newSbGrupo', component: SubgrupoFormComponent , resolve: {sbgruporesolver: SbgrupoResolver}},
   { path: 'telaSubGrupo/editSbGrupo/:id', component: SubgrupoFormComponent  , resolve: {sbgruporesolver: SbgrupoResolver}},
+
+  { path: 'telaAlmox/newAlmox', component: AlmoxarifadoFormComponent , resolve: {almoxresolver: AlmoxResolver}},
+  { path: 'telaAlmox/editAlmox/:id', component: AlmoxarifadoFormComponent , resolve: {almoxresolver: AlmoxResolver}},
+
+  { path: 'telaAlmoxSub/newAlmoxSub', component: AlmoxarifadoSubFormComponent , resolve: {almoxsubresolver: AlmoxSubResolver}},
+  { path: 'telaAlmoxSub/editAlmoxSub/:id', component: AlmoxarifadoSubFormComponent , resolve: {almoxsubresolver: AlmoxSubResolver}},
 
 ];
 

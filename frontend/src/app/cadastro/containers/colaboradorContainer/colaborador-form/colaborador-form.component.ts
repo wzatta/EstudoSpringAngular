@@ -6,7 +6,6 @@ import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Filial } from 'src/app/cadastro/model/classes/Filial';
 import { UserloginService } from 'src/app/servicesapp/userlogin.service';
-
 import { ColaboradorInterface } from '../../../model/colaboradorInterface';
 import { FilialInterface } from '../../../model/filial-interface';
 import { ColaboradorService } from '../../../services/colaborador.service';
@@ -75,7 +74,7 @@ export class ColaboradorFormComponent implements OnInit {
     this.logServ.obterUsuario.subscribe(
       res => {
         this.roleString = res.role;
-        if (this.roleString == 'ADMIN') {
+        if (this.roleString === 'ADMIN') {
           this.filiais = this.filialServ.listAll(); // popular o campo select do formulario.
         } else {
           this.formColaborador.patchValue({

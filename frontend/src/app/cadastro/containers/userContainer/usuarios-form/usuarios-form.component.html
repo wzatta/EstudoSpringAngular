@@ -9,60 +9,57 @@
     <form [formGroup]="form">
 
       <mat-form-field class="full-width" appearance="fill">
-        <label for="nome">Nome Completo</label>
+        <mat-label for="nome">Nome Completo</mat-label>
         <input matInput placeholder="Nome Completo" id="nome"  formControlName="name" #namev />
         <mat-hint align="end">{{namev.value.length || 0}}/49</mat-hint>
         <mat-error *ngIf="form.get('name')?.invalid"> {{getErrorMessage('name')}} </mat-error>
       </mat-form-field>
 
       <mat-form-field class="full-width" appearance="fill">
-        <label for="cpf">CPF</label>
+        <mat-label for="cpf">CPF</mat-label>
         <input matInput mask="000.000.000-00"  placeholder="Cpf" id="cpf" required="true" formControlName="cpf">
         <mat-error *ngIf="form.get('cpf')?.invalid"> {{getErrorMessage('cpf')}} </mat-error>
       </mat-form-field>
 
       <mat-form-field class="full-width" appearance="fill">
-        <label for="username">Username</label>
+        <mat-label for="username">Username</mat-label>
         <input matInput placeholder="UserName" id="username" required="true" formControlName="user00Name">
         <mat-error *ngIf="form.get('user00Name')?.invalid"> {{getErrorMessage('user00Name')}} </mat-error>
       </mat-form-field>
 
       <mat-form-field class="full-width" appearance="fill">
-        <label for="password">PassWord</label>
+        <mat-label for="password">PassWord</mat-label>
         <input matInput type="password" placeholder="PassWord" id="password" required="true" formControlName="password">
         <mat-error *ngIf="form.get('password')?.invalid"> {{getErrorMessage('password')}} </mat-error>
       </mat-form-field>
 
       <mat-form-field class="full-width" appearance="fill">
-        <label for="userativo">Usuario Ativo?</label>
+        <mat-label for="userativo">Usuario Ativo?</mat-label>
         <mat-select  placeholder="Escolha a Opção!" required="true" disableOptionCentering="false" formControlName="userAtivo">
         <mat-option *ngFor="let op of optionsBoolean" [value]="op.value">{{op.viewValue}}</mat-option>
       </mat-select>
       </mat-form-field>
 
       <mat-form-field class="full-width" appearance="fill">
-        <label for="userativo">Usuario Bloqueado ?</label>
+        <mat-label for="userativo">Usuario Bloqueado ?</mat-label>
         <mat-select  placeholder="Escolha a Opção!"  required="true" disableOptionCentering="false" formControlName="userBloqueado">
         <mat-option *ngFor="let op of optionsBoolean" [value]="op.value">{{op.viewValue}}</mat-option>
       </mat-select>
       </mat-form-field>
 
-
       <mat-form-field class="full-width" appearance="fill">
-        <label for="role">Tipo de Autoridade</label>
+        <mat-label for="role">Tipo de Autoridade</mat-label>
         <input matInput placeholder="Tipo de Autoridade" id="role" required="true" formControlName="role">
       </mat-form-field>
 
       <mat-form-field class="full-width" appearance="fill">
-        <label >Colaborador</label>
+        <mat-label >Colaborador</mat-label>
         <mat-select [compareWith]="compareObj" placeholder="Colaborador" formControlName="colabDto">
           <mat-option *ngFor="let colab of listColab$ | async" [value]="colab">
             {{ colab.name }}
           </mat-option>
           </mat-select>
       </mat-form-field>
-
-
 
     </form>
   </mat-card-content>

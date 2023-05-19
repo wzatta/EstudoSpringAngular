@@ -1,38 +1,31 @@
-<p>
-  <mat-toolbar color="primary">
-    <!--
-    <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
-      <mat-icon>menu</mat-icon>
-    </button>
-    -->
+<mat-toolbar  id="header" color="primary">
     <mat-toolbar-row class="mat-toolbar-row">
-      <span>My App</span>
+      <span>Estudo Spring Angular</span>
       <span class="example-spacer"></span>
+      <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+        <mat-icon>login</mat-icon>
+      </button>
 
       <button mat-icon-button class="example-icon" (click)="deslogar()">
         <mat-icon>logout</mat-icon>
       </button>
-
-      <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
-        <mat-icon>favorite</mat-icon>
-      </button>
-
-      <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
-        <mat-icon>share</mat-icon>
-      </button>
     </mat-toolbar-row>
 
     <mat-toolbar-row class="mat-toolbar-row">
-
-
         <app-meu-menu></app-meu-menu>
-        <span class="example-spacer"></span>
-        <label>Usuário : {{ displayUser }}</label>
+
+
+
 
     </mat-toolbar-row>
-
   </mat-toolbar>
-</p>
-<mat-card-content>
+
+<mat-card-content id="content">
   <router-outlet></router-outlet>
 </mat-card-content>
+
+
+<footer id="footer" class="fixar-rodape">
+  <label>Usuário : {{ displayUser }}</label>
+</footer>
+

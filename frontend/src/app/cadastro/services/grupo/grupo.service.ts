@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { GrupoInterface } from '../model/GrupoInterface';
+import { GrupoInterface } from '../../model/grupo/GrupoInterface';
 
 @Injectable({
   providedIn: 'root'

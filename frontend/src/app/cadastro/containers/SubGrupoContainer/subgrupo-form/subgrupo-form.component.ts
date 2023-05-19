@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { NonNullableFormBuilder, Validators } from '@angular/forms';
-import { SubgrupoService } from '../../../services/subgrupo.service';
+import { SubgrupoService } from '../../../services/grupo/subgrupo.service';
 import { ActivatedRoute } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Location } from '@angular/common';
 import { GrupoComponent } from '../../GrupoContainer/grupo/grupo.component';
-import { SubGrupoInterface } from '../../../model/SubGrupoInterface';
+import { SubGrupoInterface } from '../../../model/grupo/SubGrupoInterface';
 import { Observable } from 'rxjs';
-import { GrupoInterface } from '../../../model/GrupoInterface';
-import { GrupoService } from '../../../services/grupo.service';
+import { GrupoInterface } from '../../../model/grupo/GrupoInterface';
+import { GrupoService } from '../../../services/grupo/grupo.service';
 
 @Component({
   selector: 'app-subgrupo-form',

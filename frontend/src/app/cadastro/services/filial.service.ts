@@ -1,6 +1,7 @@
 import { FilialInterface } from './../model/filial-interface';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { HoldInterface } from '../model/HoldInterface';
 
 @Injectable({
   providedIn: 'root'
@@ -9,6 +10,8 @@ export class FilialService {
 
   private readonly APIFilial = "api/v1/filial";
   private readonly APIFilialS = "api/v1/filial/search";
+  private readonly APIFILIALH = "api/v1/filial/hold"
+  private readonly APIFILIALF = "api/v1/filial/filial"
 
   constructor(
     private httpCliente: HttpClient
@@ -16,6 +19,14 @@ export class FilialService {
 
   listAll(){
     return this.httpCliente.get<FilialInterface[]>(this.APIFilial);
+  }
+
+  findAllByHolding(record: HoldInterface){
+    return this.httpCliente.post<FilialInterface[]>(this.APIFILIALH, record);
+  }
+
+  findAllByFilial(record: FilialInterface){
+    return this.httpCliente.post<FilialInterface[]>(this.APIFILIALF, record);
   }
 
   findByRsocial(rsocial:String){

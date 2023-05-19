@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { NonNullableFormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { GrupoService } from '../../../services/grupo.service';
+import { GrupoService } from '../../../services/grupo/grupo.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Location } from '@angular/common';
-import { GrupoInterface } from '../../../model/GrupoInterface';
+import { GrupoInterface } from '../../../model/grupo/GrupoInterface';
 import { GrupoResolver } from '../../../guards/grupo.resolver';
 import { max, min } from 'rxjs';
 

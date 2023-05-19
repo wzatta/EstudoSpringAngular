@@ -1,0 +1,23 @@
+
+.mat-card{
+  max-width: 90%;
+  min-width: 150px;
+  margin: 1em auto;
+  //text-align: center;
+}
+.cardimg{
+  max-width: 90%;
+  min-width: 80%;
+  max-height: 90%;
+  min-height: 80%;
+  width: auto;
+  height: auto;
+  opacity: 0.2;
+}
+.centralizar{
+  justify-content: center;
+  justify-items: center;
+  align-content: center;
+  align-items: center;
+  display: flex;
+}

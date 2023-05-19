@@ -1,0 +1,59 @@
+<mat-card class="mat-card">
+  <mat-card-header>
+    <mat-toolbar class="toobarSecondary">
+      Almoxarifado - ( {{ telaDe }} )
+    </mat-toolbar>
+  </mat-card-header>
+
+  <mat-card-content>
+    <form [formGroup]="formAlmoxarifado">
+
+      <mat-form-field class="full-width" appearance="fill">
+        <mat-label >Titulo</mat-label>
+        <input matInput  placeholder="Titulo" formControlName="titulodto" #vtitulo />
+        <mat-hint align="end">{{ vtitulo.value.length || 0 }}/35</mat-hint>
+        <mat-error *ngIf="formAlmoxarifado.get('titulodto')?.invalid"> {{ getErrorMessage('titulodto') }} </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="full-width" appearance="fill">
+        <mat-label for="userativo">Almoxarifado Ativo ?</mat-label>
+        <mat-select [compareWith]="compareStatus" placeholder="Escolha a Opção!"  required="true" disableOptionCentering="false" formControlName="isAtivodto">
+        <mat-option *ngFor="let op of optionsBoolean" [value]="op.value">{{op.viewValue}}</mat-option>
+      </mat-select>
+      </mat-form-field>
+
+      <mat-form-field class="full-width" appearance="fill">
+        <mat-label for="tipo">Tipo de Almoxarifado ?</mat-label>
+        <mat-select  placeholder="Escolha a Opção!"  required="true" disableOptionCentering="false" formControlName="tipodto">
+        <mat-option *ngFor="let op of optionsTipoAlmox" [value]="op.value">{{op.viewValue}}</mat-option>
+      </mat-select>
+      </mat-form-field>
+
+      <mat-form-field *ngIf="roleString=='ADMIN'" class="full-width" appearance="fill">
+        <mat-label>Filial</mat-label>
+        <mat-select [compareWith]="compareObj" placeholder="Escolha a Filial!" formControlName="filialDto">
+        <mat-option *ngFor="let filial of filiais | async" [value]="filial">
+          {{ filial.rsocial }}
+        </mat-option>
+        </mat-select>
+
+      </mat-form-field>
+
+    </form>
+
+  </mat-card-content>
+
+  <mat-card-actions class="bt-container">
+    <button mat-raised-button [disabled]=formAlmoxarifado.invalid (click)="onSubmit()" color="primary"
+      style="margin: 1px">
+      <mat-icon>save</mat-icon>
+      Salvar
+    </button>
+
+    <button mat-raised-button (click)="onCancel()" style="margin: 1px; background-color: #00E5FF;">
+      <mat-icon>cancell</mat-icon>
+      Cancelar
+    </button>
+  </mat-card-actions>
+
+</mat-card>

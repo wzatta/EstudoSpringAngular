@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { GrupoInterface } from 'src/app/cadastro/model/GrupoInterface';
-import { GrupoService } from '../../../services/grupo.service';
+import { GrupoInterface } from 'src/app/cadastro/model/grupo/GrupoInterface';
+import { GrupoService } from '../../../services/grupo/grupo.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
