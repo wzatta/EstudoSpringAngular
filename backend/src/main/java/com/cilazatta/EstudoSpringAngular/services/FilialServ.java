@@ -1,5 +1,6 @@
 package com.cilazatta.EstudoSpringAngular.services;
 
+import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -12,7 +13,9 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.cilazatta.EstudoSpringAngular.dto.FilialDTO;
+import com.cilazatta.EstudoSpringAngular.dto.HoldingDTO;
 import com.cilazatta.EstudoSpringAngular.entities.Filial;
+import com.cilazatta.EstudoSpringAngular.entities.Holding;
 import com.cilazatta.EstudoSpringAngular.repositories.FilialRepository;
 import com.cilazatta.EstudoSpringAngular.services.util.GenericsAbstractService;
 
@@ -47,6 +50,17 @@ public class FilialServ extends GenericsAbstractService<Filial, FilialDTO, Long>
 	}
 */
 //===================================================================
+
+	public List<FilialDTO> findAllByHolding(HoldingDTO dto){
+		Holding hold = new Holding(dto);
+		List<Filial> listFilial = filialRepo.findAllByHolding(hold);
+		List<FilialDTO> listDto = listFilial.stream()
+				.map(w -> new FilialDTO(w))
+				.collect(Collectors.toList());
+		return listDto;
+	}
+	
+	
 	public Page<FilialDTO> searchByRsocialDSocial(String searchTerm, int page, int size) {
 		PageRequest pageRequest = PageRequest.of(page, size, Sort.Direction.ASC, "name");
 		return filialRepo.searchP(searchTerm.toLowerCase(), pageRequest).map(w -> new FilialDTO(w));
@@ -64,6 +78,12 @@ public class FilialServ extends GenericsAbstractService<Filial, FilialDTO, Long>
 		return filialRepo.findByrSocialContainingIgnoreCase(rsocial).stream().map(w -> new FilialDTO(w))
 				.collect(Collectors.toList());
 
+	}
+
+	public List<FilialDTO> findAllByFilial(FilialDTO filial) {
+		List<FilialDTO> listdto = new ArrayList();
+		listdto.add(filial);
+		return listdto;
 	}
 
 }

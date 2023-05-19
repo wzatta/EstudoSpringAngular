@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cilazatta.EstudoSpringAngular.dto.FilialDTO;
+import com.cilazatta.EstudoSpringAngular.dto.HoldingDTO;
 import com.cilazatta.EstudoSpringAngular.services.FilialServ;
 
 @RestController
@@ -29,6 +30,18 @@ public class FilialResource {
 	public ResponseEntity<FilialDTO> insertFilial(@RequestBody FilialDTO filialDto){
 		filialDto = filialServ.insertObj(filialDto);
 		return ResponseEntity.created(null).body(filialDto);
+	}
+	
+	@PostMapping(value = "/hold")
+	public ResponseEntity<List<FilialDTO>> findAllByHolding(@RequestBody HoldingDTO hold){
+		List<FilialDTO> listDto = filialServ.findAllByHolding(hold);
+		return ResponseEntity.ok().body(listDto);
+	}
+
+	@PostMapping(value = "/filial")
+	public ResponseEntity<List<FilialDTO>> findAllByFilial(@RequestBody FilialDTO filial){
+		List<FilialDTO> listDto = filialServ.findAllByFilial(filial);
+		return ResponseEntity.ok().body(listDto);
 	}
 	
 	@PutMapping(value="/{id}")

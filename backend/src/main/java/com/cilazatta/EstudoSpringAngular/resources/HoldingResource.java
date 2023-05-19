@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cilazatta.EstudoSpringAngular.dto.HoldingDTO;
-import com.cilazatta.EstudoSpringAngular.services.util.HoldServ;
+import com.cilazatta.EstudoSpringAngular.services.HoldServ;
 
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
@@ -26,9 +26,7 @@ import jakarta.validation.constraints.Positive;
 public class HoldingResource {
 
 	@Autowired
-	//private GenericsService<Holding, HoldingDTO, Long> holdService;
 	private HoldServ holdService;
-	//private HoldingService holdService;
 	
 	
 	@PostMapping

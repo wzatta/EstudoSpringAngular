@@ -43,7 +43,7 @@ public class Almox implements Serializable, Convertible<AlmoxDTO> {
 	private LocalDateTime dataCriacao;
 	
 	@OneToOne
-	@JoinColumn(name = "id_filial", nullable = false, foreignKey = @ForeignKey(name="fk_idfilial" ))
+	@JoinColumn(name = "id_filial",unique = true ,nullable = false, foreignKey = @ForeignKey(name="fk_idfilial" ))
 	private Filial filial;
 
 	public Almox(Long idAlmox, String titulo, Boolean isAtivo, LocalDateTime dataCriacao, Filial filial) {
@@ -59,7 +59,7 @@ public class Almox implements Serializable, Convertible<AlmoxDTO> {
 		this.titulo = dto.getTitulodto();
 		this.isAtivo = dto.getIsAtivodto();
 		this.dataCriacao = dto.getDataCriacaodto();
-		this.filial = new Filial(dto.getFilialdto());
+		this.filial = new Filial(dto.getFilialDto());
 	}
 
 	@Override

@@ -89,7 +89,7 @@ public class Colaborador implements Convertible<ColaboradorDTO>, Serializable {
 		this.funcao = colabDto.getFuncao();
 		this.dateAdm = LocalDate.parse(colabDto.getDateAdm().subSequence(0, 10));
 		if(colabDto.getDateDem()!="" && colabDto.getDateDem()!=null) {
-			System.out.println("entrei aqui");
+			
 		this.dateDem =  LocalDate.parse(colabDto.getDateDem());}
 		this.filial = new Filial(colabDto.getFilialDto());
 	}

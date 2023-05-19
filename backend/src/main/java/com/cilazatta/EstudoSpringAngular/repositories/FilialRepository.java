@@ -11,12 +11,14 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import com.cilazatta.EstudoSpringAngular.entities.Filial;
+import com.cilazatta.EstudoSpringAngular.entities.Holding;
 
 @Repository
 public interface FilialRepository extends JpaRepository<Filial, Long> {
 
 	//List<Filial> findByRsocialContainingIgnoreCase(String rsocial);
 	List<Filial> findByrSocialContainingIgnoreCase(String rSocial);
+	List<Filial> findAllByHolding(Holding hold);
 	
 		@Query("FROM Filial c "+
 			   "WHERE LOWER(c.rSocial) like %:searchTerm% " +

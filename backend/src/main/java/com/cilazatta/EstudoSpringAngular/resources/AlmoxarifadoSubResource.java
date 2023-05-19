@@ -15,47 +15,48 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cilazatta.EstudoSpringAngular.dto.AlmoxSubDTO;
+import com.cilazatta.EstudoSpringAngular.dto.AlmoxarifadoSubDTO;
 import com.cilazatta.EstudoSpringAngular.dto.FilialDTO;
-import com.cilazatta.EstudoSpringAngular.services.AlmoxSubService;
+import com.cilazatta.EstudoSpringAngular.services.AlmoxarifadoSubService;
 
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
 
 @Validated
 @RestController
-@RequestMapping(value="api/v1/almoxsub")
-public class AlmoxSubResource {
+@RequestMapping(value="api/v1/almoxarifadosub")
+public class AlmoxarifadoSubResource {
 
 	@Autowired
-	private AlmoxSubService service;
+	private AlmoxarifadoSubService service;
 	
-	
-	@PostMapping
-	public ResponseEntity<AlmoxSubDTO> insertObj(@RequestBody AlmoxSubDTO dto){
+	@PostMapping(value="/sub")
+	public ResponseEntity<AlmoxarifadoSubDTO> insertObj(@RequestBody AlmoxarifadoSubDTO dto){
+		System.out.println(dto.toString());
 		dto = service.insertObj(dto);
 		return ResponseEntity.created(null).body(dto);
 	}
 	
 	@PostMapping(value = "/filial")
-	public ResponseEntity<List<AlmoxSubDTO>> findAllByAlmox(@RequestBody FilialDTO fdto){
-		List<AlmoxSubDTO> ldto = service.findAllByAlmox(fdto);
+	public ResponseEntity<List<AlmoxarifadoSubDTO>> findAllByFilial(@RequestBody FilialDTO fdto){
+		List<AlmoxarifadoSubDTO> ldto = service.findAllByFilial(fdto);
 		return ResponseEntity.ok().body(ldto);
 	}
 
 	@GetMapping
-	public ResponseEntity<List<AlmoxSubDTO>> findAll(){
-		List<AlmoxSubDTO> listDto = service.findAll();
+	public ResponseEntity<List<AlmoxarifadoSubDTO>> findAll(){
+		List<AlmoxarifadoSubDTO> listDto = service.findAll();
 		return ResponseEntity.ok().body(listDto);
 	} 
 	
 	@GetMapping(value = "/{id}")
-	public ResponseEntity<AlmoxSubDTO> findById(@PathVariable @NotNull @Positive Long id){
-		AlmoxSubDTO dto = service.findById(id);
+	public ResponseEntity<AlmoxarifadoSubDTO> findById(@PathVariable @NotNull @Positive Long id){
+		AlmoxarifadoSubDTO dto = service.findById(id);
 		return ResponseEntity.ok().body(dto);
 	}
 	
 	@PutMapping(value = "/{id}")
-	public ResponseEntity<AlmoxSubDTO> update(@PathVariable @NotNull @Positive Long id, @RequestBody AlmoxSubDTO dto){
+	public ResponseEntity<AlmoxarifadoSubDTO> update(@PathVariable @NotNull @Positive Long id, @RequestBody AlmoxarifadoSubDTO dto){
 		dto = service.update(id, dto);
 		return ResponseEntity.ok().body(dto);
 	}
@@ -69,5 +70,6 @@ public class AlmoxSubResource {
 			return ResponseEntity.notFound().build();
 		}
 	}
+	
 	
 }

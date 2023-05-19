@@ -1,5 +1,7 @@
 /*
 package com.cilazatta.EstudoSpringAngular.config;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -9,17 +11,27 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
 
+import com.cilazatta.EstudoSpringAngular.dto.AlmoxDTO;
+import com.cilazatta.EstudoSpringAngular.dto.AlmoxSubDTO;
+import com.cilazatta.EstudoSpringAngular.dto.AlmoxarifadoDTO;
+import com.cilazatta.EstudoSpringAngular.dto.AlmoxarifadoSubDTO;
 import com.cilazatta.EstudoSpringAngular.dto.ColaboradorDTO;
 import com.cilazatta.EstudoSpringAngular.dto.FilialDTO;
 import com.cilazatta.EstudoSpringAngular.dto.HoldingDTO;
 import com.cilazatta.EstudoSpringAngular.dto.User00DTO;
+import com.cilazatta.EstudoSpringAngular.entities.recurso.TipoAlmox;
 import com.cilazatta.EstudoSpringAngular.enums.Role;
 import com.cilazatta.EstudoSpringAngular.repositories.HoldingRepository;
 import com.cilazatta.EstudoSpringAngular.repositories.User00Repository;
+import com.cilazatta.EstudoSpringAngular.services.AlmoxService;
+import com.cilazatta.EstudoSpringAngular.services.AlmoxSubService;
+import com.cilazatta.EstudoSpringAngular.services.AlmoxarifadoService;
+import com.cilazatta.EstudoSpringAngular.services.AlmoxarifadoSubService;
 import com.cilazatta.EstudoSpringAngular.services.ColaboradorService;
 import com.cilazatta.EstudoSpringAngular.services.FilialService;
 import com.cilazatta.EstudoSpringAngular.services.HoldingService;
 import com.cilazatta.EstudoSpringAngular.services.User00Service;
+
 @Configuration
 public class Instantiation implements CommandLineRunner {
 
@@ -41,6 +53,18 @@ public class Instantiation implements CommandLineRunner {
 	@Autowired
 	private FilialService filialServ;
 	
+	@Autowired
+	private AlmoxService almoxServ;
+	
+	@Autowired
+	private AlmoxSubService almoxSubServ;
+	
+	@Autowired
+	private AlmoxarifadoService almoxarifadoServ;
+	
+	@Autowired
+	private AlmoxarifadoSubService almoxarifadoSubServ;
+	
 	@Override
 	public void run(String... args) throws Exception {
 		
@@ -58,16 +82,16 @@ public class Instantiation implements CommandLineRunner {
 		FilialDTO filia1 = new FilialDTO(null, "Zatta Desenvolvimentos","FILIAL 01","22333444000101","São Mateus","ES",hold1);
 	    filia1 = filialServ.insertFilial(filia1);
 	   
-//Terceiro- Colaborado
+//Terceiro- Colaborador
 	    ColaboradorDTO wal1 = new ColaboradorDTO(null, "zt0001","00100200344","waldyr zatta Junior","Analista","2023-01-01",null,filia1);
 	    wal1 = colabServ.saveColab(wal1);
 	    
 	    
 //Quarto - Usuario
-	    User00DTO waldyr = new User00DTO(null, wal1.getName(),wal1.getCpf(),wal1,"zatta","1234",true,true,Role.ADMIN);
+	    User00DTO waldyr = new User00DTO(null, wal1.getName(),wal1.getCpf(),wal1,"zatta","1234",true,true,Role.DEV);
 	    waldyr = user00Serv.insertUser(waldyr);
 //===================================================
-//Quinto - Criando a Holding Tenenge / Montreal / Ultratec
+//Quinto - Criando a Holding Tenenge / Montreal / Ultratec / Engeman
 	    HoldingDTO hold2 = new HoldingDTO(null, "Tenenge-Tecnica Nacional de Engenharia S/A", "matriz", "22222222000201","São Paulo","SP");
 		HoldingDTO hold3 = new HoldingDTO(null, "Montreal Engenharia e Construções Ltda", "Matriz", "33333333000301", "Rio de Janeiro", "RJ");
 		HoldingDTO hold4 = new HoldingDTO(null, "UltraTec Montagem Industrial Ltda", "Matriz", "44444444000401", "Belo Horizonte", "MG");
@@ -85,7 +109,7 @@ public class Instantiation implements CommandLineRunner {
 	    listFilial = listFilial.stream().map(x-> x = filialServ.insertFilial(x))
 	    		.collect(Collectors.toList());
 	    
-//Setimo
+//Setimo - Criando 05 colaboradores para cada Filial
 	    ColaboradorDTO c1 = new ColaboradorDTO(null, "TNE0001","22222222201","Antonio Jose dos Santos","analista","2023-01-31",null,listFilial.get(0));
 	    ColaboradorDTO c2 = new ColaboradorDTO(null, "TNE0002","22222222202","Marcos Geraldo Lima","Montador de Andaime","2023-01-31",null,listFilial.get(0));
 	    ColaboradorDTO c3 = new ColaboradorDTO(null, "TNE0003","22222222203","Rodrigo Martins Andrade","Soldador Tig","2023-01-31",null,listFilial.get(0));
@@ -122,8 +146,24 @@ public class Instantiation implements CommandLineRunner {
 	    listUser.stream().forEach(w -> {w = user00Serv.insertUser(w);
 	    							 System.out.println(w);});
 	
-	}
+
+	
+	//08) Criando Almoxarifado para Cada Filial
+	
+	AlmoxDTO almox1 = new AlmoxDTO(null,"TNE - Filial01 - Almox Principal",true,LocalDateTime.now(),listFilial.get(0));
+	almox1 = almoxServ.insertObj(almox1);
+	
+	AlmoxSubDTO subAlmox1 = new AlmoxSubDTO(null,"ferr01",true,true,LocalDateTime.now(),almox1);
+	subAlmox1 = almoxSubServ.insertObj(subAlmox1);
+	
+	AlmoxarifadoDTO almoxarifado = new AlmoxarifadoDTO(null,"TNE F01 - PRINCIPAL",true,LocalDate.now().toString(),TipoAlmox.PROPRIO,listFilial.get(0));
+	almoxarifado = almoxarifadoServ.insertObj(almoxarifado); 
+	
+	
+	AlmoxarifadoSubDTO almoxarifadoSub = new AlmoxarifadoSubDTO(null,"TNE-SUB 01",true,true,LocalDate.now().toString(),listFilial.get(0));
+	almoxarifadoSub = almoxarifadoSubServ.insertObj(almoxarifadoSub);
+	}	
 	
 }
-*/
 
+*/

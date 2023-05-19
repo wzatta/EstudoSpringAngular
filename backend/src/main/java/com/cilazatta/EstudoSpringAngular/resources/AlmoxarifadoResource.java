@@ -1,6 +1,5 @@
 package com.cilazatta.EstudoSpringAngular.resources;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,48 +14,52 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.cilazatta.EstudoSpringAngular.dto.AlmoxDTO;
-import com.cilazatta.EstudoSpringAngular.dto.ColaboradorDTO;
+import com.cilazatta.EstudoSpringAngular.dto.AlmoxarifadoDTO;
 import com.cilazatta.EstudoSpringAngular.dto.FilialDTO;
 import com.cilazatta.EstudoSpringAngular.dto.HoldingDTO;
-import com.cilazatta.EstudoSpringAngular.services.AlmoxService;
+import com.cilazatta.EstudoSpringAngular.services.AlmoxarifadoService;
 
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
 
 @Validated
 @RestController
-@RequestMapping(value="api/v1/almox")
-public class AlmoxResource {
+@RequestMapping(value="api/v1/almoxarifado")
+public class AlmoxarifadoResource {
+
 
 	@Autowired
-	private AlmoxService service;
+	private AlmoxarifadoService service;
 	
 	
 	@PostMapping
-	public ResponseEntity<AlmoxDTO> insertHold(@RequestBody AlmoxDTO dto){
-		
-			dto.setDataCriacaodto(LocalDateTime.now());
-		System.out.println(dto.toString());
-		
-		AlmoxDTO almoxDto = service.insertObj(dto);
+	public ResponseEntity<AlmoxarifadoDTO> insertHold(@RequestBody AlmoxarifadoDTO dto){
+		AlmoxarifadoDTO almoxDto = service.insertObj(dto);
 		return ResponseEntity.created(null).body(almoxDto);
 	}
 
 	@GetMapping
-	public ResponseEntity<List<AlmoxDTO>> findAll(){
-		List<AlmoxDTO> listDto = service.findAll();
+	public ResponseEntity<List<AlmoxarifadoDTO>> findAll(){
+		List<AlmoxarifadoDTO> listDto = service.findAll();
 		return ResponseEntity.ok().body(listDto);
 	} 
 	
 	@GetMapping(value = "/{id}")
-	public ResponseEntity<AlmoxDTO> findById(@PathVariable @NotNull @Positive Long id){
-		AlmoxDTO dto = service.findById(id);
+	public ResponseEntity<AlmoxarifadoDTO> findById(@PathVariable @NotNull @Positive Long id){
+		AlmoxarifadoDTO dto = service.findById(id);
+		return ResponseEntity.ok().body(dto);
+	}
+
+	@PostMapping(value = "/almox")
+	public ResponseEntity<AlmoxarifadoDTO> findByFilial(@RequestBody FilialDTO filial){
+		AlmoxarifadoDTO dto = service.findByFilial(filial);
 		return ResponseEntity.ok().body(dto);
 	}
 	
+	
+	
 	@PutMapping(value = "/{id}")
-	public ResponseEntity<AlmoxDTO> update(@PathVariable @NotNull @Positive Long id, @RequestBody AlmoxDTO obj){
+	public ResponseEntity<AlmoxarifadoDTO> update(@PathVariable @NotNull @Positive Long id, @RequestBody AlmoxarifadoDTO obj){
 		obj = service.update(id, obj);
 		return ResponseEntity.ok().body(obj);
 	}
@@ -72,14 +75,14 @@ public class AlmoxResource {
 	}
 	
 	@PostMapping(value="/hold")
-	public ResponseEntity<List<AlmoxDTO>> findAllByHolding(@RequestBody HoldingDTO dto){
-		List<AlmoxDTO> listDto = service.findAllByHolding(dto);
+	public ResponseEntity<List<AlmoxarifadoDTO>> findAllByHolding(@RequestBody HoldingDTO dto){
+		List<AlmoxarifadoDTO> listDto = service.findAllByHolding(dto);
 		return ResponseEntity.ok().body(listDto);
 	}
 
 	@PostMapping(value="/filial")
-	public ResponseEntity<List<AlmoxDTO>> findByFilial(@RequestBody FilialDTO dto){
-		List<AlmoxDTO> listDto = service.findByFilial(dto);
+	public ResponseEntity<List<AlmoxarifadoDTO>> findAllByFilial(@RequestBody FilialDTO dto){
+		List<AlmoxarifadoDTO> listDto = service.findAllByFilial(dto);
 		return ResponseEntity.ok().body(listDto);
 	}
 	

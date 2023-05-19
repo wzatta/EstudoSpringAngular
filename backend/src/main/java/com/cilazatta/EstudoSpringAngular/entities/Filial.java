@@ -84,4 +84,12 @@ public class Filial implements Convertible<FilialDTO>, Serializable{
 		return new FilialDTO(this);
 	}
 
+	@Override
+	public String toString() {
+		return "Filial [idFilial=" + idFilial + ", rSocial=" + rSocial + ", dSocial=" + dSocial + ", cnpj=" + cnpj
+				+ ", municipio=" + municipio + ", uf=" + uf + ", holding=" + holding + "]";
+	}
+	
+	
+
 }

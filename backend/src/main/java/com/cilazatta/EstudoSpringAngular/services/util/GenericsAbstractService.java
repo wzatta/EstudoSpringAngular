@@ -6,14 +6,13 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Service;
 
+import com.cilazatta.EstudoSpringAngular.services.exception.FieldDataIntegrityViolationException;
 import com.cilazatta.EstudoSpringAngular.services.exception.FieldNotNullException;
 import com.cilazatta.EstudoSpringAngular.services.exception.GenericsExceptionError;
 import com.cilazatta.EstudoSpringAngular.services.exception.ObjectNotFoundException;
-
-import lombok.Setter;
 
 
 public abstract class GenericsAbstractService<T extends Convertible<DTO>, DTO extends Convertible<T>, ID> {
@@ -22,15 +21,18 @@ public abstract class GenericsAbstractService<T extends Convertible<DTO>, DTO ex
 	private JpaRepository<T, ID> repository;
 	
 	public DTO insertObj(DTO objDto) {
+		System.out.println("Service "+objDto.toString());
 		try {
 			T obj = objDto.convert();
 			obj = repository.save(obj);
 			return obj.convert();
 		} catch (NullPointerException n) {
 			throw new FieldNotNullException("Usuário não Identificado.");
+		} catch (DataIntegrityViolationException e) {
+			throw new FieldDataIntegrityViolationException("Almox ja Cadastrado Para Filial");
 		} catch (Exception e) {
 			throw new GenericsExceptionError(e.toString());
-		}
+	}
 
 	}
 	

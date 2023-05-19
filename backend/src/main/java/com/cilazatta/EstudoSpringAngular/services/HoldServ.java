@@ -1,4 +1,4 @@
-package com.cilazatta.EstudoSpringAngular.services.util;
+package com.cilazatta.EstudoSpringAngular.services;
 
 import java.util.Comparator;
 import java.util.List;
@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.cilazatta.EstudoSpringAngular.dto.HoldingDTO;
 import com.cilazatta.EstudoSpringAngular.entities.Holding;
+import com.cilazatta.EstudoSpringAngular.services.util.GenericsAbstractService;
 
 @Service
 public class HoldServ extends GenericsAbstractService<Holding, HoldingDTO, Long> {
