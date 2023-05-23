@@ -1,8 +1,7 @@
 package com.cilazatta.EstudoSpringAngular.dto;
 
-import java.time.LocalDate;
-
 import com.cilazatta.EstudoSpringAngular.entities.recurso.AlmoxarifadoSub;
+import com.cilazatta.EstudoSpringAngular.entities.recurso.AlmoxarifadoSub_v1a;
 import com.cilazatta.EstudoSpringAngular.services.util.Convertible;
 
 import lombok.Getter;
@@ -19,41 +18,40 @@ public class AlmoxarifadoSubDTO implements Convertible<AlmoxarifadoSub> {
 	private String tituloSubdto;
 	private Boolean isAtivodto;
 	private Boolean isOnLine;
-	private String dataCriacaodto;
-	private FilialDTO filialDto;
+	private AlmoxarifadoDTO almoxarifadodto;
+	
 	
 	public AlmoxarifadoSubDTO(Long idSubdto, String tituloSubdto, Boolean isAtivodto, Boolean isOnLine,
-			String dataCriacaodto,  FilialDTO filialDto) {
+			 AlmoxarifadoDTO almoxarifadodto) {
 		this.idSubdto = idSubdto;
 		this.tituloSubdto = tituloSubdto;
 		this.isAtivodto = isAtivodto;
 		this.isOnLine = isOnLine;
-		this.dataCriacaodto = dataCriacaodto;
-		this.filialDto = filialDto;
+		this.almoxarifadodto = almoxarifadodto;
 	}
 
 	
 	public AlmoxarifadoSubDTO(AlmoxarifadoSub sub) {
-		
 		this.idSubdto = sub.getId();
-		this.isAtivodto = sub.getIsActive();
-		this.tituloSubdto = sub.getTitle();
-		this.dataCriacaodto = sub.getDataCriacao().toString();
+		this.isAtivodto = sub.getIsAtivo();
+		this.tituloSubdto = sub.getTituloSub();
 		this.isOnLine = sub.getIsOnLine();
-		this.filialDto = new FilialDTO(sub.getFilial());
+		this.almoxarifadodto = new AlmoxarifadoDTO(sub.getAlmoxarifado());
 	}
 
 	@Override
 	public String toString() {
-		return "AlmoxarifadoSubDTO [idSubdto=" + idSubdto + ", tituloSubdto=" + tituloSubdto + ", isAtivadto="
-				+ isAtivodto + ", isOnLine=" + isOnLine + ", dataCriacaodto=" + dataCriacaodto + ", filialdto="
-				+ filialDto + "]";
+		return "AlmoxarifadoSubDTO [idSubdto=" + idSubdto + ", tituloSubdto=" + tituloSubdto + ", isAtivodto="
+				+ isAtivodto + ", isOnLine=" + isOnLine + ", almoxarifadodto=" + almoxarifadodto + "]";
 	}
 
 	@Override
 	public AlmoxarifadoSub convert() {
 		return new AlmoxarifadoSub(this);
 	}
+
+
+
 
 	
 

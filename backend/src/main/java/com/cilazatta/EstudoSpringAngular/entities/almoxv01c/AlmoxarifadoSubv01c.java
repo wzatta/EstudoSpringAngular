@@ -1,4 +1,4 @@
-package com.cilazatta.EstudoSpringAngular.entities.recurso;
+package com.cilazatta.EstudoSpringAngular.entities.almoxv01c;
 
 import java.io.Serializable;
 
@@ -26,7 +26,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @Entity
 @Table(name = "almoxarifadosub")
-public class AlmoxarifadoSub implements Serializable, Convertible<AlmoxarifadoSubDTO>{
+public class AlmoxarifadoSubv01c implements Serializable, Convertible<AlmoxarifadoSubDTO>{
 	
 	private static final long serialVersionUID = 1L;
 
@@ -43,14 +43,14 @@ public class AlmoxarifadoSub implements Serializable, Convertible<AlmoxarifadoSu
 	
 	@ManyToOne
 	@JoinColumn(name = "id_almox_v1b",nullable = false, foreignKey = @ForeignKey(name="fk_AlmoxSubIdAlmoxv1b" ))
-	private Almoxarifado almoxarifado;
+	private Almoxarifadov01c almoxarifado;
 	
-	public AlmoxarifadoSub(AlmoxarifadoSubDTO dto) {
+	public AlmoxarifadoSubv01c(AlmoxarifadoSubDTO dto) {
 		this.id = dto.getIdSubdto();
 		this.tituloSub = dto.getTituloSubdto();
 		this.isAtivo = dto.getIsAtivodto();
 		this.isOnLine = dto.getIsOnLine();
-		this.almoxarifado = new Almoxarifado(dto.getAlmoxarifadodto());
+		this.almoxarifado = new Almoxarifadov01c(dto.getAlmoxarifadodto());
 	}
 	
 	
