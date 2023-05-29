@@ -11,8 +11,8 @@ import com.cilazatta.EstudoSpringAngular.dto.ColaboradorDTO;
 import com.cilazatta.EstudoSpringAngular.dto.FilialDTO;
 import com.cilazatta.EstudoSpringAngular.dto.HoldingDTO;
 import com.cilazatta.EstudoSpringAngular.entities.Colaborador;
-import com.cilazatta.EstudoSpringAngular.entities.Filial;
-import com.cilazatta.EstudoSpringAngular.entities.Holding;
+import com.cilazatta.EstudoSpringAngular.entities.basic.Filial;
+import com.cilazatta.EstudoSpringAngular.entities.basic.Holding;
 import com.cilazatta.EstudoSpringAngular.repositories.ColaboradorRepository;
 import com.cilazatta.EstudoSpringAngular.services.util.GenericsAbstractService;
 

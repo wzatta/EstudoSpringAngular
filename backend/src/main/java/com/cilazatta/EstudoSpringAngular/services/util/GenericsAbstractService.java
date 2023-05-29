@@ -21,7 +21,6 @@ public abstract class GenericsAbstractService<T extends Convertible<DTO>, DTO ex
 	private JpaRepository<T, ID> repository;
 	
 	public DTO insertObj(DTO objDto) {
-		System.out.println("Service "+objDto.toString());
 		try {
 			T obj = objDto.convert();
 			obj = repository.save(obj);
@@ -29,7 +28,7 @@ public abstract class GenericsAbstractService<T extends Convertible<DTO>, DTO ex
 		} catch (NullPointerException n) {
 			throw new FieldNotNullException("Usuário não Identificado.");
 		} catch (DataIntegrityViolationException e) {
-			throw new FieldDataIntegrityViolationException("Almox ja Cadastrado Para Filial");
+			throw new FieldDataIntegrityViolationException("Registro ja Cadastrado!");
 		} catch (Exception e) {
 			throw new GenericsExceptionError(e.toString());
 	}

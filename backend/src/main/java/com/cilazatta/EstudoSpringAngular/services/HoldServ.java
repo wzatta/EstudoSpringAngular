@@ -7,7 +7,7 @@ import java.util.stream.Collectors;
 import org.springframework.stereotype.Service;
 
 import com.cilazatta.EstudoSpringAngular.dto.HoldingDTO;
-import com.cilazatta.EstudoSpringAngular.entities.Holding;
+import com.cilazatta.EstudoSpringAngular.entities.basic.Holding;
 import com.cilazatta.EstudoSpringAngular.services.util.GenericsAbstractService;
 
 @Service

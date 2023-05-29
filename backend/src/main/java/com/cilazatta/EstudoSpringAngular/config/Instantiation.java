@@ -1,7 +1,6 @@
-
+/*
 package com.cilazatta.EstudoSpringAngular.config;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -11,22 +10,20 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
 
-import com.cilazatta.EstudoSpringAngular.dto.AlmoxDTO;
-import com.cilazatta.EstudoSpringAngular.dto.AlmoxSubDTO;
-import com.cilazatta.EstudoSpringAngular.dto.AlmoxarifadoDTO;
-import com.cilazatta.EstudoSpringAngular.dto.AlmoxarifadoSubDTO_v1a;
 import com.cilazatta.EstudoSpringAngular.dto.ColaboradorDTO;
 import com.cilazatta.EstudoSpringAngular.dto.FilialDTO;
 import com.cilazatta.EstudoSpringAngular.dto.HoldingDTO;
 import com.cilazatta.EstudoSpringAngular.dto.User00DTO;
-import com.cilazatta.EstudoSpringAngular.entities.recurso.TipoAlmox;
+import com.cilazatta.EstudoSpringAngular.dto.almox.AlmoxarifadoDTO;
+import com.cilazatta.EstudoSpringAngular.dto.almox.AlmoxarifadoSubDTO;
+import com.cilazatta.EstudoSpringAngular.entities.almox.TipoAlmox;
 import com.cilazatta.EstudoSpringAngular.enums.Role;
 import com.cilazatta.EstudoSpringAngular.repositories.HoldingRepository;
 import com.cilazatta.EstudoSpringAngular.repositories.User00Repository;
-import com.cilazatta.EstudoSpringAngular.services.AlmoxService;
-import com.cilazatta.EstudoSpringAngular.services.AlmoxSubService;
+import com.cilazatta.EstudoSpringAngular.services.AlmoxarifadoClienteService;
+import com.cilazatta.EstudoSpringAngular.services.AlmoxarifadoClienteSubService;
 import com.cilazatta.EstudoSpringAngular.services.AlmoxarifadoService;
-import com.cilazatta.EstudoSpringAngular.services.AlmoxarifadoSubService_v1a;
+import com.cilazatta.EstudoSpringAngular.services.AlmoxarifadoSubService;
 import com.cilazatta.EstudoSpringAngular.services.ColaboradorService;
 import com.cilazatta.EstudoSpringAngular.services.FilialService;
 import com.cilazatta.EstudoSpringAngular.services.HoldingService;
@@ -54,16 +51,16 @@ public class Instantiation implements CommandLineRunner {
 	private FilialService filialServ;
 	
 	@Autowired
-	private AlmoxService almoxServ;
-	
-	@Autowired
-	private AlmoxSubService almoxSubServ;
-	
-	@Autowired
 	private AlmoxarifadoService almoxarifadoServ;
 	
 	@Autowired
-	private AlmoxarifadoSubService_v1a almoxarifadoSubServ;
+	private AlmoxarifadoClienteService almoxClienteServ;
+	
+	@Autowired
+	private AlmoxarifadoClienteSubService almoxClienteSubServ;
+	
+	@Autowired
+	private AlmoxarifadoSubService almoxarifadoSubServ;
 	
 	@Override
 	public void run(String... args) throws Exception {
@@ -150,19 +147,22 @@ public class Instantiation implements CommandLineRunner {
 	
 	//08) Criando Almoxarifado para Cada Filial
 	
-	AlmoxDTO almox1 = new AlmoxDTO(null,"TNE - Filial01 - Almox Principal",true,LocalDateTime.now(),listFilial.get(0));
-	almox1 = almoxServ.insertObj(almox1);
-	
-	AlmoxSubDTO subAlmox1 = new AlmoxSubDTO(null,"ferr01",true,true,LocalDateTime.now(),almox1);
-	subAlmox1 = almoxSubServ.insertObj(subAlmox1);
-	
 	AlmoxarifadoDTO almoxarifado = new AlmoxarifadoDTO(null,"TNE F01 - PRINCIPAL",true,LocalDate.now().toString(),TipoAlmox.PROPRIO,listFilial.get(0));
 	almoxarifado = almoxarifadoServ.insertObj(almoxarifado); 
+
+	AlmoxarifadoDTO almoxarifado1 = new AlmoxarifadoDTO(null,"Montreal F01",true,LocalDate.now().toString(),TipoAlmox.PROPRIO,listFilial.get(1));
+	almoxarifado1 = almoxarifadoServ.insertObj(almoxarifado1);
 	
-	
-	AlmoxarifadoSubDTO_v1a almoxarifadoSub = new AlmoxarifadoSubDTO_v1a(null,"TNE-SUB 01",true,true,LocalDate.now().toString(),almoxarifado, listFilial.get(0));
+	AlmoxarifadoSubDTO almoxarifadoSub = new AlmoxarifadoSubDTO(null,"ferramentaria 01",true,true,LocalDate.now().toString(),almoxarifado);
 	almoxarifadoSub = almoxarifadoSubServ.insertObj(almoxarifadoSub);
+
+	AlmoxarifadoSubDTO almoxarifadoSub2 = new AlmoxarifadoSubDTO(null,"ferramentaria 02",true,true,LocalDate.now().toString(),almoxarifado);
+	almoxarifadoSub2 = almoxarifadoSubServ.insertObj(almoxarifadoSub2);
+	
+	
+	AlmoxarifadoSubDTO almoxarifadoSub1 = new AlmoxarifadoSubDTO(null,"Montreal ferramentaria 01",true,true,LocalDate.now().toString(),almoxarifado1);
+	almoxarifadoSub1 = almoxarifadoSubServ.insertObj(almoxarifadoSub1);
 	}	
 	
 }
-
+*/

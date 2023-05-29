@@ -1,6 +1,6 @@
 package com.cilazatta.EstudoSpringAngular.dto;
 
-import com.cilazatta.EstudoSpringAngular.entities.Holding;
+import com.cilazatta.EstudoSpringAngular.entities.basic.Holding;
 import com.cilazatta.EstudoSpringAngular.services.util.Convertible;
 
 import lombok.Getter;

@@ -1,4 +1,4 @@
-package com.cilazatta.EstudoSpringAngular.entities.recurso;
+package com.cilazatta.EstudoSpringAngular.entities.almox;
 
 import lombok.Getter;
 

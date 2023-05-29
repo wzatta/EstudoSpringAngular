@@ -3,6 +3,7 @@ package com.cilazatta.EstudoSpringAngular.entities;
 import java.io.Serializable;
 import java.time.LocalDate;
 import com.cilazatta.EstudoSpringAngular.dto.ColaboradorDTO;
+import com.cilazatta.EstudoSpringAngular.entities.basic.Filial;
 import com.cilazatta.EstudoSpringAngular.services.util.Convertible;
 
 import jakarta.persistence.Column;

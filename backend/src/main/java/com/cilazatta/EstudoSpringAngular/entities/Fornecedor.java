@@ -2,6 +2,8 @@ package com.cilazatta.EstudoSpringAngular.entities;
 
 import java.io.Serializable;
 
+import com.cilazatta.EstudoSpringAngular.entities.basic.Holding;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.ForeignKey;

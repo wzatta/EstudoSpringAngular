@@ -1,4 +1,4 @@
-package com.cilazatta.EstudoSpringAngular.entities;
+package com.cilazatta.EstudoSpringAngular.entities.basic;
 
 import java.io.Serializable;
 

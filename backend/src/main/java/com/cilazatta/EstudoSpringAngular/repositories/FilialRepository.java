@@ -10,8 +10,8 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
-import com.cilazatta.EstudoSpringAngular.entities.Filial;
-import com.cilazatta.EstudoSpringAngular.entities.Holding;
+import com.cilazatta.EstudoSpringAngular.entities.basic.Filial;
+import com.cilazatta.EstudoSpringAngular.entities.basic.Holding;
 
 @Repository
 public interface FilialRepository extends JpaRepository<Filial, Long> {

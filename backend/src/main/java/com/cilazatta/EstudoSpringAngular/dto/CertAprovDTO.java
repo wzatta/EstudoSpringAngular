@@ -3,8 +3,8 @@ package com.cilazatta.EstudoSpringAngular.dto;
 import java.io.Serializable;
 import java.time.LocalDate;
 
-import com.cilazatta.EstudoSpringAngular.entities.CertAprov;
-import com.cilazatta.EstudoSpringAngular.entities.Produto;
+
+import com.cilazatta.EstudoSpringAngular.entities.produtos.CertAprov;
 import com.cilazatta.EstudoSpringAngular.services.util.Convertible;
 
 import lombok.Getter;
@@ -17,27 +17,23 @@ public class CertAprovDTO implements Convertible<CertAprov>, Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	private Long idCadto;
-	private Produto produtodto;
 	private String numeroCadto;
-	private LocalDate validadedto;
+	private String validadedto;
 	private Boolean isValidodto = true;
 	
-	public CertAprovDTO(Long idCadto, Produto produtodto, String numeroCadto, LocalDate validadedto,
+	public CertAprovDTO(Long idCadto,String numeroCadto, LocalDate validadedto,
 			Boolean isValidodto) {
 		super();
 		this.idCadto = idCadto;
-		this.produtodto = produtodto;
 		this.numeroCadto = numeroCadto;
-		this.validadedto = validadedto;
+		this.validadedto = validadedto.toString();
 		this.isValidodto = isValidodto;
 	}
 
 	public CertAprovDTO(CertAprov ca) {
-
 		this.idCadto = ca.getIdCa();
-		this.produtodto = ca.getProduto();
 		this.numeroCadto = ca.getNumeroCa();
-		this.validadedto = ca.getValidade();
+		this.validadedto = ca.getValidade().toString();
 		this.isValidodto = ca.getIsValido();
 	}
 
@@ -45,7 +41,6 @@ public class CertAprovDTO implements Convertible<CertAprov>, Serializable {
 	public CertAprov convert() {
 		return new CertAprov(this);
 	}
-	
 	
 	
 }

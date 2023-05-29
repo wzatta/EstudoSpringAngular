@@ -14,9 +14,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.cilazatta.EstudoSpringAngular.dto.AlmoxarifadoSubDTO;
-import com.cilazatta.EstudoSpringAngular.dto.AlmoxarifadoSubDTO_v1a;
 import com.cilazatta.EstudoSpringAngular.dto.FilialDTO;
+import com.cilazatta.EstudoSpringAngular.dto.almox.AlmoxarifadoSubDTO;
 import com.cilazatta.EstudoSpringAngular.services.AlmoxarifadoSubService;
 
 import jakarta.validation.constraints.NotNull;
@@ -41,6 +40,14 @@ public class AlmoxarifadoSubResource {
 		List<AlmoxarifadoSubDTO> listDto = service.findAll();
 		return ResponseEntity.ok().body(listDto);
 	} 
+
+	@PostMapping(value = "/filial" )
+	public ResponseEntity<List<AlmoxarifadoSubDTO>> findAllByFilial(@RequestBody FilialDTO filial){
+		List<AlmoxarifadoSubDTO> listDto = service.findAllByFilial(filial);
+		return ResponseEntity.ok().body(listDto);
+	} 
+	
+	
 	
 	@GetMapping(value = "/{id}")
 	public ResponseEntity<AlmoxarifadoSubDTO> findById(@PathVariable @NotNull @Positive Long id){

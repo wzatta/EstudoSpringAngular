@@ -6,7 +6,7 @@ import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.cilazatta.EstudoSpringAngular.entities.SubGrupo;
+import com.cilazatta.EstudoSpringAngular.entities.produtos.SubGrupo;
 
 @Repository
 public interface SubGrupoRepository extends JpaRepository<SubGrupo, Long> {

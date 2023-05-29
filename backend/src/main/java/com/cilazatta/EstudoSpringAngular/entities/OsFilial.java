@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.time.LocalDate;
 
 import com.cilazatta.EstudoSpringAngular.dto.OsFilialDTO;
+import com.cilazatta.EstudoSpringAngular.entities.basic.Filial;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

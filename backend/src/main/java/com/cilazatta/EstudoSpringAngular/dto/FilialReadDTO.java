@@ -1,6 +1,6 @@
 package com.cilazatta.EstudoSpringAngular.dto;
 
-import com.cilazatta.EstudoSpringAngular.entities.Filial;
+import com.cilazatta.EstudoSpringAngular.entities.basic.Filial;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonProperty.Access;
 

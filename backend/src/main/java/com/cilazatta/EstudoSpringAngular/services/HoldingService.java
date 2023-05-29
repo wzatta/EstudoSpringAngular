@@ -9,7 +9,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.cilazatta.EstudoSpringAngular.dto.HoldingDTO;
-import com.cilazatta.EstudoSpringAngular.entities.Holding;
+import com.cilazatta.EstudoSpringAngular.entities.basic.Holding;
 import com.cilazatta.EstudoSpringAngular.repositories.HoldingRepository;
 import com.cilazatta.EstudoSpringAngular.services.exception.FieldNotNullException;
 import com.cilazatta.EstudoSpringAngular.services.exception.GenericsExceptionError;

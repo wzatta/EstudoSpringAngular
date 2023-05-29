@@ -14,9 +14,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.cilazatta.EstudoSpringAngular.dto.AlmoxarifadoDTO;
 import com.cilazatta.EstudoSpringAngular.dto.FilialDTO;
 import com.cilazatta.EstudoSpringAngular.dto.HoldingDTO;
+import com.cilazatta.EstudoSpringAngular.dto.almox.AlmoxarifadoDTO;
 import com.cilazatta.EstudoSpringAngular.services.AlmoxarifadoService;
 
 import jakarta.validation.constraints.NotNull;

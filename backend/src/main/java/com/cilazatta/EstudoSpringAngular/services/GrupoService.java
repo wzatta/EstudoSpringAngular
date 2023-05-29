@@ -8,7 +8,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.cilazatta.EstudoSpringAngular.dto.GrupoDTO;
-import com.cilazatta.EstudoSpringAngular.entities.Grupo;
+import com.cilazatta.EstudoSpringAngular.entities.produtos.Grupo;
 import com.cilazatta.EstudoSpringAngular.repositories.GrupoRepository;
 import com.cilazatta.EstudoSpringAngular.services.exception.FieldDataIntegrityViolationException;
 import com.cilazatta.EstudoSpringAngular.services.exception.ObjectNotFoundException;

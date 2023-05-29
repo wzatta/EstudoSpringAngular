@@ -2,7 +2,7 @@ package com.cilazatta.EstudoSpringAngular.dto;
 
 import org.hibernate.validator.constraints.Length;
 
-import com.cilazatta.EstudoSpringAngular.entities.SubGrupo;
+import com.cilazatta.EstudoSpringAngular.entities.produtos.SubGrupo;
 
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;

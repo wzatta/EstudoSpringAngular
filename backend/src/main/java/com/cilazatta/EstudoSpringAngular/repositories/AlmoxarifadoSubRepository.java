@@ -5,13 +5,13 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.cilazatta.EstudoSpringAngular.entities.Filial;
-import com.cilazatta.EstudoSpringAngular.entities.recurso.AlmoxarifadoSub_v1a;
+import com.cilazatta.EstudoSpringAngular.entities.almox.Almoxarifado;
+import com.cilazatta.EstudoSpringAngular.entities.almox.AlmoxarifadoSub;
 
 @Repository
 public interface AlmoxarifadoSubRepository
-	extends JpaRepository<AlmoxarifadoSub_v1a, Long>{
+	extends JpaRepository<AlmoxarifadoSub, Long>{
 	
-	List<AlmoxarifadoSub_v1a> findAllByFilial(Filial filial);
+	List<AlmoxarifadoSub> findAllByAlmoxarifado(Almoxarifado almox);
 
 }

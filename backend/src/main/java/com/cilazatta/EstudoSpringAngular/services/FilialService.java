@@ -11,7 +11,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.cilazatta.EstudoSpringAngular.dto.FilialDTO;
-import com.cilazatta.EstudoSpringAngular.entities.Filial;
+import com.cilazatta.EstudoSpringAngular.entities.basic.Filial;
 import com.cilazatta.EstudoSpringAngular.repositories.FilialRepository;
 import com.cilazatta.EstudoSpringAngular.services.exception.FieldNotNullException;
 import com.cilazatta.EstudoSpringAngular.services.exception.GenericsExceptionError;

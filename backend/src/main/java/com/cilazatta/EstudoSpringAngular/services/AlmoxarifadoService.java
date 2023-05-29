@@ -6,12 +6,12 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.cilazatta.EstudoSpringAngular.dto.AlmoxarifadoDTO;
 import com.cilazatta.EstudoSpringAngular.dto.FilialDTO;
 import com.cilazatta.EstudoSpringAngular.dto.HoldingDTO;
-import com.cilazatta.EstudoSpringAngular.entities.Filial;
-import com.cilazatta.EstudoSpringAngular.entities.Holding;
-import com.cilazatta.EstudoSpringAngular.entities.recurso.Almoxarifado;
+import com.cilazatta.EstudoSpringAngular.dto.almox.AlmoxarifadoDTO;
+import com.cilazatta.EstudoSpringAngular.entities.almox.Almoxarifado;
+import com.cilazatta.EstudoSpringAngular.entities.basic.Filial;
+import com.cilazatta.EstudoSpringAngular.entities.basic.Holding;
 import com.cilazatta.EstudoSpringAngular.repositories.AlmoxarifadoRepository;
 import com.cilazatta.EstudoSpringAngular.services.util.GenericsAbstractService;
 
@@ -23,7 +23,6 @@ public class AlmoxarifadoService extends GenericsAbstractService<Almoxarifado, A
 	
 	public List<AlmoxarifadoDTO> findAllByHolding(HoldingDTO dto) {
 		Holding hold = new Holding(dto);
-		System.out.println(hold.toString());
 		List<Almoxarifado> listHold = repo.findAllByHolding(hold);
 		List<AlmoxarifadoDTO> listDto = listHold.stream()
 				.map(w-> new AlmoxarifadoDTO(w))

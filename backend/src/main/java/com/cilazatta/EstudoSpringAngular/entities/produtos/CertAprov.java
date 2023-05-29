@@ -1,7 +1,8 @@
-package com.cilazatta.EstudoSpringAngular.entities;
+package com.cilazatta.EstudoSpringAngular.entities.produtos;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.Set;
 
 import com.cilazatta.EstudoSpringAngular.dto.CertAprovDTO;
 import com.cilazatta.EstudoSpringAngular.services.util.Convertible;
@@ -11,8 +12,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.validation.constraints.Future;
 import jakarta.validation.constraints.NotNull;
 import lombok.EqualsAndHashCode;
@@ -32,9 +32,8 @@ public class CertAprov implements Convertible<CertAprovDTO>, Serializable {
 	@EqualsAndHashCode.Include
 	private Long idCa;
 	
-	@OneToOne
-	@JoinColumn(name = "id_prod")
-	private Produto produto;
+	@OneToMany(mappedBy = "certAprov")
+	private Set<ProdutoMaster> produtos;
 	
 	@NotNull
 	@Column(name = "numeroca", nullable = false, unique = true)
@@ -57,10 +56,9 @@ public class CertAprov implements Convertible<CertAprovDTO>, Serializable {
 
 	public CertAprov(CertAprovDTO dto) {
 		this.idCa = dto.getIdCadto();
-		this.produto = dto.getProdutodto();
 		this.numeroCa = dto.getNumeroCadto();
 		this.isValido = dto.getIsValidodto();
-		this.validade = dto.getValidadedto();
+		this.validade = LocalDate.parse(dto.getValidadedto());
 	}
 	
 	
