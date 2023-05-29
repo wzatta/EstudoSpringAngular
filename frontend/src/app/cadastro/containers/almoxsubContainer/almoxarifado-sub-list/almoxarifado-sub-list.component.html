@@ -15,14 +15,9 @@
         <mat-cell *matCellDef="let obj"> {{ obj.isOnLine==true?'SIM':'NÃO' }} </mat-cell>
       </ng-container>
 
-      <ng-container matColumnDef="dataCriacaodto">
-        <mat-header-cell *matHeaderCellDef> Data de Criação </mat-header-cell>
-        <mat-cell *matCellDef="let obj"> {{ obj.dataCriacaodto }} </mat-cell>
-      </ng-container>
-
-      <ng-container matColumnDef="filialDto">
-        <mat-header-cell *matHeaderCellDef> Filial </mat-header-cell>
-        <mat-cell *matCellDef="let obj"> {{ obj.filialDto.rsocial }} </mat-cell>
+       <ng-container matColumnDef="almoxarifadodto">
+        <mat-header-cell *matHeaderCellDef> Almoxarifado </mat-header-cell>
+        <mat-cell *matCellDef="let obj"> {{ obj.almoxarifadodto.titulodto }} </mat-cell>
       </ng-container>
 
       <ng-container matColumnDef="actions">

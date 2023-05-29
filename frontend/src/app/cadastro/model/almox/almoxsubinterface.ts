@@ -1,4 +1,3 @@
-import { FilialInterface } from "../filial-interface";
 import { AlmoxInterface } from "./almox-interface";
 
 export interface Almoxsubinterface {
@@ -7,6 +6,6 @@ export interface Almoxsubinterface {
 	isAtivodto : string;
 	isOnLine : string;
 	dataCriacaodto : string;
-  filialDto: FilialInterface;
+  almoxarifadodto: AlmoxInterface;
 
 }

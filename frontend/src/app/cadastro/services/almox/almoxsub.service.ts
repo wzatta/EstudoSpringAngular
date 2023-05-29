@@ -18,6 +18,8 @@ export class AlmoxsubService {
   ) { }
 
   findAllByFilial(filial: Partial<FilialInterface>){
+    console.log("cheguei aqui");
+    console.log(filial.rsocial);
    return this.httpClient.post<Almoxsubinterface[]>(this.APIF, filial);
   }
 

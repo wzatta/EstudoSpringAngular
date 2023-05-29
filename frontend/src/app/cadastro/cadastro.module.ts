@@ -32,6 +32,12 @@ import { AlmoxarifadoListComponent } from './containers/almoxContainer/almoxarif
 import { AlmoxarifadoSubComponent } from './containers/almoxsubContainer/almoxarifado-sub/almoxarifado-sub.component';
 import { AlmoxarifadoSubFormComponent } from './containers/almoxsubContainer/almoxarifado-sub-form/almoxarifado-sub-form.component';
 import { AlmoxarifadoSubListComponent } from './containers/almoxsubContainer/almoxarifado-sub-list/almoxarifado-sub-list.component';
+import { CertaprovaComponent } from './Containers/CertaprovContainer/certaprova/certaprova.component';
+import { CertaprovaListComponent } from './Containers/CertaprovContainer/certaprova-list/certaprova-list.component';
+import { CertaprovaFormComponent } from './Containers/CertaprovContainer/certaprova-form/certaprova-form.component';
+import { ProdutoMasterComponent } from './Containers/produtomasterContainer/produto-master/produto-master.component';
+import { ProdutoMasterListComponent } from './Containers/produtomasterContainer/produto-master-list/produto-master-list.component';
+import { ProdutoMasterFormComponent } from './Containers/produtomasterContainer/produto-master-form/produto-master-form.component';
 
 
 
@@ -64,6 +70,12 @@ import { AlmoxarifadoSubListComponent } from './containers/almoxsubContainer/alm
     AlmoxarifadoSubComponent,
     AlmoxarifadoSubFormComponent,
     AlmoxarifadoSubListComponent,
+    CertaprovaComponent,
+    CertaprovaListComponent,
+    CertaprovaFormComponent,
+    ProdutoMasterComponent,
+    ProdutoMasterListComponent,
+    ProdutoMasterFormComponent,
   ],
   imports: [
     CommonModule,

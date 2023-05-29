@@ -23,12 +23,12 @@ export class AlmoxSubResolver implements Resolve<Almoxsubinterface> {
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Almoxsubinterface> {
 
-    let filial: FilialInterface | any = {};
+    let almoxr: AlmoxInterface | any = {};
 
     if(route.params && route.params['id']){
       return this.subservice.findById(route.params['id']);
     }
 
-    return of({idSubdto:'', tituloSubdto:'', isAtivodto:'',isOnLine: '', dataCriacaodto:'', filialDto:filial});
+    return of({idSubdto:'', tituloSubdto:'', isAtivodto:'',isOnLine: '', dataCriacaodto:'', almoxarifadodto:almoxr});
   }
 }

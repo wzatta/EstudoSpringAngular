@@ -15,6 +15,8 @@ import { GrupoComponent } from './cadastro/containers/GrupoContainer/grupo/grupo
 import { SubgrupoComponent } from './cadastro/containers/SubGrupoContainer/subgrupo/subgrupo.component';
 import { AlmoxarifadoComponent } from './cadastro/containers/almoxContainer/almoxarifado/almoxarifado.component';
 import { AlmoxarifadoSubComponent } from './cadastro/containers/almoxsubContainer/almoxarifado-sub/almoxarifado-sub.component';
+import { CertaprovaComponent } from './cadastro/Containers/CertaprovContainer/certaprova/certaprova.component';
+import { ProdutoMasterComponent } from './cadastro/Containers/produtomasterContainer/produto-master/produto-master.component';
 
 const routes: Routes = [
   /*
@@ -35,6 +37,10 @@ const routes: Routes = [
   { path: 'sbGrupoTela', pathMatch: 'full', redirectTo: 'telaSubGrupo'},
   { path: 'almoxTela', pathMatch: 'full', redirectTo: 'telaAlmox'},
   { path: 'almoxSubTela', pathMatch: 'full', redirectTo: 'telaAlmoxSub'},
+  { path: 'certAprovTela', pathMatch: 'full', redirectTo: 'telaCertAprov'},
+  { path: 'prodMasterTela', pathMatch: 'full', redirectTo: 'telaProdMaster'},
+
+
 
 
   { path:'', component: HomeComponent},
@@ -95,6 +101,18 @@ const routes: Routes = [
         path: 'telaAlmoxSub',
         loadChildren: () => import('./cadastro/cadastro.module').then(m => m.CadastroModule),
         component: AlmoxarifadoSubComponent, canActivate: [UsuarioAutenticadoGuard]
+      },
+
+      {
+        path: 'telaCertAprov',
+        loadChildren: () => import('./cadastro/cadastro.module').then(m => m.CadastroModule),
+        component: CertaprovaComponent, canActivate: [UsuarioAutenticadoGuard]
+      },
+
+      {
+        path: 'telaProdMaster',
+        loadChildren: () => import('./cadastro/cadastro.module').then(m => m.CadastroModule),
+        component: ProdutoMasterComponent, canActivate: [UsuarioAutenticadoGuard]
       },
 
 

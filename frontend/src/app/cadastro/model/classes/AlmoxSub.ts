@@ -9,9 +9,10 @@ export class AlmoxSub implements Almoxsubinterface {
   isAtivodto!: string;
   isOnLine!: string;
   dataCriacaodto!: string;
-  filialDto!: FilialInterface;
+  almoxarifadodto!: AlmoxInterface;
 
   constructor(){}
+
 
 
 

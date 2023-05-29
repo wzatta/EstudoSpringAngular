@@ -22,6 +22,10 @@ import { AlmoxResolver } from './guards/almox.resolver';
 import { AlmoxarifadoFormComponent } from './containers/almoxContainer/almoxarifado-form/almoxarifado-form.component';
 import { AlmoxarifadoSubFormComponent } from './containers/almoxsubContainer/almoxarifado-sub-form/almoxarifado-sub-form.component';
 import { AlmoxSubResolver } from './guards/almox-sub.resolver';
+import { CertaprovaFormComponent } from './containers/CertaprovContainer/certaprova-form/certaprova-form.component';
+import { ProdutoMasterFormComponent } from './containers/produtomasterContainer/produto-master-form/produto-master-form.component';
+import { ProdMasterResolver } from './guards/prod-master.resolver';
+import { CertAprovResolver } from './guards/cert-aprov.resolver';
 const routes: Routes = [
 
   {path:'telaUsuario/new', component: UsuariosFormComponent, resolve: {usuarioresolve: UsuariosResolverResolver}},
@@ -50,6 +54,14 @@ const routes: Routes = [
 
   { path: 'telaAlmoxSub/newAlmoxSub', component: AlmoxarifadoSubFormComponent , resolve: {almoxsubresolver: AlmoxSubResolver}},
   { path: 'telaAlmoxSub/editAlmoxSub/:id', component: AlmoxarifadoSubFormComponent , resolve: {almoxsubresolver: AlmoxSubResolver}},
+
+  { path: 'telaCertAprov/newCertAprov', component: CertaprovaFormComponent , resolve: {certAprovresolver: CertAprovResolver}},
+  { path: 'telaCertAprov/editCertAprov/:id', component: CertaprovaFormComponent , resolve: {certAprovresolver: CertAprovResolver}},
+
+  { path: 'telaProdMaster/newProdMaster', component: ProdutoMasterFormComponent , resolve: {prodMasterresolver: ProdMasterResolver}},
+  { path: 'telaProdMaster/editProdMaster/:id', component: ProdutoMasterFormComponent , resolve: {prodMasterresolver: ProdMasterResolver}},
+
+
 
 ];
 

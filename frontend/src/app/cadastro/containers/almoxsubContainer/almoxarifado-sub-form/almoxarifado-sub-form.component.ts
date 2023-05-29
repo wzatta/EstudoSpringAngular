@@ -1,11 +1,13 @@
-import { Location } from '@angular/common';
+import { Location, formatDate } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { NonNullableFormBuilder, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { OptionTipoAlmox } from 'src/app/cadastro/model/OptionTipoAlmox';
+import { AlmoxInterface } from 'src/app/cadastro/model/almox/almox-interface';
 import { Almoxsubinterface } from 'src/app/cadastro/model/almox/almoxsubinterface';
+import { Almox } from 'src/app/cadastro/model/classes/Almox';
 import { Filial } from 'src/app/cadastro/model/classes/Filial';
 import { FilialInterface } from 'src/app/cadastro/model/filial-interface';
 import { OptionBoolean } from 'src/app/cadastro/model/option-boolean';
@@ -23,6 +25,7 @@ import { UserloginService } from 'src/app/servicesapp/userlogin.service';
 export class AlmoxarifadoSubFormComponent implements OnInit {
 
   private filial: FilialInterface = new Filial();
+  private almoxf: AlmoxInterface = new Almox();
 
   public optionsBoolean: OptionBoolean[] = [
     { value: 'true', viewValue: 'SIM' },
@@ -44,7 +47,7 @@ export class AlmoxarifadoSubFormComponent implements OnInit {
     isAtivodto: ['', Validators.required],
     isOnLine: ['', [Validators.required]],
     dataCriacaodto: [''],
-    filialDto: [this.filial, [Validators.required]]
+    almoxarifadodto:[this.almoxf]
 
   });
 
@@ -53,6 +56,7 @@ export class AlmoxarifadoSubFormComponent implements OnInit {
     private route: ActivatedRoute,
     private logServ: UserloginService,
     private filialServ: FilialService,
+    private almoxServ: AlmoxService,
     private subService: AlmoxsubService,
     private snackBar: MatSnackBar,
     private location: Location
@@ -67,7 +71,7 @@ export class AlmoxarifadoSubFormComponent implements OnInit {
       isAtivodto: subConst.isAtivodto,
       isOnLine: subConst.isOnLine,
       dataCriacaodto: subConst.dataCriacaodto,
-      filialDto: subConst.filialDto
+      almoxarifadodto: subConst.almoxarifadodto
     })
 
     if (subConst.idSubdto) {
@@ -80,14 +84,19 @@ export class AlmoxarifadoSubFormComponent implements OnInit {
         if(this.roleString==="ADMIN"){
           this.filiais = this.filialServ.findAllByHolding(res.colabDto.filialDto.holdingDto); // popular o campo select do formulario.
         } else{
+          this.almoxServ.findByFilial(res.colabDto.filialDto).subscribe(
+            t=> {this.almoxf = t;
           this.formAlmoxSub.patchValue({
-            filialDto: res.colabDto.filialDto,
+            almoxarifadodto: this.almoxf
           });
+        });
+
         }
 });
 
       if (!subConst.idSubdto) {
-        this.formAlmoxSub.patchValue({dataCriacaodto:new Date().toLocaleDateString()});
+        this.formAlmoxSub.patchValue({dataCriacaodto:new Date().toLocaleDateString()}
+        );
       }
 
 

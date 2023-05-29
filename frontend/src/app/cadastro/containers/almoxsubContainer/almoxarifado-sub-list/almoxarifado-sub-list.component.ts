@@ -20,7 +20,7 @@ export class AlmoxarifadoSubListComponent implements OnInit {
   roleString: string = "USER";
   almoxSubDb$: Observable<Almoxsubinterface[]> = new Observable<AlmoxSub[]>;
 
-  readonly displayedColumns = ['titulodto','isAtivodto','filialDto','actions'];
+  readonly displayedColumns = ['tituloSubdto','isAtivodto','isOnLine','almoxarifadodto','actions'];
 
 
   constructor(
@@ -33,7 +33,7 @@ export class AlmoxarifadoSubListComponent implements OnInit {
   ){}
 
   ngOnInit(): void {
-    this.refresh;
+    this.refresh();
   }
 
   refresh(){

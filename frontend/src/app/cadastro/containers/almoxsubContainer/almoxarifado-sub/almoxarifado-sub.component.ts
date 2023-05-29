@@ -22,6 +22,7 @@ export class AlmoxarifadoSubComponent implements OnInit {
 
     onListAlmoxSub(){
       this.listar = !this.listar;
+      console.log(this.listar)
     }
 
     onAddAlmoxSub(){
